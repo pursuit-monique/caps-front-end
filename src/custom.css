@@ -1,0 +1,121 @@
+body{
+    margin: 20px;
+}
+ .mainColor{
+    color: #03bdd6;
+ }
+.constraint{
+    width: 40vw;
+}
+.imageContain {
+    height: 98%;
+    object-fit: cover;
+    border-radius: 5px 0px 0px 5px;
+    border-right: 1px solid #545454;
+    overflow: hidden; 
+}
+
+.imgContainer{
+
+    width: auto;
+    height: 18vh;
+    padding: 0px;
+    overflow: hidden; 
+    margin-right: 8px;
+}
+
+
+.title{
+    margin-top: 8px;
+    color: #545454;
+    font-size: large;
+}
+
+.text {
+    font-size: x-small;
+}
+
+.userIcon{
+    height: 25px;
+  width: 25px;
+  background-color: #bbb;
+  border-radius: 50%;
+  border: 1px solid #03bdd6;
+  display: inline-block;
+  position: static;
+
+}
+.indicator{
+    height: 6px;
+  width: 6px;
+  background-color: #18b277;
+  border-radius: 50%;
+  display: inline-block;
+  left: 6px;
+  top: 5px;
+  border: 1px solid #058475;
+  position: relative;
+}
+
+.cardSize{
+    height: 18vh;
+    width: 40vw;
+    background: #FFFFFFFF; 
+    border-radius: 8px; 
+    border-width: 1px; 
+    border-color: #BCC1CAFF; 
+    border-style: solid; 
+    box-shadow: 10px 5px 5px #BCC1CAFF;
+    padding: 0px;
+    margin: 0px;
+
+}
+
+.cardInfo{
+    /* display: grid;
+    grid-template-rows: 1fr 1fr 1fr; 
+    gap: 0px 0px;  */
+    margin-right: 8px;
+    text-overflow: ellipsis;
+    overflow: hidden; 
+    font-size: smaller;
+    margin-bottom: 8px;
+
+}
+
+.infoText{
+    font-size: x-small;
+}
+.orgText{
+    color:#bbbbbb;
+    font-style: italic;
+}
+
+.margin{
+    margin:8px;
+}
+
+.marginb{
+ margin-bottom: 8px;
+}
+@media (max-width: 480px) {
+    .cardSize{
+        width: 90vw;
+    }
+
+    .imageContain {
+        width: 20%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 5px 0px 0px 5px;
+        border-right: 1px solid #545454;
+    }
+    
+    .imgContainer{
+    
+        width: auto;
+        height: 15vh;
+        padding: 0px;
+    }
+
+  }
