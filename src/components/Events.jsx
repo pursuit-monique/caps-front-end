@@ -1,6 +1,8 @@
 import EventCard from './EventCard';
 export default function Events() {
+    return (
     <>
-            <h1>Hello</h1>
+            <EventCard />
     </>
+    )
 }
