@@ -1,9 +1,12 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { registerWithEmailAndPassword } from "../firebase/auth";
+import { auth } from "../firebase/firebase";
 import "./Signup.css";
 
 function Signup() {
+  const [authUser] = useAuthState(auth);
   const [user, setUser] = useState({
     name: "",
     email: "",
@@ -17,6 +20,7 @@ function Signup() {
       user.email,
       user.password
     );
+
     console.log(firebaseUser);
   }
 

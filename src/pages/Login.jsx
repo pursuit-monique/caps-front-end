@@ -16,8 +16,8 @@ import {
 export default function SignupLogin() {
   const [firebaseUser, loading, error] = useAuthState(auth);
   const [user, setUser] = useState({ email: "", password: "" });
-
   const navigate = useNavigate();
+
   async function googleLogin() {
     try {
       await signInWithGoogle();
@@ -64,7 +64,7 @@ export default function SignupLogin() {
             </form>
             <div className="form-link">
               <span>
-                Don't have an account?
+                Don't have an account?{" "}
                 <Link to="/signup" className="link signup-link">
                   Signup
                 </Link>
