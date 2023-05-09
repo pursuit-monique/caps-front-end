@@ -1,8 +1,7 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../firebase/firebase";
-import { useNavigate } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
 import "./Login.css";
 import {
@@ -20,12 +19,12 @@ export default function SignupLogin() {
 
   async function googleLogin() {
     try {
-      await signInWithGoogle();
-      console.log("user", user);
-      console.log(user.email);
+      const user = await signInWithGoogle();
+      localStorage.setItem("user", JSON.stringify(user));
       navigate("/index");
     } catch (error) {
       console.log(error.message);
+      alert(error.message);
     }
   }
 
@@ -87,6 +86,7 @@ export default function SignupLogin() {
           </div>
         </div>
       </div>
+      <Link to="/index">HOme</Link>
     </section>
   );
 }

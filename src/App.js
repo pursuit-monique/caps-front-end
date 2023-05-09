@@ -24,7 +24,7 @@ function App() {
             <Route path="/collections/:id/edit" element={<EditCollection />} /> */}
             </Route>
 
-            <Route path="/" element={<Login />} />
+            <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
             {/* <Route path="*" element={<NotFound />} /> */}
           </Routes>

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { registerWithEmailAndPassword } from "../firebase/auth";
 import { auth } from "../firebase/firebase";
@@ -79,7 +79,7 @@ function Signup() {
           <div className="form-link">
             <span>
               Already have an account?{" "}
-              <Link to="/" className="link login-link">
+              <Link to="/login" className="link login-link">
                 Login
               </Link>
             </span>
