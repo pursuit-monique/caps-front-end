@@ -13,7 +13,7 @@ import {
 } from "../firebase/auth";
 
 export default function SignupLogin() {
-  const [firebaseUser, loading, error] = useAuthState(auth);
+  // const [firebaseUser, loading, error] = useAuthState(auth);
   const [user, setUser] = useState({ email: "", password: "" });
   const navigate = useNavigate();
 
@@ -26,6 +26,24 @@ export default function SignupLogin() {
       console.log(error.message);
       alert(error.message);
     }
+  }
+  async function emailLogin() {
+    try {
+      const firebaseUser = await logInWithEmailAndPassword(
+        user.email,
+        user.password
+      );
+      localStorage.setItem("user", JSON.stringify(firebaseUser));
+      navigate("/index");
+    } catch (error) {
+      console.log(error.message);
+      alert(error.message);
+    }
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    emailLogin();
   }
 
   return (
@@ -40,15 +58,25 @@ export default function SignupLogin() {
         <div className="form login">
           <div className="form-content">
             <header>Login</header>
-            <form action="#">
+            <form onSubmit={handleSubmit}>
               <div className="field input-field">
-                <input type="email" placeholder="Email" className="input" />
+                <input
+                  type="email"
+                  placeholder="Email"
+                  className="input"
+                  value={user.email}
+                  onChange={(e) => setUser({ ...user, email: e.target.value })}
+                />
               </div>
               <div className="field input-field">
                 <input
                   type="password"
                   placeholder="Password"
                   className="password"
+                  value={user.password}
+                  onChange={(e) =>
+                    setUser({ ...user, password: e.target.value })
+                  }
                 />
                 <i className="bx bx-hide eye-icon"></i>
               </div>
@@ -58,7 +86,7 @@ export default function SignupLogin() {
                 </a>
               </div>
               <div className="field button-field">
-                <button>Login</button>
+                <button type="submit">Login</button>
               </div>
             </form>
             <div className="form-link">
@@ -86,7 +114,6 @@ export default function SignupLogin() {
           </div>
         </div>
       </div>
-      <Link to="/index">HOme</Link>
     </section>
   );
 }
