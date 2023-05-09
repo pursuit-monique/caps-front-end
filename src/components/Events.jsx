@@ -1,6 +1,6 @@
-import EventCard from './EventCard';
+import EventCard from "./EventCard";
 export default function Events() {
-    <>
-            <h1>Hello</h1>
-    </>
+  <>
+    <h1>Hello</h1>
+  </>;
 }

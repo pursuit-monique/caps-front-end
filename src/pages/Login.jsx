@@ -1,4 +1,10 @@
-import "./SignupLogin.css";
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "../firebase/firebase";
+import { useNavigate } from "react-router-dom";
+import { useAuthState } from "react-firebase-hooks/auth";
+import "./Login.css";
 import {
   signInWithGoogle,
   logInWithEmailAndPassword,
@@ -8,14 +14,21 @@ import {
 } from "../firebase/auth";
 
 export default function SignupLogin() {
+  const [firebaseUser, loading, error] = useAuthState(auth);
+  const [user, setUser] = useState({ email: "", password: "" });
+
+  const navigate = useNavigate();
   async function googleLogin() {
     try {
       await signInWithGoogle();
-      //   navigate("/index");
+      console.log("user", user);
+      console.log(user.email);
+      navigate("/index");
     } catch (error) {
       console.log(error.message);
     }
   }
+
   return (
     <section className="login-container forms">
       <div className="login-wrapper">
@@ -24,6 +37,7 @@ export default function SignupLogin() {
           alt="houses"
           className="signup-cover-img"
         />
+
         <div className="form login">
           <div className="form-content">
             <header>Login</header>
@@ -50,10 +64,10 @@ export default function SignupLogin() {
             </form>
             <div className="form-link">
               <span>
-                Don't have an account?{" "}
-                <a href="#" className="link signup-link">
+                Don't have an account?
+                <Link to="/signup" className="link signup-link">
                   Signup
-                </a>
+                </Link>
               </span>
             </div>
           </div>
@@ -72,56 +86,6 @@ export default function SignupLogin() {
             </button>
           </div>
         </div>
-
-        {/* <div className="form signup">
-        <div className="form-content">
-          <header>Signup</header>
-          <form action="#">
-            <div className="field input-field">
-              <input type="email" placeholder="Email" className="input" />
-            </div>
-            <div className="field input-field">
-              <input
-                type="password"
-                placeholder="Create password"
-                className="password"
-              />
-            </div>
-            <div className="field input-field">
-              <input
-                type="password"
-                placeholder="Confirm password"
-                className="password"
-              />
-              <i className="bx bx-hide eye-icon"></i>
-            </div>
-            <div className="field button-field">
-              <button>Signup</button>
-            </div>
-          </form>
-          <div className="form-link">
-            <span>
-              Already have an account?{" "}
-              <a href="#" className="link login-link">
-                Login
-              </a>
-            </span>
-          </div>
-        </div>
-        <div className="line"></div>
-        <div className="media-options">
-          <a href="#" className="field facebook">
-            <i className="bx bxl-facebook facebook-icon"></i>
-            <span>Login with Facebook</span>
-          </a>
-        </div>
-        <div className="media-options">
-          <a href="#" className="field google">
-            <img src="google.png" alt="google logo" />
-            <span>Login with Google</span>
-          </a>
-        </div>
-      </div> */}
       </div>
     </section>
   );
