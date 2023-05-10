@@ -12,7 +12,7 @@ export default function Map() {
         googleMapsApiKey: process.env.REACT_APP_GOOGLE_API_KEY,
       });
 
-      const center = useMemo(() => ({ lat: 40.7128, lng: -75.000000 }), []);
+
       Geolocation.getCurrentPosition(position => {
         console.log(position);
       });
