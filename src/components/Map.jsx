@@ -13,11 +13,7 @@ export default function Map() {
       });
 
 
-      const options = {
-        enableHighAccuracy: true,
-        timeout: 5000,
-        maximumAge: 10,
-      };
+ 
       
       function success(pos) {
         const {latitude, longitude} = pos.coords;
@@ -36,6 +32,11 @@ export default function Map() {
 
 
     useEffect(() => {
+        const options = {
+            enableHighAccuracy: true,
+            timeout: 5000,
+            maximumAge: 10,
+          };
         navigator.geolocation.getCurrentPosition(success, error, options);
     
         const interval = setInterval(() => {
@@ -54,7 +55,6 @@ export default function Map() {
             <GoogleMap
             ref={mapRef}
             mapContainerClassName="map-container"
-            // onCenterChanged={handleMapLoad}
             center={mapCenter}
             zoom={12}
             options={{mapId: 'c3bdb902aa4cda31', disableDefaultUI: true, maxZoom: 15, minZoom: 12}}
