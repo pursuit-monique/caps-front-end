@@ -69,7 +69,7 @@ const options = { closeBoxURL: '', enableEventPropagation: true };
       options={options}
       position={mapCenter}
     >
-      <div style={{ backgroundColor: 'yellow', opacity: 0.75, padding: 12 }}>
+      <div style={{ backgroundColor: 'yellow', opacity: 0.75, padding: 12, top: '100%', left: '100%'}}>
         <div style={{ fontSize: 16, fontColor: `#08233B` }}>
           Hello, World!
         </div>
