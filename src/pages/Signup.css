@@ -1,0 +1,12 @@
+.form.signup {
+  opacity: 1;
+  /* pointer-events: none; */
+}
+.forms.show-signup .form.signup {
+  opacity: 1;
+  pointer-events: auto;
+}
+.forms.show-signup .form.login {
+  opacity: 1;
+  /* pointer-events: none; */
+}
