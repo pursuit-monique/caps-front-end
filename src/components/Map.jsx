@@ -1,4 +1,4 @@
-import { GoogleMap, Marker, useLoadScript } from "@react-google-maps/api";
+import { GoogleMap, Marker, useLoadScript, InfoBox } from "@react-google-maps/api";
 
 import { useEffect, useState, useRef } from "react";
 
@@ -11,6 +11,8 @@ export default function Map() {
     const { isLoaded } = useLoadScript({
         googleMapsApiKey: process.env.REACT_APP_GOOGLE_API_KEY,
       });
+
+const options = { closeBoxURL: '', enableEventPropagation: true };
 
 
  
@@ -47,6 +49,7 @@ export default function Map() {
       }, []);
 
 
+
       return (
         <div className="App">
           {!isLoaded ? (
@@ -62,6 +65,16 @@ export default function Map() {
             options={{mapId: 'c3bdb902aa4cda31', disableDefaultUI: true, maxZoom: 15, minZoom: 12}}
             gestureHandling="none"
           >
+            <InfoBox
+      options={options}
+      position={mapCenter}
+    >
+      <div style={{ backgroundColor: 'yellow', opacity: 0.75, padding: 12 }}>
+        <div style={{ fontSize: 16, fontColor: `#08233B` }}>
+          Hello, World!
+        </div>
+      </div>
+    </InfoBox>
             <Marker position={{ lat: 40.668664, lng: 73.856743 }} />
             {mapCenter && (
           <Marker 
