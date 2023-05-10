@@ -2,7 +2,9 @@
 .App {
     width: 48vw;
     /* height: 75vh; */
-  }
+}
+
+
   .map-container {
     margin-left: 16px;
     width: 48vw;
@@ -10,6 +12,8 @@
     border: 3px solid #545454;
     border-radius: 5px;
 }
+
+  
   
   @media (max-width: 480px) {
     .App {
