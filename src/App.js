@@ -1,5 +1,4 @@
 import Events from "./components/Events";
-import bootstrap from "bootstrap";
 import "./App.css";
 import Header from "./components/Header";
 
