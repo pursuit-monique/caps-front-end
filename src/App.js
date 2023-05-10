@@ -1,12 +1,11 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-
-import Events from "./components/Events";
-import "./App.css";
 import Login from "./pages/Login";
+import Event from "./pages/Event";
 import Signup from "./pages/Signup";
 import Home from "./pages/Home";
 import PrivateRoutes from "./components/PrivateRoutes";
 import { AuthProvider } from "./context/AuthContext";
+import "./App.css";
 
 function App() {
   return (
@@ -19,6 +18,7 @@ function App() {
 
             <Route element={<PrivateRoutes />}>
               <Route path="/index" element={<Home />} exact />
+              <Route path="/event" element={<Event />} />
               {/* <Route path="/new" element={<New />} />
             <Route path="/cars/:id" element={<ShowCar />} />
             <Route path="/cars/:id/edit" element={<EditCar />} />
