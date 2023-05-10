@@ -1,6 +1,6 @@
 import { GoogleMap, Marker, useLoadScript } from "@react-google-maps/api";
 
-import { useMemo, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Geolocation from 'geolocation';
 
 import "./App.css";
@@ -12,7 +12,7 @@ export default function Map() {
         googleMapsApiKey: process.env.REACT_APP_GOOGLE_API_KEY,
       });
 
-      const center = useMemo(() => ({ lat: 40.7128, lng: -75.000000 }), []);
+
       Geolocation.getCurrentPosition(position => {
         console.log(position);
       });
@@ -25,7 +25,7 @@ export default function Map() {
           ) : (
             <GoogleMap
             mapContainerClassName="map-container"
-            center={center}
+            center={mapCenter}
             zoom={10}
             options={{mapId: 'c3bdb902aa4cda31', disableDefaultUI: true}}
           >
