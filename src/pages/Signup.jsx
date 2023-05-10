@@ -1,12 +1,10 @@
 import { useState } from "react";
-import { Link, Navigate } from "react-router-dom";
-import { useAuthState } from "react-firebase-hooks/auth";
+import { Link, useNavigate } from "react-router-dom";
 import { registerWithEmailAndPassword } from "../firebase/auth";
-import { auth } from "../firebase/firebase";
 import "./Signup.css";
 
 function Signup() {
-  const [authUser] = useAuthState(auth);
+  const navigate = useNavigate();
   const [user, setUser] = useState({
     name: "",
     email: "",
@@ -20,8 +18,9 @@ function Signup() {
       user.email,
       user.password
     );
-
     console.log(firebaseUser);
+    localStorage.setItem("user", JSON.stringify(firebaseUser));
+    navigate("/index");
   }
 
   return (

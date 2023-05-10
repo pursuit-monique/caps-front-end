@@ -1,19 +1,9 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "../firebase/firebase";
-import { useAuthState } from "react-firebase-hooks/auth";
 import "./Login.css";
-import {
-  signInWithGoogle,
-  logInWithEmailAndPassword,
-  registerWithEmailAndPassword,
-  sendPasswordReset,
-  logout,
-} from "../firebase/auth";
+import { signInWithGoogle, logInWithEmailAndPassword } from "../firebase/auth";
 
 export default function SignupLogin() {
-  // const [firebaseUser, loading, error] = useAuthState(auth);
   const [user, setUser] = useState({ email: "", password: "" });
   const navigate = useNavigate();
 
@@ -81,9 +71,9 @@ export default function SignupLogin() {
                 <i className="bx bx-hide eye-icon"></i>
               </div>
               <div className="form-link">
-                <a href="#" className="forgot-pass">
+                {/* <a href="#" className="forgot-pass">
                   Forgot password?
-                </a>
+                </a> */}
               </div>
               <div className="field button-field">
                 <button type="submit">Login</button>
