@@ -12,7 +12,7 @@ export default function Map() {
         googleMapsApiKey: process.env.REACT_APP_GOOGLE_API_KEY,
       });
 
-const options = { closeBoxURL: '', enableEventPropagation: true };
+
 
 
  
@@ -31,13 +31,13 @@ const options = { closeBoxURL: '', enableEventPropagation: true };
       
 
 
-      const [legendItems, setLegendItems] = useState([
+      const [legendItems, setLegendItems] = useState([]);
+    setLegendItems([
         { label: 'Marker 1', color: 'red' },
         { label: 'Marker 2', color: 'blue' },
         { label: 'Marker 3', color: 'green' },
-      ]);
-    
-      const overlayViewRef = React.createRef(null);
+      ])
+      const overlayViewRef = useRef(null);
     
       const getPixelPositionOffset = (width, height) => ({
         x: -(width / 2),
