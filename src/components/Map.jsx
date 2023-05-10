@@ -13,22 +13,11 @@ export default function Map() {
       });
 
       const center = useMemo(() => ({ lat: 40.7128, lng: -75.000000 }), []);
+      Geolocation.getCurrentPosition(position => {
+        console.log(position);
+      });
 
-      const handleGeolocationSuccess = (position) => {
-        const { latitude, longitude } = position.coords;
-        setMapCenter({ lat: latitude, lng: longitude });
-      };
-
-      const handleGeolocationError = (error) => {
-        console.log('Error occurred while fetching location:', error.message);
-      };
-      useEffect(() => {
-        navigator.geolocation.getCurrentPosition(
-          handleGeolocationSuccess,
-          handleGeolocationError
-        );
-      }, []);
-
+      useEffect(() => {setMapCenter({ lat: 0, lng: 0 })}, [])
       return (
         <div className="App">
           {!isLoaded ? (
