@@ -1,6 +1,6 @@
 import { GoogleMap, Marker, useLoadScript } from "@react-google-maps/api";
 
-import { useMemo, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Geolocation from 'geolocation';
 
 import "./App.css";
