@@ -1,7 +1,6 @@
 import { GoogleMap, Marker, useLoadScript } from "@react-google-maps/api";
 
 import { useEffect, useState, useRef } from "react";
-import Geolocation from 'geolocation';
 
 import "./App.css";
 
@@ -32,21 +31,20 @@ export default function Map() {
         console.warn(`ERROR(${err.code}): ${err.message}`);
       }
       
-    //   const handleMapLoad = (map) => {
-    //     const center = map.getCenter();
-    //     setMarkerPosition({
-    //       lat: center.lat(),
-    //       lng: center.lng(),
-    //     });
-    //   };
 
-      
-      navigator.geolocation.getCurrentPosition(success, error, options);
-    //   useEffect(() => {setMapCenter({ lat: 0, lng: 0 })}, [])
-    // useEffect(() => {
-    //     // Update the document title using the browser API
-    //     document.title = `You clicked ${count} times`;
-    //   });
+    
+
+
+    useEffect(() => {
+        navigator.geolocation.getCurrentPosition(success, error, options);
+    
+        const interval = setInterval(() => {
+            navigator.geolocation.getCurrentPosition(success, error, options);
+        }, 5000);
+    
+        return () => clearInterval(interval);
+      }, []);
+
 
       return (
         <div className="App">
@@ -58,11 +56,15 @@ export default function Map() {
             mapContainerClassName="map-container"
             // onCenterChanged={handleMapLoad}
             center={mapCenter}
-            zoom={11}
-            options={{mapId: 'c3bdb902aa4cda31', disableDefaultUI: true}}
+            zoom={12}
+            options={{mapId: 'c3bdb902aa4cda31', disableDefaultUI: true, maxZoom: 15, minZoom: 12}}
+            gestureHandling="none"
           >
-            <Marker position={{ lat: 18.52043, lng: 73.856743 }} />
-            <Marker position={{ lat: mapCenter.lat, lng: mapCenter.lng}} onPositionChanged/>
+            <Marker position={{ lat: 40.668664, lng: 73.856743 }} />
+            <Marker position={mapCenter}/>
+            {mapCenter && (
+          <Marker position={mapCenter} />
+        )}
           </GoogleMap>
           )}
         </div>
