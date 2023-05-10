@@ -13,7 +13,10 @@
     border-radius: 5px;
 }
 
-  
+  .App img[src*="blue-dot.png"] {
+    width: 40px;
+    height: 40px;
+  }
   
   @media (max-width: 480px) {
     .App {
