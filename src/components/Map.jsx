@@ -50,7 +50,9 @@ export default function Map() {
       return (
         <div className="App">
           {!isLoaded ? (
-            <h1>Loading...</h1>
+            <div class="spinner-border text-info" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
           ) : (
             <GoogleMap
             ref={mapRef}
@@ -66,7 +68,7 @@ export default function Map() {
           position={mapCenter} 
           title="Your Location" 
           icon={{
-            url: 'location.svg', // URL of the marker icon
+            url: 'locationsm.svg', // URL of the marker icon
             
           }} />
         )}
