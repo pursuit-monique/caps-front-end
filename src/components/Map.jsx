@@ -1,4 +1,4 @@
-import { GoogleMap, Marker, useLoadScript, OverlayView } from "@react-google-maps/api";
+import { GoogleMap, Marker, useLoadScript} from "@react-google-maps/api";
 
 import { useEffect, useState, useRef } from "react";
 
@@ -11,9 +11,6 @@ export default function Map() {
     const { isLoaded } = useLoadScript({
         googleMapsApiKey: process.env.REACT_APP_GOOGLE_API_KEY,
       });
-
-
-
 
  
       
@@ -31,18 +28,7 @@ export default function Map() {
       
 
 
-      const [legendItems, setLegendItems] = useState([]);
-    setLegendItems([
-        { label: 'Marker 1', color: 'red' },
-        { label: 'Marker 2', color: 'blue' },
-        { label: 'Marker 3', color: 'green' },
-      ])
-      const overlayViewRef = useRef(null);
-    
-      const getPixelPositionOffset = (width, height) => ({
-        x: -(width / 2),
-        y: -(height / 2),
-      });
+     
 
       
     
@@ -93,35 +79,7 @@ export default function Map() {
 
 
         )}
-
-{legendItems.map((item, index) => (
-          <Marker
-            key={index}
-            position={{ lat: 0, lng: 0 }}
-            icon={{
-              url: `https://chart.googleapis.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|${item.color}`,
-              scaledSize: new window.google.maps.Size(30, 30),
-            }}
-          />
-        ))}
-
-        <OverlayView
-          position={{ lat: 0, lng: 0 }}
-          mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
-          getPixelPositionOffset={getPixelPositionOffset}
-          ref={overlayViewRef}
-        >
-          <div className="legend">
-            {legendItems.map((item, index) => (
-              <div key={index} className="legend-item">
-                <span className="legend-icon" style={{ backgroundColor: item.color }}></span>
-                <span className="legend-label">{item.label}</span>
-              </div>
-            ))}
-          </div>
-        </OverlayView>
-
-
+        
           </GoogleMap>
           )}
         </div>
