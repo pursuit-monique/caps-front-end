@@ -9,7 +9,6 @@ import "./App.css";
 export default function Map() {
     const mapRef = useRef(null);
     const [mapCenter, setMapCenter] = useState({ lat: 0, lng: 0 });
-    const [markerPosition, setMarkerPosition] = useState({ lat: 0, lng: 0 });
     const { isLoaded } = useLoadScript({
         googleMapsApiKey: process.env.REACT_APP_GOOGLE_API_KEY,
       });
@@ -44,6 +43,10 @@ export default function Map() {
       
       navigator.geolocation.getCurrentPosition(success, error, options);
     //   useEffect(() => {setMapCenter({ lat: 0, lng: 0 })}, [])
+    // useEffect(() => {
+    //     // Update the document title using the browser API
+    //     document.title = `You clicked ${count} times`;
+    //   });
 
       return (
         <div className="App">
@@ -59,7 +62,7 @@ export default function Map() {
             options={{mapId: 'c3bdb902aa4cda31', disableDefaultUI: true}}
           >
             <Marker position={{ lat: 18.52043, lng: 73.856743 }} />
-            {/* {markerPosition && <Marker position={markerPosition} />} */}
+            <Marker position={{ lat: mapCenter.lat, lng: mapCenter.lng}} onPositionChanged/>
           </GoogleMap>
           )}
         </div>
