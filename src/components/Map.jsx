@@ -67,11 +67,11 @@ export default function Map() {
             gestureHandling="none"
           >
             
-            <Marker position={{ lat: 40.668664, lng: 73.856743 }} />
             {mapCenter && (
           <Marker 
           position={mapCenter} 
           title="Your Location" 
+          onClick={() => console.log("click")}
           icon={{
             url: 'locationsm.svg', // URL of the marker icon
             
