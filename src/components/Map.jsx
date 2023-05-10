@@ -25,7 +25,7 @@ export default function Map() {
           ) : (
             <GoogleMap
             mapContainerClassName="map-container"
-            center={center}
+            center={mapCenter}
             zoom={10}
             options={{mapId: 'c3bdb902aa4cda31', disableDefaultUI: true}}
           >
