@@ -1,7 +1,6 @@
-import { GoogleMap, Marker, useLoadScript } from "@react-google-maps/api";
+import { GoogleMap, Marker, useLoadScript} from "@react-google-maps/api";
 
 import { useEffect, useState, useRef } from "react";
-import Geolocation from 'geolocation';
 
 import "./App.css";
 
@@ -9,17 +8,11 @@ import "./App.css";
 export default function Map() {
     const mapRef = useRef(null);
     const [mapCenter, setMapCenter] = useState({ lat: 0, lng: 0 });
-    const [markerPosition, setMarkerPosition] = useState({ lat: 0, lng: 0 });
     const { isLoaded } = useLoadScript({
         googleMapsApiKey: process.env.REACT_APP_GOOGLE_API_KEY,
       });
 
-
-      const options = {
-        enableHighAccuracy: true,
-        timeout: 5000,
-        maximumAge: 10,
-      };
+ 
       
       function success(pos) {
         const {latitude, longitude} = pos.coords;
@@ -33,33 +26,60 @@ export default function Map() {
         console.warn(`ERROR(${err.code}): ${err.message}`);
       }
       
-    //   const handleMapLoad = (map) => {
-    //     const center = map.getCenter();
-    //     setMarkerPosition({
-    //       lat: center.lat(),
-    //       lng: center.lng(),
-    //     });
-    //   };
+
+
+     
 
       
-      navigator.geolocation.getCurrentPosition(success, error, options);
-    //   useEffect(() => {setMapCenter({ lat: 0, lng: 0 })}, [])
+    
+
+
+    useEffect(() => {
+        const options = {
+            enableHighAccuracy: true,
+            timeout: 5000,
+            maximumAge: 10,
+          };
+        navigator.geolocation.getCurrentPosition(success, error, options);
+    
+        const interval = setInterval(() => {
+            navigator.geolocation.getCurrentPosition(success, error, options);
+        }, 5000);
+    
+        return () => clearInterval(interval);
+      }, []);
+
+
 
       return (
         <div className="App">
           {!isLoaded ? (
-            <h1>Loading...</h1>
+            <div class="spinner-border text-info" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
           ) : (
             <GoogleMap
             ref={mapRef}
             mapContainerClassName="map-container"
-            // onCenterChanged={handleMapLoad}
             center={mapCenter}
-            zoom={11}
-            options={{mapId: 'c3bdb902aa4cda31', disableDefaultUI: true}}
+            zoom={12}
+            options={{mapId: 'c3bdb902aa4cda31', disableDefaultUI: true, maxZoom: 15, minZoom: 12}}
+            gestureHandling="none"
           >
-            <Marker position={{ lat: 18.52043, lng: 73.856743 }} />
-            {/* {markerPosition && <Marker position={markerPosition} />} */}
+            
+            {mapCenter && (
+          <Marker 
+          position={mapCenter} 
+          title="Your Location" 
+          onClick={() => console.log("click")}
+          icon={{
+            url: 'locationsm.svg', // URL of the marker icon
+            
+          }} />
+
+
+        )}
+        
           </GoogleMap>
           )}
         </div>
