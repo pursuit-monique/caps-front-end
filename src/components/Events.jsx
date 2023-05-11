@@ -1,3 +1,4 @@
+
 import EventCard from './EventCard';
 import Menu from "./Menu";
 import Map from "./Map"
