@@ -29,26 +29,81 @@
   color: var(--text-color);
 }
 
+.event-categories ul {
+  margin-bottom: 0;
+}
+
+.event-categories li {
+  list-style: none;
+  display: inline-block;
+  background-color: #ccc;
+  margin-left: 20px;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+}
+
+.event-creator-container {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 20px;
+}
+
+.event-creator-container p {
+  margin: 0;
+}
+
+.event-creator-container .avatar {
+  height: 40px;
+  border-radius: 50%;
+}
+
 .live-btn-container {
   margin-top: 50px;
   width: 100%;
   display: flex;
+  /* flex-direction: row; */
+  justify-content: center;
+  gap: 40px;
+}
+
+.live-btn-wrapper {
+  display: flex;
   justify-content: center;
 }
 
-.go-live-btn {
+.go-live-btn,
+.checkin-btn {
   border-radius: 50%;
-  padding: 15px;
+  padding: 10px;
   height: auto;
   background-color: #ee6464;
   outline: none;
   border: 5px solid var(--primary-color);
 }
-.bx-camera-movie {
+
+.checkin-btn {
+  background-color: #fff;
+}
+
+.bx-camera-movie,
+.bx-check-circle {
   font-size: 1.5rem;
   background-color: white;
   border-radius: 50%;
   display: flex;
   padding: 6px;
   justify-content: center;
+}
+
+.bx-check-circle {
+  font-size: 2rem;
+  padding: 2px;
+}
+
+.go-live-text,
+.checkin-text {
+  color: var(--text-color);
+  text-align: center;
 }

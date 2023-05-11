@@ -19,7 +19,20 @@ export default function Event() {
           <div className="event-title-wrapper">
             <h3 className="event-title">National Pride</h3>
           </div>
-          <div className="event-organizer"></div>
+          <div className="event-creator-container">
+            <img
+              className="avatar"
+              src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp"
+              alt="Avatar"
+            />
+            <p>John Doe</p>
+            <div className="event-categories">
+              <ul>
+                <li>Cultural</li>
+                <li>Gathering</li>
+              </ul>
+            </div>
+          </div>
           <p className="event-description">
             Labore et consectetur magna officia ad fugiat eiusmod deserunt.
             Tempor ea officia ipsum elit mollit cillum sit aliquip dolore sint
@@ -28,9 +41,23 @@ export default function Event() {
             ad consequat anim dolor non.
           </p>
           <div className="live-btn-container">
-            <button className="go-live-btn">
-              <i class="bx bx-camera-movie"></i>
-            </button>
+            <div>
+              <div className="live-btn-wrapper">
+                <button className="go-live-btn" title="Go Live">
+                  <i class="bx bx-camera-movie"></i>
+                </button>
+              </div>
+              <p className="go-live-text">Go Live</p>
+            </div>
+            <div>
+              <div className="checkin-btn-wrapper">
+                <button className="checkin-btn" title="Check In">
+                  <i class="bx bx-check-circle"></i>
+                </button>
+              </div>
+
+              <p className="checkin-text">Check In</p>
+            </div>
           </div>
         </div>
       </section>
