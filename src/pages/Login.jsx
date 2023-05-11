@@ -76,7 +76,9 @@ export default function SignupLogin() {
                 </a> */}
               </div>
               <div className="field button-field">
-                <button type="submit">Login</button>
+                <button className="login-btn" type="submit">
+                  Login
+                </button>
               </div>
             </form>
             <div className="form-link">

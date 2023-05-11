@@ -82,7 +82,7 @@ form {
 }
 .field button {
   color: #fff;
-  background-color: #0171d3;
+  background-color: var(--primary-color);
   transition: all 0.3s ease;
   cursor: pointer;
 }

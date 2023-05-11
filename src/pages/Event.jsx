@@ -26,6 +26,7 @@ export default function Event() {
               alt="Avatar"
             />
             <p>John Doe</p>
+
             <div className="event-categories">
               <ul>
                 <li>Cultural</li>
