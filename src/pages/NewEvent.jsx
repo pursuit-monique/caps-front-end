@@ -20,7 +20,7 @@ function NewEvent() {
 
   return (
     <>
-      <div className="container event-form-container">
+      <div className="container event-form-container my-4">
         <form className="row g-3" onSubmit={handleSubmit}>
           <h3>Create a New Event</h3>
 
@@ -180,8 +180,18 @@ function NewEvent() {
             />
           </div>
 
-          <div className="col-12">
-            <button type="submit" className="btn btn-primary">
+          <div class="col-md-6">
+            <label for="image" class="form-label">
+              Image
+            </label>
+            <input class="form-control" type="file" id="image" />
+          </div>
+
+          <div className="col-12 col-md-6">
+            <label for="submit" class="form-label invisible">
+              Image
+            </label>
+            <button type="submit" className="btn btn-primary w-100">
               Submit
             </button>
           </div>
