@@ -32,7 +32,8 @@
   margin-bottom: 3px;
 }
 
-.header .avatar {
+.header .avatar,
+.avatar {
   border-radius: 50%;
   height: 35px;
 }

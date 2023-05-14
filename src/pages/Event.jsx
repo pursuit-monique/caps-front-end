@@ -6,7 +6,7 @@ export default function Event() {
   return (
     <>
       <section className="show-event-container">
-        <Header />
+        {/* <Header /> */}
 
         <div className="event-img-wrapper"></div>
 

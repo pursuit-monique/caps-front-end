@@ -18,6 +18,10 @@
   max-width: 600px;
 }
 
+/* .navbar-wrapper {
+  max-width: 650px;
+} */
+
 .form-control,
 .form-select {
   background-color: #f1f1f1;
@@ -34,4 +38,8 @@
 
 .btn-primary:hover {
   background-color: #017c8d;
+}
+
+.navbar-brand {
+  margin-right: 0;
 }

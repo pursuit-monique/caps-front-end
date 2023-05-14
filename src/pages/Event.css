@@ -115,7 +115,11 @@
     flex-direction: row;
   }
 
-  .event-img-wrapper {
+  /* .event-img-wrapper {
     height: 60%;
+  } */
+  .event-img-wrapper {
+    min-height: 450px;
+    object-fit: contain;
   }
 }
