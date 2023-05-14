@@ -1,5 +1,5 @@
-import {useState} from "react";
 
+import {useState} from "react";
 import EventCard from './EventCard';
 import Menu from "./Menu";
 import Map from "./Map"

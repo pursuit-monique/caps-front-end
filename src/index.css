@@ -1,5 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Hammersmith+One&family=Noto+Sans:ital,wght@0,400;0,600;1,400&display=swap");
 
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
 :root {
   --primary-color: #03bdd6;
   --secondary-color: #ffbd59;

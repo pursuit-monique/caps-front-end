@@ -2,7 +2,7 @@ import "./Header.css";
 
 export default function Header() {
   return (
-    <div className="header">
+    <header className="header">
       <div>
         HAPP'N
         <img className="logo" src="location.svg" alt="location pin logo" />
@@ -13,6 +13,6 @@ export default function Header() {
         src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp"
         alt="Avatar"
       />
-    </div>
+    </header>
   );
 }
