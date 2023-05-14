@@ -7,6 +7,7 @@ import PrivateRoutes from "./components/PrivateRoutes";
 import { AuthProvider } from "./context/AuthContext";
 import "./App.css";
 import Event2 from "./pages/Event2";
+import NewEvent from "./pages/NewEvent";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
               <Route path="/index" element={<Home />} exact />
               <Route path="/event" element={<Event />} />
               <Route path="/event2" element={<Event2 />} />
+              <Route path="/new/event" element={<NewEvent />} />
 
               {/* <Route path="/new" element={<New />} />
             <Route path="/cars/:id" element={<ShowCar />} />

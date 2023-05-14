@@ -16,7 +16,15 @@
   padding-right: 20px;
 }
 
-.header .logo {
+.navbar-brand {
+  color: var(--text-color);
+  font-weight: bold;
+  font-family: "Hammersmith One", sans-serif;
+  font-size: 1.4rem;
+}
+
+.header .logo,
+.logo {
   height: auto;
   padding: 3px;
   border-radius: 50%;
