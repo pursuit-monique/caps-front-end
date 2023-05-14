@@ -159,10 +159,17 @@ export default function Map() {
   //   return null;
   // };
       
-
-  const handleMarkerHover = (markerPosition) => {
+  const color = { Music: 'red',
+  Art: 'orange',
+  Sports: 'green',
+  Food: 'blue',
+  Technology: 'purple'
+   }
+  const handleMarkerHover = (markerPosition, category) => {
     setIsHovering(true);
-    setMarkerPosition(markerPosition);
+
+
+    setMarkerPosition({position: markerPosition, category: `.${category}`, color: color[category]});
   };
   const handleMarkerMouseOut = () => {
     setIsHovering(false);
@@ -207,7 +214,7 @@ export default function Map() {
               optimized={true}
               icon={{
                 path: window.google.maps.SymbolPath.CIRCLE,
-                fillColor: 'orange',
+                fillColor: color[marker.category],
                 fillOpacity: 1,
                 strokeWeight: 0,
                 scale: marker.peopleLoggedIn /4,
@@ -220,7 +227,7 @@ export default function Map() {
 
 {isHovering && (
         <OverlayView
-          position={markerPosition}
+          position={markerPosition.position}
           mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
           getPixelPositionOffset={(width, height) => ({
             x: (width / 2),
@@ -230,7 +237,7 @@ export default function Map() {
           <div className="event-preview align-items-center">
             <span>EVENT NAME</span>
             <img src="https://picsum.photos/200/600" alt="Overlay" />
-            <span class="badge rounded-pill text-bg-info">Category</span>
+            <h6><span class="badge bg-secondary nopadding">New</span></h6>
           </div>
         </OverlayView>
       )}
