@@ -6,11 +6,12 @@ import Home from "./pages/Home";
 import PrivateRoutes from "./components/PrivateRoutes";
 import { AuthProvider } from "./context/AuthContext";
 import "./App.css";
+import Event2 from "./pages/Event2";
 
 function App() {
   return (
     <AuthProvider>
-      <div className="app">
+      <div className="app ">
         <Router>
           {/* <Navbar /> */}
           <Routes>
@@ -19,6 +20,8 @@ function App() {
             <Route element={<PrivateRoutes />}>
               <Route path="/index" element={<Home />} exact />
               <Route path="/event" element={<Event />} />
+              <Route path="/event2" element={<Event2 />} />
+
               {/* <Route path="/new" element={<New />} />
             <Route path="/cars/:id" element={<ShowCar />} />
             <Route path="/cars/:id/edit" element={<EditCar />} />
