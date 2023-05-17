@@ -23,8 +23,9 @@
 } */
 
 .form-control,
-.form-select {
-  background-color: #f1f1f1;
+.form-select,
+.css-13cymwt-control {
+  background-color: #f1f1f1 !important;
 }
 
 .form-control:focus {

@@ -1,6 +1,10 @@
 import { useState } from "react";
 import Navbar2 from "../components/Navbar2";
 import Header from "../components/Header";
+import GooglePlacesAutocomplete, {
+  geocodeByAddress,
+  getLatLng,
+} from "react-google-places-autocomplete";
 
 function NewEvent() {
   const [event, setEvent] = useState({
@@ -12,10 +16,21 @@ function NewEvent() {
     zip: "",
     category: "",
   });
+  const [value, setValue] = useState(null);
+
+  async function getLatLongFromAddress(e) {
+    console.log(value.label);
+    geocodeByAddress(value.label)
+      .then((results) => getLatLng(results[0]))
+      .then(({ lat, lng }) =>
+        console.log("Successfully got latitude and longitude", { lat, lng })
+      )
+      .catch((err) => console.log(err));
+  }
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log(event);
+    getLatLongFromAddress();
   }
 
   return (
@@ -72,7 +87,19 @@ function NewEvent() {
             </select>
           </div>
           <div className="row"></div>
-          <div className="col-md-6">
+
+          <label>Enter Address</label>
+          <GooglePlacesAutocomplete
+            apiKey={process.env.REACT_APP_GOOGLE_API_KEY}
+            selectProps={{
+              placeholder: "Enter the address...",
+              value,
+              onChange: setValue,
+              openMenuOnClick: false,
+            }}
+          />
+
+          {/* <div className="col-md-6">
             <label htmlFor="address" className="form-label">
               Address
             </label>
@@ -178,17 +205,17 @@ function NewEvent() {
               value={event.zip}
               onChange={(e) => setEvent({ ...event, zip: e.target.value })}
             />
-          </div>
+          </div> */}
 
-          <div class="col-md-6">
-            <label for="image" class="form-label">
+          <div className="col-md-6">
+            <label htmlFor="image" className="form-label">
               Image
             </label>
-            <input class="form-control" type="file" id="image" />
+            <input className="form-control" type="file" id="image" />
           </div>
 
           <div className="col-12 col-md-6">
-            <label for="submit" class="form-label invisible">
+            <label htmlFor="submit" className="form-label invisible">
               Image
             </label>
             <button type="submit" className="btn btn-primary w-100">
