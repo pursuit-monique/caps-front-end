@@ -1,4 +1,3 @@
-import Header from "../components/Header";
 import Events from "../components/Events";
 import { logout } from "../firebase/auth";
 

@@ -1,9 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { storage } from "../firebase/firebase";
-import { ref, uploadBytes, listAll, getDownloadURL } from "firebase/storage";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { v4 } from "uuid";
-import Navbar2 from "../components/Navbar2";
-import Header from "../components/Header";
+import axios from "axios";
 import GooglePlacesAutocomplete, {
   geocodeByAddress,
   getLatLng,
@@ -57,7 +56,7 @@ function NewEvent() {
       lat: geo.lat,
       lng: geo.lng,
       address: value.label,
-      image: imageURL,
+      img_link: imageURL,
     };
     console.log(newEvent);
   }

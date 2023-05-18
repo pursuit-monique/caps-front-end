@@ -1,14 +1,13 @@
 import React from "react";
-import Header from "../components/Header";
 
 function Event2() {
   return (
     <div className="container">
       {/* <Header /> */}
-      <div class="row gx-4 gx-lg-5 my-5">
-        <div class="col-md-7">
+      <div className="row gx-4 gx-lg-5 my-5">
+        <div className="col-md-7">
           {/* <img
-            class="img-fluid rounded mb-4 mb-lg-0"
+            className="img-fluid rounded mb-4 mb-lg-0"
             src="https://dummyimage.com/900x400/dee2e6/6c757d.jpg"
             alt="..."
           /> */}
@@ -18,15 +17,15 @@ function Event2() {
             alt=""
           />
         </div>
-        <div class="col-md-5">
-          {/* <h1 class="font-weight-light">Business Name or Tagline</h1> */}
+        <div className="col-md-5">
+          {/* <h1 className="font-weight-light">Business Name or Tagline</h1> */}
           {/* <p>
             This is a template that is great for small businesses. It doesn't
             have too much fancy flare to it, but it makes a great use of the
             standard Bootstrap core components. Feel free to use this template
             for any project you want!
           </p> */}
-          {/* <a class="btn btn-primary" href="#!">
+          {/* <a className="btn btn-primary" href="#!">
             Call to Action!
           </a> */}
           <div className="event-details-container">
@@ -59,7 +58,7 @@ function Event2() {
               <div>
                 <div className="live-btn-wrapper">
                   <button className="go-live-btn" title="Go Live">
-                    <i class="bx bx-camera-movie"></i>
+                    <i className="bx bx-camera-movie"></i>
                   </button>
                 </div>
                 <p className="go-live-text">Go Live</p>
@@ -67,7 +66,7 @@ function Event2() {
               <div>
                 <div className="checkin-btn-wrapper">
                   <button className="checkin-btn" title="Check In">
-                    <i class="bx bx-check-circle"></i>
+                    <i className="bx bx-check-circle"></i>
                   </button>
                 </div>
 

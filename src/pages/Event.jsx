@@ -1,5 +1,3 @@
-import React from "react";
-import Header from "../components/Header";
 import "./Event.css";
 
 export default function Event() {
@@ -45,7 +43,7 @@ export default function Event() {
             <div>
               <div className="live-btn-wrapper">
                 <button className="go-live-btn" title="Go Live">
-                  <i class="bx bx-camera-movie"></i>
+                  <i className="bx bx-camera-movie"></i>
                 </button>
               </div>
               <p className="go-live-text">Go Live</p>
@@ -53,7 +51,7 @@ export default function Event() {
             <div>
               <div className="checkin-btn-wrapper">
                 <button className="checkin-btn" title="Check In">
-                  <i class="bx bx-check-circle"></i>
+                  <i className="bx bx-check-circle"></i>
                 </button>
               </div>
 
