@@ -44,3 +44,7 @@
 .navbar-brand {
   margin-right: 0;
 }
+
+.img-fluid {
+  width: 100%;
+}
