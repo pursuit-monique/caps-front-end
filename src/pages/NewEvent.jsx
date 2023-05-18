@@ -10,27 +10,47 @@ function NewEvent() {
   const [event, setEvent] = useState({
     title: "",
     description: "",
-    address: "",
-    city: "",
-    state: "",
-    zip: "",
+    date: "",
+    time: "",
     category: "",
+    // address: "",
+    // city: "",
+    // state: "",
+    // zip: "",
   });
   const [value, setValue] = useState(null);
 
+  // function getLatLongFromAddress(e) {
+  //   console.log(value.label);
+  //   geocodeByAddress(value.label)
+  //     .then((results) => getLatLng(results[0]))
+  //     .then(({ lat, lng }) => {
+  //       console.log("Successfully got latitude and longitude", { lat, lng });
+  //       return { lat, lng };
+  //     })
+  //     .catch((err) => console.log(err));
+  // }
+
   async function getLatLongFromAddress(e) {
-    console.log(value.label);
-    geocodeByAddress(value.label)
-      .then((results) => getLatLng(results[0]))
-      .then(({ lat, lng }) =>
-        console.log("Successfully got latitude and longitude", { lat, lng })
-      )
-      .catch((err) => console.log(err));
+    try {
+      const results = await geocodeByAddress(value.label);
+      const { lat, lng } = await getLatLng(results[0]);
+      return { lat, lng };
+    } catch (err) {
+      console.log(err);
+    }
   }
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
-    getLatLongFromAddress();
+    const geo = await getLatLongFromAddress();
+    const newEvent = {
+      ...event,
+      lat: geo.lat,
+      lng: geo.lng,
+      address: value.label,
+    };
+    console.log(newEvent);
   }
 
   return (
@@ -75,7 +95,14 @@ function NewEvent() {
             <label htmlFor="category" className="form-label">
               Category
             </label>
-            <select name="event-type" className="form-select">
+            <select
+              name="event-type"
+              className="form-select"
+              id="category"
+              value={event.title}
+              onChange={(e) => setEvent({ ...event, category: e.target.value })}
+            >
+              <option value="">Select a category</option>
               <option value="conferences">Conferences</option>
               <option value="festivals">Festivals</option>
               <option value="sports">Sports</option>
@@ -207,14 +234,40 @@ function NewEvent() {
             />
           </div> */}
 
-          <div className="col-md-6">
+          <div className="col-6 col-md-6">
+            <label htmlFor="date" className="form-label">
+              Date
+            </label>
+            <input
+              className="form-control"
+              type="date"
+              id="date"
+              value={event.date}
+              onChange={(e) => setEvent({ ...event, date: e.target.value })}
+            />
+          </div>
+
+          <div className="col-6 col-md-6">
+            <label htmlFor="time" className="form-label">
+              Time
+            </label>
+            <input
+              type="time"
+              className="form-control"
+              id="time"
+              value={event.time}
+              onChange={(e) => setEvent({ ...event, time: e.target.value })}
+            />
+          </div>
+
+          <div className=" col-md-6">
             <label htmlFor="image" className="form-label">
               Image
             </label>
             <input className="form-control" type="file" id="image" />
           </div>
 
-          <div className="col-12 col-md-6">
+          <div className="col-md-6">
             <label htmlFor="submit" className="form-label invisible">
               Image
             </label>
