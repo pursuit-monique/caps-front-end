@@ -1,4 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { storage } from "../firebase/firebase";
+import { ref, uploadBytes, listAll, getDownloadURL } from "firebase/storage";
+import { v4 } from "uuid";
 import Navbar2 from "../components/Navbar2";
 import Header from "../components/Header";
 import GooglePlacesAutocomplete, {
@@ -13,23 +16,10 @@ function NewEvent() {
     date: "",
     time: "",
     category: "",
-    // address: "",
-    // city: "",
-    // state: "",
-    // zip: "",
   });
-  const [value, setValue] = useState(null);
 
-  // function getLatLongFromAddress(e) {
-  //   console.log(value.label);
-  //   geocodeByAddress(value.label)
-  //     .then((results) => getLatLng(results[0]))
-  //     .then(({ lat, lng }) => {
-  //       console.log("Successfully got latitude and longitude", { lat, lng });
-  //       return { lat, lng };
-  //     })
-  //     .catch((err) => console.log(err));
-  // }
+  const [value, setValue] = useState(null);
+  const [image, setImage] = useState(null);
 
   async function getLatLongFromAddress(e) {
     try {
@@ -41,14 +31,33 @@ function NewEvent() {
     }
   }
 
+  async function uploadImage() {
+    if (!image) {
+      alert("Please select an image");
+      return;
+    }
+    const storageRef = ref(storage, `images/${image.name + v4()}`);
+
+    try {
+      const snapshot = await uploadBytes(storageRef, image);
+      const downloadURL = await getDownloadURL(snapshot.ref);
+      console.log("File available at", downloadURL);
+      return downloadURL;
+    } catch (error) {
+      console.error("Error uploading file:", error);
+    }
+  }
+
   async function handleSubmit(e) {
     e.preventDefault();
     const geo = await getLatLongFromAddress();
+    const imageURL = await uploadImage();
     const newEvent = {
       ...event,
       lat: geo.lat,
       lng: geo.lng,
       address: value.label,
+      image: imageURL,
     };
     console.log(newEvent);
   }
@@ -264,7 +273,13 @@ function NewEvent() {
             <label htmlFor="image" className="form-label">
               Image
             </label>
-            <input className="form-control" type="file" id="image" />
+            <input
+              className="form-control"
+              type="file"
+              id="image"
+              // value={image}
+              onChange={(e) => setImage(e.target.files[0])}
+            />
           </div>
 
           <div className="col-md-6">
