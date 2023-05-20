@@ -8,7 +8,7 @@ import axios from 'axios';
 import "./App.css";
 
 
-export default function Map() {
+export default function Map({category}) {
     const mapRef = useRef(null);
     const [mapCenter, setMapCenter] = useState({ lat: 0, lng: 0 });
     const [eventsArray, setEventsArray] = useState([]);
@@ -174,6 +174,9 @@ export default function Map() {
   const handleMarkerMouseOut = () => {
     setIsHovering(false);
   };
+
+
+  console.log(category);
 
       return (
         <div className="App">

@@ -9,6 +9,8 @@ import Categories from "./Categories"
 import '../custom.css';
 
 export default function Events() {
+    //State for Category buttons
+    const [category, setCategory] = useState("");
     const [info, setInfo] = useState({lat: null, lng: null, name: null, pict: null});
 
 
@@ -16,14 +18,14 @@ export default function Events() {
     <> 
         {/* <NavBar /> */}
         <Menu />
-        <Categories />
+        <Categories setCategory={setCategory} />
         {/* <EventsComponent /> */}
         <article className="d-flex flex-wrap body">
             <div className="flex-column justify-content-end "></div>
             <div className="flex-column heightmenu overflow-auto order-2"><EventCard /></div>
             {/* <div className="order-1 justify-content-center"> <img src="https://snazzy-maps-cdn.azureedge.net/assets/132-light-gray.png?v=20170626081135" className="map" alt="..." /></div> */}
             <Legend info={info}/>
-            <div className="order-1 justify-content-center">  <Map info={{setInfo}} /> </div>
+            <div className="order-1 justify-content-center">  <Map info={{setInfo}} category={category}  /> </div>
         </article>
     </>
     )

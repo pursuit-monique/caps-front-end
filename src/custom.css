@@ -184,6 +184,8 @@
     .hidden{
         visibility: hidden;
     }
+
+    
     .cardSize{
         width: 90vw;
         box-shadow: 5px 2px 5px rgb(204, 210, 219);
