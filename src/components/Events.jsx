@@ -4,6 +4,7 @@ import EventCard from './EventCard';
 import Menu from "./Menu";
 import Map from "./Map"
 import Legend from "./Legend"
+import Categories from "./Categories"
 // import EventsComponent from "./Generator"
 import '../custom.css';
 
@@ -15,6 +16,7 @@ export default function Events() {
     <> 
         {/* <NavBar /> */}
         <Menu />
+        <Categories />
         {/* <EventsComponent /> */}
         <article className="d-flex flex-wrap body">
             <div className="flex-column justify-content-end "></div>
