@@ -1,31 +1,59 @@
 
-import {useState} from "react";
+import { useState, useEffect } from "react";
+
+import axios from "axios";
 import EventCard from './EventCard';
 import Menu from "./Menu";
 import Map from "./Map"
 import Legend from "./Legend"
 import Categories from "./Categories"
-// import EventsComponent from "./Generator"
 import '../custom.css';
 
+const API = process.env.REACT_APP_EVENTS_URL;
 export default function Events() {
+
     //State for Category buttons
     const [category, setCategory] = useState("");
-    const [info, setInfo] = useState({lat: null, lng: null, name: null, pict: null});
+    //State for Map and Card Data
+    const [currEvents, setCurrEvents] = useState([]);
+
+
+
+    useEffect(() => {
+        axios
+          .get(`${API}`)
+          .then((response) => setCurrEvents(response.data))
+          .catch((c) => console.warn("catch", c));
+      }, []);
+
+      console.log(currEvents)
 
 
     return (
     <> 
-        {/* <NavBar /> */}
-        <Menu />
+     {/* top navigation bar */}
+        <Menu /> 
+
+        {/* Category selection bar */}
         <Categories setCategory={setCategory} />
-        {/* <EventsComponent /> */}
+
         <article className="d-flex flex-wrap body">
             <div className="flex-column justify-content-end "></div>
-            <div className="flex-column heightmenu overflow-auto order-2"><EventCard /></div>
-            {/* <div className="order-1 justify-content-center"> <img src="https://snazzy-maps-cdn.azureedge.net/assets/132-light-gray.png?v=20170626081135" className="map" alt="..." /></div> */}
-            <Legend info={info}/>
-            <div className="order-1 justify-content-center">  <Map info={{setInfo}} category={category}  /> </div>
+
+            {/* Event card display */}
+            <div className="flex-column heightmenu overflow-auto order-2">
+                <EventCard currEvents={currEvents} />
+            </div>
+
+            {/* Legend:  Is display: hidden on mediaScreen width < 480px */}
+            <Legend category={category}  />
+
+            {/* Map display.   */}
+            <div className="order-1 justify-content-center">  
+                <Map currEvents={currEvents} category={category}  /> 
+
+
+            </div>
         </article>
     </>
     )

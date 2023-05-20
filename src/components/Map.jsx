@@ -2,17 +2,12 @@ import { GoogleMap, Marker, useLoadScript, OverlayView} from "@react-google-maps
 
 import { useEffect, useState, useRef } from "react";
 
-import axios from 'axios';
-
-
 import "./App.css";
 
 
-export default function Map({category}) {
+export default function Map({category, currEvents}) {
     const mapRef = useRef(null);
     const [mapCenter, setMapCenter] = useState({ lat: 0, lng: 0 });
-    const [eventsArray, setEventsArray] = useState([]);
-
 
     const [isHovering, setIsHovering] = useState(false);
     const [markerPosition, setMarkerPosition] = useState({ lat: 0, lng: 0 });
@@ -23,7 +18,9 @@ export default function Map({category}) {
       });
 
  
-      
+
+
+
       function success(pos) {
         const {latitude, longitude} = pos.coords;
         // console.log(longitude)
@@ -39,7 +36,7 @@ export default function Map({category}) {
       
 
 
-    
+    console.log(currEvents);
 
 
     useEffect(() => {
@@ -62,84 +59,12 @@ export default function Map({category}) {
 
 
 
-      useEffect(() => {
-        const generateEvents = async () => {
-          const fetchGeolocation = async (address) => {
-            const encodedAddress = encodeURIComponent(address);
-            const apiKey = process.env.REACT_APP_GOOGLE_API_KEY;
-            const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodedAddress}&key=${apiKey}`;
     
-            try {
-              const response = await axios.get(url);
-              const results = response.data.results;
+
+
     
-              if (results && results.length > 0) {
-                const location = results[0].geometry?.location;
-                if (location) {
-                  return { latitude: location.lat, longitude: location.lng };
-                }
-              }
-            } catch (error) {
-              console.error('Error fetching geolocation data:', error.message);
-            }
-    
-            return null;
-          };
-    
-          const boroughs = [
-            { name: 'Manhattan', zipCode: '10001' },
-            { name: 'Brooklyn', zipCode: '11201' },
-            { name: 'Queens', zipCode: '11354' },
-            { name: 'Bronx', zipCode: '10451' },
-            { name: 'Staten Island', zipCode: '10301' }
-          ];
-    
-          const streetNames = [
-            'Broadway',
-            'Park Avenue',
-            '5th Avenue',
-            'Flatbush Avenue',
-            'Queens Boulevard',
-            'Grand Concourse',
-            'Richmond Terrace'
-          ];
-    
-          const categories = ['Music', 'Art', 'Sports', 'Food', 'Technology'];
 
-      const newEventsArray = [];
-
-      for (let i = 0; i < 100; i++) {
-        const borough = boroughs[Math.floor(Math.random() * boroughs.length)];
-        const streetName = streetNames[Math.floor(Math.random() * streetNames.length)];
-        const address = `${streetName}, ${borough.name}, New York, NY, USA`;
-        const geolocation = await fetchGeolocation(address);
-
-        if (geolocation) {
-          const event = {
-            ID: i + 1,
-            eventName: `Event ${i + 1}`,
-            user: `User ${i + 1}`,
-            eventDescription: `This is the description for Event ${i + 1}`,
-            peopleLoggedIn: Math.floor(Math.random() * 100),
-            eventPicture: `https://example.com/event-${i + 1}.jpg`,
-            address: address,
-            city: 'New York City',
-            state: 'NY',
-            zipCode: borough.zipCode,
-            lat: geolocation.latitude,
-            lng: geolocation.longitude,
-            category: categories[Math.floor(Math.random() * categories.length)]
-          };
-
-          newEventsArray.push(event);
-        }
-      }
-
-      setEventsArray(newEventsArray);
-    };
-
-    generateEvents();
-  }, []);
+ 
 
   // const renderPreviewOverlay = (marker) => {
   //   if (hoveredMarkerId === marker.id) {
@@ -165,11 +90,11 @@ export default function Map({category}) {
   Food: 'blue',
   Technology: 'purple'
    }
-  const handleMarkerHover = (markerPosition, category) => {
+  const handleMarkerHover = (markerPosition, category, img, title) => {
     setIsHovering(true);
 
 
-    setMarkerPosition({position: markerPosition, category: `.${category}`, color: color[category]});
+    setMarkerPosition({position: markerPosition, category: `.${category}`, color: color[category], img: img });
   };
   const handleMarkerMouseOut = () => {
     setIsHovering(false);
@@ -200,29 +125,29 @@ export default function Map({category}) {
           title="Your Location" 
           onClick={() => console.log("click")}
           icon={{
-            url: 'locationsm.svg', 
+            url: './locationsm.svg', 
             
           }} />
         )}
 
-{eventsArray.map((marker, index) => (
+{currEvents.map((marker, index) => (
             <Marker
               key={index}
-              position={{ lat: marker.lat, lng: marker.lng }}
-              title={marker.eventName}
-              label={{
-                text: marker.category,
-                className: marker.category,
-              }}
+              position={{ lat: marker.latitude, lng: marker.longitude }}
+              title={marker.title}
+              // label={{
+              //   text: marker.category,
+              //   className: marker.category,
+              // }}
               optimized={true}
               icon={{
                 path: window.google.maps.SymbolPath.CIRCLE,
-                fillColor: color[marker.category],
+                // fillColor: color[marker.category],
                 fillOpacity: 1,
                 strokeWeight: 0,
-                scale: marker.peopleLoggedIn /4,
+                scale: marker.checked_in_users /10,
               }}
-          onMouseOver={() => handleMarkerHover({ lat: marker.lat, lng: marker.lng })}
+          onMouseOver={() => handleMarkerHover({ lat: marker.lat, lng: marker.lng }, marker.category, marker.img_link, marker.title)}
         onMouseOut={handleMarkerMouseOut}
         />
         
@@ -238,9 +163,9 @@ export default function Map({category}) {
           })}
         >
           <div className="event-preview align-items-center">
-            <span>EVENT NAME</span>
-            <img src="https://picsum.photos/200/600" alt="Overlay" />
-            <h6><span class="badge bg-secondary nopadding">New</span></h6>
+            <span>{markerPosition.title}</span>
+            <img src={markerPosition.img} alt="Overlay" />
+            <h6><span class="badge bg-secondary nopadding">{markerPosition.category}</span></h6>
           </div>
         </OverlayView>
       )}
