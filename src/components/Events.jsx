@@ -31,6 +31,7 @@ export default function Events() {
 
     return (
     <> 
+    {/* random add to test env variables and force new deploy */}
      {/* top navigation bar */}
         <Menu /> 
 
@@ -38,6 +39,7 @@ export default function Events() {
         <Categories setCategory={setCategory} />
 
         <article className="d-flex flex-wrap body">
+
             <div className="flex-column justify-content-end "></div>
 
             {/* Event card display */}
@@ -50,10 +52,9 @@ export default function Events() {
 
             {/* Map display.   */}
             <div className="order-1 justify-content-center">  
-                <Map currEvents={currEvents} category={category}  /> 
-
-
+                <Map currEvents={currEvents} category={category}  />
             </div>
+
         </article>
     </>
     )
