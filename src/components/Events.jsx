@@ -14,6 +14,8 @@ export default function Events() {
 
     //State for Category buttons
     const [category, setCategory] = useState("");
+
+
     //State for Map and Card Data
     const [currEvents, setCurrEvents] = useState([]);
 
@@ -31,7 +33,7 @@ export default function Events() {
 
     return (
     <> 
-    {/* random add to test env variables and force new deploy */}
+    {/* random add to test env variables and force new deploy again */}
      {/* top navigation bar */}
         <Menu /> 
 
