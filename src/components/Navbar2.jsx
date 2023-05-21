@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import location from "../assets/location2.png";
+import location from "../assets/pin.png";
 import "./Header.css";
 
 function Navbar2() {

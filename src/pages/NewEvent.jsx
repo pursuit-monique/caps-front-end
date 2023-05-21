@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { storage } from "../firebase/firebase";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { v4 } from "uuid";
@@ -7,8 +7,11 @@ import GooglePlacesAutocomplete, {
   geocodeByAddress,
   getLatLng,
 } from "react-google-places-autocomplete";
+import { AuthContext } from "../context/AuthContext";
 
 function NewEvent() {
+  const { currentUser } = useContext(AuthContext);
+
   const [event, setEvent] = useState({
     title: "",
     description: "",
@@ -53,11 +56,14 @@ function NewEvent() {
     const imageURL = await uploadImage();
     const newEvent = {
       ...event,
+      organizer_user_id: currentUser.uid,
       lat: geo.lat,
       lng: geo.lng,
       address: value.label,
       img_link: imageURL,
     };
+
+    const API = process.env.REACT_APP_BACKEND_URL;
     console.log(newEvent);
   }
 
@@ -110,7 +116,7 @@ function NewEvent() {
               value={event.title}
               onChange={(e) => setEvent({ ...event, category: e.target.value })}
             >
-              <option value="">Select a category</option>
+              {/* <option value="">Select a category</option>
               <option value="conferences">Conferences</option>
               <option value="festivals">Festivals</option>
               <option value="sports">Sports</option>
@@ -118,7 +124,19 @@ function NewEvent() {
               <option value="workshop">Workshop</option>
               <option value="charity">Charity</option>
               <option value="community">Community</option>
-              <option value="food-beverage">Food &amp; Beverage</option>
+              <option value="food-beverage">Food &amp; Beverage</option> */}
+              <option value="">Select a category</option>
+              <option value="environmental-conservation">
+                Environmental Conservation
+              </option>
+              <option value="education">Education</option>
+              <option value="animal-rights">Animal Rights</option>
+              <option value="societal-justice">Societal Justice</option>
+              <option value="disability-rights">Disability Rights</option>
+              <option value="veterans-issues">Veterans Issues</option>
+              <option value="mental-health-awareness">
+                Mental Health Awareness
+              </option>
             </select>
           </div>
           <div className="row"></div>
