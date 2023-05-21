@@ -33,7 +33,7 @@ export default function Events() {
 
     return (
     <> 
-    {/* random add to test env variables and force new deploy again */}
+    {/* random add to test env variables and force new deploy AGAIN */}
      {/* top navigation bar */}
         <Menu /> 
 
