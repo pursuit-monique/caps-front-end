@@ -130,7 +130,7 @@ export default function Map({category, currEvents}) {
           }} />
         )}
 
-{currEvents.map((marker, index) => (
+{currEvents?.map((marker, index) => (
             <Marker
               key={index}
               position={{ lat: marker.latitude, lng: marker.longitude }}

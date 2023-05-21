@@ -8,7 +8,7 @@ export default function EventCard({currEvents}) {
     return (
     <>
       <container className="container d-flex flex-column overflow-auto">
-{currEvents.map(event =>  (
+{currEvents?.map(event =>  (
   <div className="cardSize">
           <div className="rowimg">
             <div className="col-1 imgContainer">
