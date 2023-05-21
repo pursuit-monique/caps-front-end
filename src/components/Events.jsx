@@ -21,7 +21,7 @@ export default function Events() {
 
     useEffect(() => {
         axios
-          .get(`${API}`)
+          .get(`${API}/events/`)
           .then((response) => setCurrEvents(response.data))
           .catch((c) => console.warn("catch", c));
       }, []);
