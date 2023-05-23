@@ -1,22 +1,32 @@
 import { useState } from "react";
+import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
-import "./Login.css";
 import { signInWithGoogle, logInWithEmailAndPassword } from "../firebase/auth";
+import "./Login.css";
 
 export default function SignupLogin() {
   const [user, setUser] = useState({ email: "", password: "" });
   const navigate = useNavigate();
-
+  const API = process.env.REACT_APP_BACKEND_URL;
   async function googleLogin() {
     try {
-      const user = await signInWithGoogle();
-      localStorage.setItem("user", JSON.stringify(user));
-      navigate("/index");
+      const firebaseUser = await signInWithGoogle();
+      localStorage.setItem("user", JSON.stringify(firebaseUser));
+      console.log("firebaseUser in login", firebaseUser);
+      const res = await axios.post(`${API}/users`, {
+        id: firebaseUser.uid,
+        email: firebaseUser.email,
+        f_name: firebaseUser.displayName.split(" ")[0],
+        l_name: firebaseUser.displayName.split(" ")[1],
+        user_profile_link: firebaseUser.photoURL,
+      });
+      // navigate("/index");
     } catch (error) {
       console.log(error.message);
       alert(error.message);
     }
   }
+
   async function emailLogin() {
     try {
       const firebaseUser = await logInWithEmailAndPassword(
@@ -24,6 +34,7 @@ export default function SignupLogin() {
         user.password
       );
       localStorage.setItem("user", JSON.stringify(firebaseUser));
+
       navigate("/index");
     } catch (error) {
       console.log(error.message);

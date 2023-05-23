@@ -1,6 +1,24 @@
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import axios from "axios";
 import "./Event.css";
 
 export default function Event() {
+  const API = process.env.REACT_APP_BACKEND_URL;
+  const { id } = useParams();
+  const [event, setEvent] = useState("");
+  const [organizer, setOrganizer] = useState("");
+
+  useEffect(() => {
+    axios
+      .get(`${API}/events/${id}`)
+      .then((res) => {
+        console.log(res.data);
+        setEvent(res.data);
+      })
+      .catch((err) => console.log(err));
+  }, [id]);
+
   return (
     <>
       <section className="show-event-container">
@@ -15,7 +33,8 @@ export default function Event() {
         /> */}
         <div className="event-details-container">
           <div className="event-title-wrapper">
-            <h3 className="event-title">National Pride</h3>
+            {/* <h3 className="event-title">National Pride</h3> */}
+            <h3 className="event-title">{event.title}</h3>
           </div>
           <div className="event-creator-container">
             <img
@@ -32,13 +51,14 @@ export default function Event() {
               </ul>
             </div>
           </div>
-          <p className="event-description">
+          {/* <p className="event-description">
             Labore et consectetur magna officia ad fugiat eiusmod deserunt.
             Tempor ea officia ipsum elit mollit cillum sit aliquip dolore sint
             anim consequat consectetur tempor velit exercitation occaecat
             cupidatat proident.Amet nisi nulla est cupidatat sit reprehenderit
             ad consequat anim dolor non.
-          </p>
+          </p> */}
+          <p className="event-description">{event.description}</p>
           <div className="live-btn-container">
             <div>
               <div className="live-btn-wrapper">

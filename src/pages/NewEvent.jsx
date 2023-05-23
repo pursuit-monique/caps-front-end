@@ -63,8 +63,10 @@ function NewEvent() {
       img_link: imageURL,
     };
 
-    const API = process.env.REACT_APP_BACKEND_URL;
     console.log(newEvent);
+    const API = process.env.REACT_APP_BACKEND_URL;
+    const res = await axios.post(`${API}/events`, newEvent);
+    console.log("response from backend after event submit", res);
   }
 
   return (
