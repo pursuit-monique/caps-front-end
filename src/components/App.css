@@ -4,26 +4,75 @@
     /* height: 75vh; */
 }
 
+.categories-bar{
+  position: absolute;
+  top: 70%;
+  left: 17%;
+  z-index: 7;
+  padding-top: 2px;
+  padding-left: 8px;
+  background-color: #fdfdfd;
+  width: 240px;
+  height: 35px;
+  border-radius: 20px;
+  border: 1px solid #545454;
+  margin: 8px;
+  box-shadow: 5px 2px 5px rgb(204, 210, 219);
+}
+
+.icon-space{
+  padding: 4px;
+}
 
 
 .Music{
-  background-color: red;
+  background-color: #f96570;
 }
-.Art{
-  background-color:orange;
 
+.Music-txt{
+  color: #f96570;
+}
+
+
+.Party{
+  background-color: #7446e5;
+}
+
+.Party-txt{
+  color: #7446e5;
+}
+
+
+.Art{
+  background-color:#FFBD59;
+}
+
+.Art-txt{
+  color: #FFBD59;
 }
 
 .Sports{
-  background-color: green;
+  background-color: #4db594;
+}
+
+.Sports-txt{
+  color: #4db594;
 }
 
 .Food{
-  background-color: blue;
+  background-color: #de478e;
+}
+
+.Food-txt{
+  color: #de478e;
 }
 
 .Technology{
-  color: purple;
+  background-color: #5665f3;
+}
+
+.Technology-txt{
+  color: #5665f3;
 }
 
 .marker-preview {
@@ -95,7 +144,7 @@
     margin: 0px;
     border: none;
     width: 100vw;
-    height: 30vh;
+    /* height: 30vh; */
     margin-bottom: 8px;
 }
   }
