@@ -1,6 +1,23 @@
-import React from "react";
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import axios from "axios";
 
 function Event2() {
+  const API = process.env.REACT_APP_BACKEND_URL;
+  const { id } = useParams();
+  const [event, setEvent] = useState("");
+  const [organizer, setOrganizer] = useState("");
+
+  useEffect(() => {
+    axios
+      .get(`${API}/events/${id}`)
+      .then((res) => {
+        console.log(res.data);
+        setEvent(res.data);
+      })
+      .catch((err) => console.log(err));
+  }, [id]);
+
   return (
     <div className="container">
       {/* <Header /> */}
@@ -13,8 +30,9 @@ function Event2() {
           /> */}
           <img
             className="img-fluid rounded mb-4 mb-lg-0"
-            src="https://picsum.photos/400/300"
-            alt=""
+            // src="https://picsum.photos/400/300"
+            src={event.img_link}
+            alt="event cover photo"
           />
         </div>
         <div className="col-md-5">
@@ -30,7 +48,7 @@ function Event2() {
           </a> */}
           <div className="event-details-container">
             <div className="event-title-wrapper">
-              <h3 className="event-title">National Pride</h3>
+              <h3 className="event-title">{event.title}</h3>
             </div>
             <div className="event-creator-container">
               <img
@@ -47,13 +65,10 @@ function Event2() {
                 </ul>
               </div>
             </div>
-            <p className="event-description">
-              Labore et consectetur magna officia ad fugiat eiusmod deserunt.
-              Tempor ea officia ipsum elit mollit cillum sit aliquip dolore sint
-              anim consequat consectetur tempor velit exercitation occaecat
-              cupidatat proident.Amet nisi nulla est cupidatat sit reprehenderit
-              ad consequat anim dolor non.
-            </p>
+            <p className="event-description">{event.description}</p>
+            <p className="event-date">{event.date}</p>
+            <p className="event-time">{event.time}</p>
+
             <div className="live-btn-container">
               <div>
                 <div className="live-btn-wrapper">

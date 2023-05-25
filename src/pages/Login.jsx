@@ -7,7 +7,9 @@ import "./Login.css";
 export default function SignupLogin() {
   const [user, setUser] = useState({ email: "", password: "" });
   const navigate = useNavigate();
-  const API = process.env.REACT_APP_BACKEND_URL;
+  // const API = process.env.REACT_APP_BACKEND_URL;
+  const API = process.env.REACT_APP_LOCAL_BACKEND;
+
   async function googleLogin() {
     try {
       const firebaseUser = await signInWithGoogle();
@@ -18,9 +20,9 @@ export default function SignupLogin() {
         email: firebaseUser.email,
         f_name: firebaseUser.displayName.split(" ")[0],
         l_name: firebaseUser.displayName.split(" ")[1],
-        user_profile_link: firebaseUser.photoURL,
+        user_profile_link: "",
       });
-      // navigate("/index");
+      navigate("/index");
     } catch (error) {
       console.log(error.message);
       alert(error.message);

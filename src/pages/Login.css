@@ -186,6 +186,7 @@ a.google span {
 
   .signup-cover-img {
     width: 50%;
+    max-width: 650px;
     /* height: 100%; */
   }
 }

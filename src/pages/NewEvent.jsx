@@ -13,6 +13,7 @@ function NewEvent() {
   const { currentUser } = useContext(AuthContext);
 
   const [event, setEvent] = useState({
+    cause_id: "",
     title: "",
     description: "",
     date: "",
@@ -57,14 +58,16 @@ function NewEvent() {
     const newEvent = {
       ...event,
       organizer_user_id: currentUser.uid,
-      lat: geo.lat,
-      lng: geo.lng,
+      latitude: geo.lat,
+      longitude: geo.lng,
       address: value.label,
       img_link: imageURL,
     };
 
     console.log(newEvent);
-    const API = process.env.REACT_APP_BACKEND_URL;
+    // const API = process.env.REACT_APP_BACKEND_URL;
+    const API = process.env.REACT_APP_LOCAL_BACKEND;
+    console.log("API", API);
     const res = await axios.post(`${API}/events`, newEvent);
     console.log("response from backend after event submit", res);
   }
@@ -74,6 +77,28 @@ function NewEvent() {
       <div className="container event-form-container my-4">
         <form className="row g-3" onSubmit={handleSubmit}>
           <h3>Create a New Event</h3>
+
+          <div className="col-md-6">
+            <label htmlFor="cause" className="form-label">
+              Cause
+            </label>
+            <select
+              name="event-type"
+              className="form-select"
+              id="cause"
+              value={event.cause_id}
+              onChange={(e) => setEvent({ ...event, cause_id: e.target.value })}
+            >
+              <option value="">Select a cause</option>
+              <option value="1">Environmental Conservation</option>
+              <option value="2">Education</option>
+              <option value="3">Animal Rights</option>
+              <option value="4">Societal Justice</option>
+              <option value="5">Disability Rights</option>
+              <option value="6">Veterans Issues</option>
+              <option value="7">Mental Health Awareness</option>
+            </select>
+          </div>
 
           <div className="col-md-12">
             <label htmlFor="title" className="form-label">
@@ -115,10 +140,10 @@ function NewEvent() {
               name="event-type"
               className="form-select"
               id="category"
-              value={event.title}
+              value={event.category}
               onChange={(e) => setEvent({ ...event, category: e.target.value })}
             >
-              {/* <option value="">Select a category</option>
+              <option value="">Select a category</option>
               <option value="conferences">Conferences</option>
               <option value="festivals">Festivals</option>
               <option value="sports">Sports</option>
@@ -126,8 +151,9 @@ function NewEvent() {
               <option value="workshop">Workshop</option>
               <option value="charity">Charity</option>
               <option value="community">Community</option>
-              <option value="food-beverage">Food &amp; Beverage</option> */}
-              <option value="">Select a category</option>
+              <option value="food">Food &amp; Beverage</option>
+
+              {/* <option value="">Select a category</option>
               <option value="environmental-conservation">
                 Environmental Conservation
               </option>
@@ -138,7 +164,7 @@ function NewEvent() {
               <option value="veterans-issues">Veterans Issues</option>
               <option value="mental-health-awareness">
                 Mental Health Awareness
-              </option>
+              </option> */}
             </select>
           </div>
           <div className="row"></div>

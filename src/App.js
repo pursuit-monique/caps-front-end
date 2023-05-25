@@ -21,7 +21,7 @@ function App() {
             <Route element={<PrivateRoutes />}>
               <Route path="/index" element={<Home />} exact />
               <Route path="/event/:id" element={<Event />} />
-              <Route path="/event2" element={<Event2 />} />
+              <Route path="/event2/:id" element={<Event2 />} />
               <Route path="/new/event" element={<NewEvent />} />
 
               {/* <Route path="/new" element={<New />} />
