@@ -1,5 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
+import { getStorage } from "firebase/storage";
 
 const apiKey = process.env.REACT_APP_FIREBASE_API_KEY;
 const authDomain = process.env.REACT_APP_FIREBASE_AUTHDOMAIN;
@@ -22,5 +23,6 @@ const app = initializeApp(firebaseConfig);
 
 // Initialize Firebase Authentication and get a reference to the service
 const auth = getAuth(app);
+const storage = getStorage(app);
 
-export { app, auth };
+export { app, auth, storage };

@@ -5,7 +5,7 @@ export default function Header() {
     <header className="header">
       <div>
         HAPP'N
-        <img className="logo" src="location.svg" alt="location pin logo" />
+        <img className="logo" src="location2.png" alt="location pin logo" />
       </div>
 
       <img
