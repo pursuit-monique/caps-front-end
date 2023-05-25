@@ -1,20 +1,23 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../custom.css';
 
-export default function EventCard() {
+export default function EventCard({currEvents}) {
+
+  console.log(currEvents)
 
     return (
     <>
       <container className="container d-flex flex-column overflow-auto">
-        <div className="cardSize">
+{currEvents?.map(event =>  (
+  <div className="cardSize">
           <div className="rowimg">
             <div className="col-1 imgContainer">
-        <img src="https://picsum.photos/200/600" className="imageContain" alt="..." />
+        <img src={event.img_link} className="imageContain" alt="..." />
         </div>
   <div className="col constraint">
-      <div className="row-1"><h1 className="title">Title</h1></div>
+      <div className="row-1"><h1 className="title">{event.title}</h1></div>
       <div className="row-2 cardInfo">
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean in nunc faucibus, dignissim urna ac, aliquam est. 
+{event.description}
       </div>
       <div className="row align-items-center">
         <i className="userIcon margin"><span className="indicator"></span></i>
@@ -30,7 +33,9 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean in nunc faucibus
   </div>
 </div>
 </div>
-
+))}
+        
+{/* 
 
 <div className="cardSize">
   <div className="rowimg">
@@ -133,7 +138,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean in nunc faucibus
         </div>
   </div>
 </div>
-</div>
+</div> */}
 
 
         </container> 
