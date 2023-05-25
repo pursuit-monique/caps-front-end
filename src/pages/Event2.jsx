@@ -6,7 +6,6 @@ function Event2() {
   const API = process.env.REACT_APP_BACKEND_URL;
   const { id } = useParams();
   const [event, setEvent] = useState("");
-  const [organizer, setOrganizer] = useState("");
 
   useEffect(() => {
     axios
@@ -16,7 +15,7 @@ function Event2() {
         setEvent(res.data);
       })
       .catch((err) => console.log(err));
-  }, [id]);
+  }, [id, API]);
 
   return (
     <div className="container">
@@ -32,7 +31,7 @@ function Event2() {
             className="img-fluid rounded mb-4 mb-lg-0"
             // src="https://picsum.photos/400/300"
             src={event.img_link}
-            alt="event cover photo"
+            alt="event cover"
           />
         </div>
         <div className="col-md-5">

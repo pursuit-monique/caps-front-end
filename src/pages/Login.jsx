@@ -15,7 +15,7 @@ export default function SignupLogin() {
       const firebaseUser = await signInWithGoogle();
       localStorage.setItem("user", JSON.stringify(firebaseUser));
       console.log("firebaseUser in login", firebaseUser);
-      const res = await axios.post(`${API}/users`, {
+      await axios.post(`${API}/users`, {
         id: firebaseUser.uid,
         email: firebaseUser.email,
         f_name: firebaseUser.displayName.split(" ")[0],

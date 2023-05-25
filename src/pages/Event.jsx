@@ -7,7 +7,6 @@ export default function Event() {
   const API = process.env.REACT_APP_BACKEND_URL;
   const { id } = useParams();
   const [event, setEvent] = useState("");
-  const [organizer, setOrganizer] = useState("");
 
   useEffect(() => {
     axios
@@ -17,7 +16,7 @@ export default function Event() {
         setEvent(res.data);
       })
       .catch((err) => console.log(err));
-  }, [id]);
+  }, [id, API]);
 
   return (
     <>
