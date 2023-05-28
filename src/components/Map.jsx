@@ -126,7 +126,7 @@ return { event: eventDate, todayDate: today}
             mapContainerClassName="map-container"
             center={mapCenter}
             zoom={12}
-            options={{mapId: 'c3bdb902aa4cda31', disableDefaultUI: true, maxZoom: 15, minZoom: 12}}
+            options={{mapId: 'c3bdb902aa4cda31'}}
             gestureHandling="none"
           >
             
@@ -141,20 +141,23 @@ return { event: eventDate, todayDate: today}
           }} />
         )}
 
-{currEvents.filter(event => {
-  const currDate = new Date (event.date);
-  const today = new Date();
+{currEvents
+    .filter( event => !!category.id ? event.cause_id === Number(category.id) : true)
+// .filter(event => {
+//   const currDate = new Date (event.date);
+//   const today = new Date();
 
 
-const month = currDate.getMonth() + 1; 
-const date = currDate.getDate();
-const year = currDate.getFullYear();
-const eventDate = new Date(`${month}-${date}-${year}`);
+// const month = currDate.getMonth() + 1; 
+// const date = currDate.getDate();
+// const year = currDate.getFullYear();
+// const eventDate = new Date(`${month}-${date}-${year}`);
 
-return (eventDate -today < 604800000)
+// return (eventDate -today < 604800000)
 
-}).map((marker, index) => {
-  console.log(marker)
+// })
+.map((marker, index) => {
+  console.log(marker, "current")
   return(
             <Marker
               key={index}
@@ -170,7 +173,7 @@ return (eventDate -today < 604800000)
                 // fillColor: color[marker.category],
                 fillOpacity: 1,
                 strokeWeight: 0,
-                scale: ((marker.checked_in_users[0] - 1) / (1000 - 1) * 900) / 20,
+                scale: ((marker.checked_in_users[0] - 1) / (1000 - 1) * 900) / 30,
               }}
           onMouseOver={() => handleMarkerHover({ lat: marker.lat, lng: marker.lng }, marker.category, marker.img_link, marker.title)}
         onMouseOut={handleMarkerMouseOut}

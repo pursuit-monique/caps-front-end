@@ -7,7 +7,7 @@ export default function Legend({category}){
                 <div class="card">
                     <div class="card-body">
                         <h5>Legend</h5>
-                        Category: {category}
+                        Category: {category.cause}
                     </div>
                 </div>
             </div>

@@ -188,6 +188,9 @@
         margin: 0px;
     }
 
+    .heightmenu{
+        margin-left: 8px;
+    }
     .legend{
         visibility: hidden;
     }
