@@ -25,7 +25,7 @@ padding: 4px;
 }
 
 
-.Disability{
+#Disability{
 fill: #f96570;
 }
 
@@ -34,7 +34,7 @@ color: #f96570;
 }
 
 
-.Veteran{
+#Veteran{
 fill: #7446e5;
 }
 
@@ -51,7 +51,7 @@ fill:#FFBD59;
 color: #FFBD59;
 }
 
-.Environmental{
+#Environmental{
 fill: #4db594;
 }
 
@@ -59,7 +59,7 @@ fill: #4db594;
 color: #4db594;
 }
 
-.Animal{
+#Animal{
 fill: #de478e;
 }
 
@@ -67,7 +67,7 @@ fill: #de478e;
 color: #de478e;
 }
 
-.Education{
+#Education{
  fill: #5665f3;
 }
 
@@ -75,18 +75,18 @@ color: #de478e;
 color: #5665f3;
 }
 
-.marker-preview {
-position: relative;
-}
 
-
-.Justice{
+#Justice{
 fill: #4ca5e4;
 }
 
 .Justice-txt{
 color: #4ca5e4;
 }
+
+.marker-preview {
+  position: relative;
+  }
 
 .event-preview  {
 display: block;
