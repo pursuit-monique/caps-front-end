@@ -40,7 +40,8 @@
 }
 
 .heightmenu{
-    height:600px;
+    height:625px;
+    margin-left: 80px;
 }
 
  .mainColor{
@@ -57,7 +58,7 @@
     height: 98%;
     object-fit: cover;
     border-radius: 5px 0px 0px 5px;
-    border-right: 1px solid #545454;
+    /* border-right: 1px solid #545454; */
     overflow: hidden; 
 }
 
@@ -88,39 +89,44 @@
 }
 
 .userIcon{
-    height: 25px;
-  width: 25px;
-  background-color: #bbb;
+  height: 28px;
+  width: 28px;
+  /* background-color: #bbb; */
+  padding-left: 0px;
+  padding-right:0px;
+  margin-right: 16px;
   border-radius: 50%;
   border: 1px solid #03bdd6;
   display: inline-block;
   position: static;
 
 }
+
 .indicator{
-    height: 6px;
+  height: 6px;
   width: 6px;
   background-color: #18b277;
   border-radius: 50%;
-  display: inline-block;
-  left: 6px;
-  top: 5px;
+  display: flex;
+  left: 36px;
+  top: 8px;
   border: 1px solid #058475;
   position: relative;
+  padding: 0px;
 }
 
 .cardSize{
     height: 18vh;
-    width: 45vw;
+    width: 40vw;
     background: #FFFFFFFF; 
     border-radius: 8px; 
     border-width: 1px; 
     border-color: rgb(204, 210, 219); 
     border-style: solid; 
-    box-shadow: 10px 5px 5px rgb(204, 210, 219);
+    /* box-shadow: 10px 5px 5px rgb(204, 210, 219); */
     padding: 0px;
     margin: 0px;
-    margin-bottom: 12px;
+    margin-bottom: 8px;
     overflow: hidden;
 
 }
@@ -140,6 +146,7 @@
 
 .infoText{
     font-size: x-small;
+    margin-left: 8px;
 }
 .orgText{
     color:#bbbbbb;
@@ -172,6 +179,10 @@
     height: 15px
 }
 
+.col-1{
+    width: 140px;
+}
+
 @media (max-width: 480px) {
     .body{
         margin: 0px;
@@ -196,7 +207,7 @@
         height: 100%;
         object-fit: cover;
         border-radius: 5px 0px 0px 5px;
-        border-right: 1px solid #545454;
+        /* border-right: 1px solid #545454; */
         object-position: 50% 50%;
     }
     

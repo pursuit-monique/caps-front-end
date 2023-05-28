@@ -1,13 +1,13 @@
 import { GoogleMap, Marker, useLoadScript, OverlayView} from "@react-google-maps/api";
 
-import { useEffect, useState, useRef } from "react";
+import { useState, useRef } from "react";
 
 import "./App.css";
 
 
-export default function Map({category, currEvents}) {
+export default function Map({category, currEvents, mapCenter}) {
     const mapRef = useRef(null);
-    const [mapCenter, setMapCenter] = useState({ lat: 0, lng: 0 });
+    // const [mapCenter, setMapCenter] = useState({ lat: 0, lng: 0 });
 
     const [isHovering, setIsHovering] = useState(false);
     const [markerPosition, setMarkerPosition] = useState({ lat: 0, lng: 0 });
@@ -19,40 +19,51 @@ export default function Map({category, currEvents}) {
 
  
 
+      currEvents.forEach(event => {
+        const currDate = new Date (event.date);
+        const today = new Date();
 
 
-      function success(pos) {
-        const {latitude, longitude} = pos.coords;
-        // console.log(longitude)
-        setMapCenter({lat: latitude, lng: longitude})
-        // setInfo({lat: latitude, lng: longitude, name: "Jane Doe", pict: "../locationsm.svg"})
+const month = currDate.getMonth() + 1; 
+const date = currDate.getDate();
+const year = currDate.getFullYear();
+const eventDate = new Date(`${month}-${date}-${year}`);
+return { event: eventDate, todayDate: today}
+      })
+
+
+    //   function success(pos) {
+    //     const {latitude, longitude} = pos.coords;
+    //     // console.log(longitude)
+    //     setMapCenter({lat: latitude, lng: longitude})
+    //     // setInfo({lat: latitude, lng: longitude, name: "Jane Doe", pict: "../locationsm.svg"})
             
-        console.log(latitude, longitude);
-      }
+    //     console.log(latitude, longitude);
+    //   }
       
-      function error(err) {
-        console.warn(`ERROR(${err.code}): ${err.message}`);
-      }
+    //   function error(err) {
+    //     console.warn(`ERROR(${err.code}): ${err.message}`);
+    //   }
       
 
 
-    console.log(currEvents);
+    // console.log(currEvents);
 
 
-    useEffect(() => {
-        const options = {
-            enableHighAccuracy: true,
-            timeout: 5000,
-            maximumAge: 10,
-          };
-        navigator.geolocation.getCurrentPosition(success, error, options);
+    // useEffect(() => {
+    //     const options = {
+    //         enableHighAccuracy: true,
+    //         timeout: 5000,
+    //         maximumAge: 10,
+    //       };
+    //     navigator.geolocation.getCurrentPosition(success, error, options);
     
-        const interval = setInterval(() => {
-            navigator.geolocation.getCurrentPosition(success, error, options);
-        }, 5000);
+    //     const interval = setInterval(() => {
+    //         navigator.geolocation.getCurrentPosition(success, error, options);
+    //     }, 5000);
     
-        return () => clearInterval(interval);
-      }, []);
+    //     return () => clearInterval(interval);
+    //   }, []);
 
 
 
@@ -130,7 +141,21 @@ export default function Map({category, currEvents}) {
           }} />
         )}
 
-{currEvents?.map((marker, index) => (
+{currEvents.filter(event => {
+  const currDate = new Date (event.date);
+  const today = new Date();
+
+
+const month = currDate.getMonth() + 1; 
+const date = currDate.getDate();
+const year = currDate.getFullYear();
+const eventDate = new Date(`${month}-${date}-${year}`);
+
+return (eventDate -today < 604800000)
+
+}).map((marker, index) => {
+  console.log(marker)
+  return(
             <Marker
               key={index}
               position={{ lat: marker.latitude, lng: marker.longitude }}
@@ -145,13 +170,13 @@ export default function Map({category, currEvents}) {
                 // fillColor: color[marker.category],
                 fillOpacity: 1,
                 strokeWeight: 0,
-                scale: marker.checked_in_users /10,
+                scale: ((marker.checked_in_users[0] - 1) / (1000 - 1) * 900) / 20,
               }}
           onMouseOver={() => handleMarkerHover({ lat: marker.lat, lng: marker.lng }, marker.category, marker.img_link, marker.title)}
         onMouseOut={handleMarkerMouseOut}
         />
         
-      ))}
+      )})}
 
 {isHovering && (
         <OverlayView
@@ -159,7 +184,7 @@ export default function Map({category, currEvents}) {
           mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
           getPixelPositionOffset={(width, height) => ({
             x: (width / 2),
-            y: (height + 100),
+            y: (height + 20),
           })}
         >
           <div className="event-preview align-items-center">

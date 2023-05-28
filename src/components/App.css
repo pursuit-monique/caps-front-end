@@ -6,7 +6,7 @@
 
 .categories-bar{
   position: absolute;
-  top: 70%;
+  top: 80%;
   left: 17%;
   z-index: 7;
   padding-top: 2px;
@@ -21,57 +21,58 @@
 }
 
 .icon-space{
+  margin-top: 2px;
   padding: 4px;
 }
 
 
-.Music{
-  background-color: #f96570;
+.Disability{
+  fill: #f96570;
 }
 
-.Music-txt{
+.Disability-txt{
   color: #f96570;
 }
 
 
-.Party{
-  background-color: #7446e5;
+.Veteran{
+  fill: #7446e5;
 }
 
-.Party-txt{
+.Veteran-txt{
   color: #7446e5;
 }
 
 
-.Art{
-  background-color:#FFBD59;
+.Mental{
+  fill:#FFBD59;
 }
 
-.Art-txt{
+.Mental-txt{
   color: #FFBD59;
 }
 
-.Sports{
-  background-color: #4db594;
+.Environmental{
+  fill: #4db594;
 }
 
-.Sports-txt{
+.Environmental-txt{
   color: #4db594;
 }
 
-.Food{
-  background-color: #de478e;
+.Animal{
+  fill: #de478e;
 }
 
-.Food-txt{
+.Animal-txt{
   color: #de478e;
 }
 
-.Technology{
-  background-color: #5665f3;
+.Education{
+   fill: #5665f3;
 }
 
-.Technology-txt{
+.Education-txt{
   color: #5665f3;
 }
 
@@ -79,6 +80,14 @@
   position: relative;
 }
 
+
+.Justice{
+  fill: #4ca5e4;
+}
+
+.Justice-txt{
+  color: #4ca5e4;
+}
 
 .event-preview  {
   display: block;
@@ -120,17 +129,14 @@
 
   .map-container {
     margin-left: 16px;
-    width: 48vw;
-    height: 75vh;
+    margin-right: 30px;
+    width: 50vw;
+    height: 85vh;
     border: 3px solid #545454;
     border-radius: 5px;
 }
 
-  .App img[src*="blue-dot.png"] {
-    width: 40px;
-    height: 40px;
-  }
-  
+
   @media (max-width: 480px) {
     .App {
         /* height: 100vh; */
