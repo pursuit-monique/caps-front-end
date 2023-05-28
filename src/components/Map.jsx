@@ -113,8 +113,8 @@ return { event: eventDate, todayDate: today}
   const handleMarkerHover = (markerPosition, category, img, title) => {
     setIsHovering(true);
 
-
-    setMarkerPosition({position: markerPosition, category: `.${category}`, color: color[category], img: img });
+    console.log(markerPosition.position)
+    setMarkerPosition({position: markerPosition.position, category: `.${category}`, color: color[category], img: img });
   };
   const handleMarkerMouseOut = () => {
     setIsHovering(false);
@@ -122,11 +122,20 @@ return { event: eventDate, todayDate: today}
 
 
 
+  const openOffcanvas = () => {
+    // Open Bootstrap offcanvas
+    window.location.href = '#offcanvasExample';
+  };
 
-  console.log(category);
+  // console.log(category);
 
 
       return (
+        <>
+        {/* <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+  Button with data-bs-target
+</button> */}
+
         <div className="App">
           {!isLoaded ? (
             <div class="spinner-border text-info" role="status">
@@ -169,7 +178,7 @@ return { event: eventDate, todayDate: today}
 
 // })
 .map((marker, index) => {
-  console.log(marker, "current")
+  // console.log(marker, "current")
   return(
             <Marker
               key={index}
@@ -182,12 +191,13 @@ return { event: eventDate, todayDate: today}
               // }}
               optimized={true}
               animation={bounceToggle.on && marker.title === bounceToggle.title ? window.google.maps.Animation.BOUNCE : null}
-
+              
+              onDblClick={openOffcanvas}
               icon={{
                 // path: window.google.maps.SymbolPath.CIRCLE,
                 // fillColor: '#FFFF00',
                 url: `${iconList[marker.cause_id]}`,
-                fillOpacity: 1,
+                fillOpacity: 0,
 
                 // strokeColor: 'black', // Stroke color (optional)
                 // strokeOpacity: 1, // Stroke opacity (optional)
@@ -195,13 +205,30 @@ return { event: eventDate, todayDate: today}
                 // scale: ((marker.checked_in_users[0] - 1) / (1000 - 1) * 900) / 30,
               }}
               onClick={(event) => setBounceToggle({on: !bounceToggle.on, title: marker.title})}
-          onMouseOver={() => handleMarkerHover({ lat: marker.lat, lng: marker.lng }, marker.category, marker.img_link, marker.title)}
+          onMouseOver={() => handleMarkerHover({ position: {lat: marker.latitude, lng: marker.longitude }}, marker.category, marker.img_link, marker.title)}
         onMouseOut={handleMarkerMouseOut}
-        />
-        
+        >
+          <a data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+  
+</a>
+        </Marker>
       )})}
 
 {isHovering && (
+//           <OverlayView
+//           position={markerPosition.position}
+//           mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
+//           getPixelPositionOffset={(width, height) => ({
+//             x: -(width / 4),
+//             y: -(height / 4),
+//           })}
+//         >
+//           <div className="align-items-center">
+//           <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+//   Button with data-bs-target
+// </button>
+//           </div>
+//         </OverlayView>
         <OverlayView
           position={markerPosition.position}
           mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
@@ -210,17 +237,40 @@ return { event: eventDate, todayDate: today}
             y: (height + 20),
           })}
         >
-          <div className="event-preview align-items-center">
+          <div className="event-preview align-items-center" style={{backgroundImage: `url(${markerPosition.img})`, backgroundSize: 'cover',
+            backgroundPosition: 'center'}}>
             <span>{markerPosition.title}</span>
-            <img src={markerPosition.img} alt="Overlay" />
-            <h6><span class="badge bg-secondary nopadding">{markerPosition.category}</span></h6>
+            {/* <img src={markerPosition.img} alt="Overlay" /> */}
+            <h6><span class="badge bg-primary nopadding">{markerPosition.category}</span></h6>
           </div>
         </OverlayView>
       )}
           
           </GoogleMap>
           )}
+          <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasExampleLabel">Offcanvas</h5>
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <div>
+      Some text as placeholder. In real life you can have the elements you have chosen. Like, text, images, lists, etc.
+    </div>
+    <div class="dropdown mt-3">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown">
+        Dropdown button
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <li><a class="dropdown-item" href="#">Action</a></li>
+        <li><a class="dropdown-item" href="#">Another action</a></li>
+        <li><a class="dropdown-item" href="#">Something else here</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
         </div>
+        </>
       );
     
 }

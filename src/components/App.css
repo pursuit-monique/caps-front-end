@@ -128,13 +128,14 @@ display: block;
 position: absolute;
 background-color: #fdfdfd;
 padding: 16px;
-top: -120px;
+top: -200px;
 left: -50px;
 width: 10rem;
 height: 10rem;
 border: 1px solid #545454;
 border-radius: 10px;
 box-shadow: 5px 2px 5px rgb(204, 210, 219);
+pointer-events: none;
 }
 
 .event-preview span{
@@ -147,7 +148,7 @@ font-weight: 700;
 .event-preview img {
 display: block;
 position: absolute;
-bottom: -20px;
+bottom: 58px;
 left: -0px;
 /* top: -120px;
 left: -50px; */
