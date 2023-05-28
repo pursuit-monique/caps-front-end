@@ -11,6 +11,7 @@ export default function Map({category, currEvents, mapCenter}) {
 
     const [isHovering, setIsHovering] = useState(false);
     const [markerPosition, setMarkerPosition] = useState({ lat: 0, lng: 0 });
+    const [bounceToggle, setBounceToggle] = useState({on: false, title: null});
 
 
     const { isLoaded } = useLoadScript({
@@ -120,7 +121,10 @@ return { event: eventDate, todayDate: today}
   };
 
 
+
+
   console.log(category);
+
 
       return (
         <div className="App">
@@ -171,19 +175,26 @@ return { event: eventDate, todayDate: today}
               key={index}
               position={{ lat: marker.latitude, lng: marker.longitude }}
               title={marker.title}
+              
               // label={{
               //   text: marker.category,
               //   className: marker.category,
               // }}
               optimized={true}
+              animation={bounceToggle.on && marker.title === bounceToggle.title ? window.google.maps.Animation.BOUNCE : null}
+
               icon={{
                 // path: window.google.maps.SymbolPath.CIRCLE,
                 // fillColor: '#FFFF00',
                 url: `${iconList[marker.cause_id]}`,
                 fillOpacity: 1,
-                strokeWeight: 0,
+
+                // strokeColor: 'black', // Stroke color (optional)
+                // strokeOpacity: 1, // Stroke opacity (optional)
+                // strokeWeight: 3, // Stroke width (optional)
                 // scale: ((marker.checked_in_users[0] - 1) / (1000 - 1) * 900) / 30,
               }}
+              onClick={(event) => setBounceToggle({on: !bounceToggle.on, title: marker.title})}
           onMouseOver={() => handleMarkerHover({ lat: marker.lat, lng: marker.lng }, marker.category, marker.img_link, marker.title)}
         onMouseOut={handleMarkerMouseOut}
         />
