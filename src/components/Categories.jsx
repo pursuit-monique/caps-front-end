@@ -1,3 +1,5 @@
+import {Environmental} from "../icons/1"
+
 export default function Categories({setCategory}) {
     
 
@@ -8,23 +10,24 @@ export default function Categories({setCategory}) {
       };
 
     return(
-    <>
-        <div className="categories-bar">
+
+    <div className="categories-bar">
 
 
 {/* Environmental */}
-            <span className="Environmental icon-space">
-                <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="fill"  id="Environmental" data-value="1" onClick={handleClick}>
+        <span className="Environmental icon-space">
+            <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="fill"  id="Environmental" data-value="1" onClick={handleClick}>
                     <path d="M13 24h-2v-4.829c-.695-.173-1.413-.502-1.951-.895-.5.15-1.019.225-1.549.225-3.033 0-5.5-2.505-5.5-5.584 0-1.283.421-2.494 1.197-3.477-.195-.496-.297-1.025-.297-1.565 0-2.025 1.403-3.721 3.298-4.12 1.042-2.27 3.301-3.755 5.802-3.755 2.501 0 4.761 1.485 5.803 3.756 1.894.398 3.297 2.094 3.297 4.119 0 .54-.102 1.07-.296 1.565.776.983 1.196 2.193 1.196 3.477 0 3.079-2.468 5.584-5.5 5.584-.528 0-1.046-.075-1.545-.224-.518.387-1.224.734-1.955.908v4.815zm-3.45-8.081c.948 1.371 2.191 1.384 2.506 1.384.341 0 1.567-.075 2.395-1.384.701.416 2.891 1.161 4.494-.438 1.389-1.392 1.615-4.14-.617-5.726 1.118-1.212.803-2.311.567-2.824-.343-.748-1.085-1.334-2.524-1.293-.416-1.98-2.462-3.638-4.371-3.638-1.894 0-3.986 1.616-4.37 3.638-1.245-.028-2.052.523-2.368 1.007-.325.5-.667 1.812.41 3.11-2.188 1.862-1.99 4.352-.616 5.726 1.866 1.864 4.011.648 4.494.438z"/>
-                </svg>
-            </span>
+            </svg>
+        </span>
+
 
 {/* Veteran */}
-<span className="Veteran icon-space">
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" id="Veteran" data-value="6" onClick={handleClick}>
-        <path d="M13.75 18.44l-.884.85.215 1.208-1.081-.579-1.081.579.215-1.208-.884-.85 1.215-.167.535-1.104.535 1.104 1.215.167zm3.25.56c0 2.761-2.238 5-5 5s-5-2.239-5-5 2.238-5 5-5 5 2.239 5 5zm-2 0c0-1.654-1.346-3-3-3s-3 1.346-3 3 1.346 3 3 3 3-1.346 3-3zm2.527-9.159l1.473-.841-3-9h-1.805l3.332 9.841zm-7.687-9.841h-1.84l3 9-4-6-2 6 7 4 1.878-1.073-4.038-11.927zm5.143 11.295l1.438-.822-3.545-10.473h-1.717l3.824 11.295z"/>
-    </svg>
-</span>
+        <span className="Veteran icon-space">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" id="Veteran" data-value="6" onClick={handleClick}>
+                <path d="M13.75 18.44l-.884.85.215 1.208-1.081-.579-1.081.579.215-1.208-.884-.85 1.215-.167.535-1.104.535 1.104 1.215.167zm3.25.56c0 2.761-2.238 5-5 5s-5-2.239-5-5 2.238-5 5-5 5 2.239 5 5zm-2 0c0-1.654-1.346-3-3-3s-3 1.346-3 3 1.346 3 3 3 3-1.346 3-3zm2.527-9.159l1.473-.841-3-9h-1.805l3.332 9.841zm-7.687-9.841h-1.84l3 9-4-6-2 6 7 4 1.878-1.073-4.038-11.927zm5.143 11.295l1.438-.822-3.545-10.473h-1.717l3.824 11.295z"/>
+            </svg>
+        </span>
 
 {/* Animal */}
 <span className="Animal icon-space">
@@ -65,6 +68,6 @@ export default function Categories({setCategory}) {
 </span>
 
     </div>
-</>
+
     )
 }
