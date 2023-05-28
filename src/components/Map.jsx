@@ -150,7 +150,7 @@ return { event: eventDate, todayDate: today}
         )}
 
 {currEvents
-    .filter( event => !!category.id ? event.cause_id === Number(category.id) : true)
+    // .filter( event => !!category.id ? event.cause_id === Number(category.id) : true)
 // .filter(event => {
 //   const currDate = new Date (event.date);
 //   const today = new Date();
@@ -178,7 +178,7 @@ return { event: eventDate, todayDate: today}
               optimized={true}
               icon={{
                 // path: window.google.maps.SymbolPath.CIRCLE,
-                fillColor: '#FFFF00',
+                // fillColor: '#FFFF00',
                 url: `${iconList[marker.cause_id]}`,
                 fillOpacity: 1,
                 strokeWeight: 0,

@@ -1,4 +1,4 @@
-import {Environmental} from "../icons/1"
+
 
 export default function Categories({setCategory}) {
     

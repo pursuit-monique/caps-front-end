@@ -7,6 +7,7 @@ import Menu from "./Menu";
 import Map from "./Map"
 import Legend from "./Legend"
 import Categories from "./Categories"
+import CategoriesCounter from "./CategoriesCounter";
 import '../custom.css';
 
 const API = process.env.REACT_APP_EVENTS_URL;
@@ -76,6 +77,7 @@ export default function Events() {
 
         {/* Category selection bar */}
         <Categories setCategory={setCategory} />
+        <CategoriesCounter currEvents={currEvents} category={category} />
 
         <article className="d-flex flex-wrap body">
 
@@ -83,7 +85,7 @@ export default function Events() {
 
             {/* Event card display */}
             <div className="flex-column heightmenu overflow-auto order-2">
-                <EventCard currEvents={currEvents} mapCenter={mapCenter} />
+                <EventCard currEvents={currEvents.filter( event => !!category.id ? event.cause_id === Number(category.id) : true)} mapCenter={mapCenter} />
             </div>
 
             {/* Legend:  Is display: hidden on mediaScreen width < 480px */}
@@ -91,7 +93,7 @@ export default function Events() {
 
             {/* Map display.   */}
             <div className="order-1 justify-content-center">  
-                <Map currEvents={currEvents} category={category} mapCenter={mapCenter} />
+                <Map currEvents={currEvents.filter( event => !!category.id ? event.cause_id === Number(category.id) : true)} category={category} mapCenter={mapCenter} />
             </div>
 
         </article>

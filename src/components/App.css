@@ -19,6 +19,28 @@ margin: 8px;
 box-shadow: 5px 2px 5px rgb(204, 210, 219);
 }
 
+.counter{
+  position: absolute;
+  z-index: 7;
+  top: 83%;
+  left: 18.5%;
+}
+
+.count{
+  /* position: fixed; */
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background-color: #545454;
+  border-radius: 100px;
+  margin-left: 8px;
+  margin-right: 8px;
+  text-align: center;
+  font-size: xx-small;
+
+  color:#fdfdfd;
+}
+
 .icon-space{
 margin-top: 2px;
 padding: 4px;
