@@ -1,5 +1,5 @@
 import { GoogleMap, Marker, useLoadScript, OverlayView} from "@react-google-maps/api";
-
+import { Offcanvas } from 'bootstrap'
 import { useState, useRef } from "react";
 
 import "./App.css";
@@ -7,6 +7,7 @@ import "./App.css";
 
 export default function Map({category, currEvents, mapCenter}) {
     const mapRef = useRef(null);
+    const offcanvasRef = useRef();
     // const [mapCenter, setMapCenter] = useState({ lat: 0, lng: 0 });
 
     const [isHovering, setIsHovering] = useState(false);
@@ -122,11 +123,13 @@ return { event: eventDate, todayDate: today}
 
 
 
-  const openOffcanvas = () => {
-    // Open Bootstrap offcanvas
-    window.location.href = '#offcanvasExample';
-  };
 
+  const openOffcanvas = () => {
+    var offcanvas = new Offcanvas(offcanvasRef.current, {
+      backdrop: true, // or 'static' or false
+    })
+    offcanvas.show();
+  };
   // console.log(category);
 
 
@@ -204,14 +207,19 @@ return { event: eventDate, todayDate: today}
                 // strokeWeight: 3, // Stroke width (optional)
                 // scale: ((marker.checked_in_users[0] - 1) / (1000 - 1) * 900) / 30,
               }}
-              onClick={(event) => setBounceToggle({on: !bounceToggle.on, title: marker.title})}
+              
+              onClick={(event) =>{ 
+              setBounceToggle({on: !bounceToggle.on, title: marker.title});
+              // bounceToggle.on ? openOffcanvas : null
+            }}
           onMouseOver={() => handleMarkerHover({ position: {lat: marker.latitude, lng: marker.longitude }}, marker.category, marker.img_link, marker.title)}
         onMouseOut={handleMarkerMouseOut}
         >
-          <a data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+          
   
-</a>
+
         </Marker>
+
       )})}
 
 {isHovering && (
@@ -248,28 +256,18 @@ return { event: eventDate, todayDate: today}
           
           </GoogleMap>
           )}
-          <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
-  <div class="offcanvas-header">
-    <h5 class="offcanvas-title" id="offcanvasExampleLabel">Offcanvas</h5>
-    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-  </div>
-  <div class="offcanvas-body">
-    <div>
-      Some text as placeholder. In real life you can have the elements you have chosen. Like, text, images, lists, etc.
-    </div>
-    <div class="dropdown mt-3">
-      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown">
-        Dropdown button
-      </button>
-      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <li><a class="dropdown-item" href="#">Action</a></li>
-        <li><a class="dropdown-item" href="#">Another action</a></li>
-        <li><a class="dropdown-item" href="#">Something else here</a></li>
-      </ul>
-    </div>
-  </div>
-</div>
+    <div ref={offcanvasRef} className="offcanvas offcanvas-start" tabIndex="-1" id="myOffcanvas">
+        <div className="offcanvas-header">
+          <h5 className="offcanvas-title">Offcanvas Title</h5>
+          <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
+        <div className="offcanvas-body">
+          Offcanvas content goes here.
+        </div>
+      </div>
+
+</div>
+
         </>
       );
     

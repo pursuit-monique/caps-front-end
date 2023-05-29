@@ -144,6 +144,15 @@ font-size: 18px;
 font-weight: 700;
 }
 
+.hidden{
+  visibility: hidden;
+}
+
+.active{
+  visibility: visible;
+}
+
+
 
 .event-preview img {
 display: block;
