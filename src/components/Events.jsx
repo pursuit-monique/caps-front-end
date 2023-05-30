@@ -7,10 +7,12 @@ import Menu from "./Menu";
 import Map from "./Map"
 import Legend from "./Legend"
 import Categories from "./Categories"
+import CategoriesCounter from "./CategoriesCounter";
 import '../custom.css';
 
 const API = process.env.REACT_APP_EVENTS_URL;
 export default function Events() {
+    const [mapCenter, setMapCenter] = useState({ lat: 0, lng: 0 });
 
     //State for Category buttons
     const [category, setCategory] = useState("");
@@ -18,6 +20,42 @@ export default function Events() {
 
     //State for Map and Card Data
     const [currEvents, setCurrEvents] = useState([]);
+
+
+    function success(pos) {
+        const {latitude, longitude} = pos.coords;
+        // console.log(longitude)
+        setMapCenter({lat: latitude, lng: longitude})
+        // setInfo({lat: latitude, lng: longitude, name: "Jane Doe", pict: "../locationsm.svg"})
+            
+        console.log(latitude, longitude);
+      }
+      
+      function error(err) {
+        console.warn(`ERROR(${err.code}): ${err.message}`);
+      }
+      
+
+
+    console.log(currEvents);
+
+
+    useEffect(() => {
+        const options = {
+            enableHighAccuracy: true,
+            timeout: 5000,
+            maximumAge: 10,
+          };
+        navigator.geolocation.getCurrentPosition(success, error, options);
+    
+        const interval = setInterval(() => {
+            navigator.geolocation.getCurrentPosition(success, error, options);
+        }, 5000);
+    
+        return () => clearInterval(interval);
+      }, []);
+
+
 
 
 
@@ -39,6 +77,7 @@ export default function Events() {
 
         {/* Category selection bar */}
         <Categories setCategory={setCategory} />
+        <CategoriesCounter currEvents={currEvents} category={category} />
 
         <article className="d-flex flex-wrap body">
 
@@ -46,7 +85,7 @@ export default function Events() {
 
             {/* Event card display */}
             <div className="flex-column heightmenu overflow-auto order-2">
-                <EventCard currEvents={currEvents} />
+                <EventCard currEvents={currEvents.filter( event => !!category.id ? event.cause_id === Number(category.id) : true)} mapCenter={mapCenter} />
             </div>
 
             {/* Legend:  Is display: hidden on mediaScreen width < 480px */}
@@ -54,7 +93,7 @@ export default function Events() {
 
             {/* Map display.   */}
             <div className="order-1 justify-content-center">  
-                <Map currEvents={currEvents} category={category}  />
+                <Map currEvents={currEvents.filter( event => !!category.id ? event.cause_id === Number(category.id) : true)} category={category} mapCenter={mapCenter} />
             </div>
 
         </article>

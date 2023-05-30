@@ -1,150 +1,200 @@
-
 .App {
-    width: 48vw;
-    /* height: 75vh; */
+  width: 48vw;
+  /* height: 75vh; */
+}
+
+.margintop{
+  margin-top: 3px;
 }
 
 .categories-bar{
+position: absolute;
+top: 80%;
+left: 17%;
+z-index: 7;
+padding-top: 2px;
+padding-left: 8px;
+background-color: #fdfdfd;
+width: 240px;
+height: 35px;
+border-radius: 20px;
+border: 1px solid #545454;
+margin: 8px;
+box-shadow: 5px 2px 5px rgb(204, 210, 219);
+}
+
+.counter{
   position: absolute;
-  top: 70%;
-  left: 17%;
   z-index: 7;
-  padding-top: 2px;
-  padding-left: 8px;
+  top: 83%;
+  left: 18.5%;
+  pointer-events: none;
+}
+
+.count{
+  /* position: fixed; */
+  display: inline-block;
+  width: 16px;
+  height: 16px;
   background-color: #fdfdfd;
-  width: 240px;
-  height: 35px;
-  border-radius: 20px;
+  border-radius: 100px;
   border: 1px solid #545454;
-  margin: 8px;
-  box-shadow: 5px 2px 5px rgb(204, 210, 219);
+  margin-left: 8px;
+  margin-right: 8px;
+  text-align: center;
+  font-size: xx-small;
+  pointer-events: none;
+  color:#545454;
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
 }
 
 .icon-space{
-  padding: 4px;
+margin-top: 2px;
+padding: 4px;
 }
 
 
-.Music{
-  background-color: #f96570;
+#Disability{
+fill: #f96570;
 }
 
-.Music-txt{
-  color: #f96570;
-}
-
-
-.Party{
-  background-color: #7446e5;
-}
-
-.Party-txt{
-  color: #7446e5;
+.Disability-txt{
+color: #f96570;
 }
 
 
-.Art{
-  background-color:#FFBD59;
+#Veteran{
+fill: #7446e5;
 }
 
-.Art-txt{
-  color: #FFBD59;
+.Veteran-txt{
+color: #7446e5;
 }
 
-.Sports{
-  background-color: #4db594;
+
+.Mental{
+fill:#FFBD59;
 }
 
-.Sports-txt{
-  color: #4db594;
+.Mental-txt{
+color: #FFBD59;
 }
 
-.Food{
-  background-color: #de478e;
+#Environmental{
+fill: #4db594;
 }
 
-.Food-txt{
-  color: #de478e;
+.Environmental-txt{
+color: #4db594;
 }
 
-.Technology{
-  background-color: #5665f3;
+#Animal{
+fill: #de478e;
 }
 
-.Technology-txt{
-  color: #5665f3;
+.Animal-txt{
+color: #de478e;
+}
+
+#Education{
+ fill: #5665f3;
+}
+
+.Education-txt{
+color: #5665f3;
+}
+
+
+#Justice{
+fill: #4ca5e4;
+}
+
+.Justice-txt{
+color: #4ca5e4;
 }
 
 .marker-preview {
   position: relative;
-}
-
+  }
 
 .event-preview  {
-  display: block;
-  position: absolute;
-  background-color: #fdfdfd;
-  padding: 16px;
-  top: -120px;
-  left: -50px;
-  width: 10rem;
-  height: 10rem;
-  border: 1px solid #545454;
-  border-radius: 10px;
-  box-shadow: 5px 2px 5px rgb(204, 210, 219);
+display: block;
+position: absolute;
+background-color: #fdfdfd;
+padding: 16px;
+top: -200px;
+left: -50px;
+width: 10rem;
+height: 10rem;
+border: 1px solid #545454;
+border-radius: 10px;
+box-shadow: 5px 2px 5px rgb(204, 210, 219);
+pointer-events: none;
 }
 
 .event-preview span{
-  color:#545454;
-  font-size: 18px;
-  font-weight: 700;
+color:#545454;
+font-size: 18px;
+font-weight: 700;
+}
+
+.hidden{
+  visibility: hidden;
+}
+
+.active{
+  visibility: visible;
 }
 
 
+
 .event-preview img {
-  display: block;
-  position: absolute;
-  bottom: -20px;
-  left: -0px;
-  /* top: -120px;
-  left: -50px; */
-  width: 100%;
-  height: 100px;
-  border-radius: 10px;
+display: block;
+position: absolute;
+bottom: 58px;
+left: -0px;
+/* top: -120px;
+left: -50px; */
+width: 100%;
+height: 100px;
+border-radius: 10px;
 }
 
 
 .nopadding{
+padding: 0px;
+}
+
+.map-container {
+  margin-left: 16px;
+  margin-right: 30px;
+  width: 50vw;
+  height: 85vh;
+  border: 3px solid #545454;
+  border-radius: 5px;
+}
+
+
+@media (max-width: 480px) {
+  .App {
+      /* height: 100vh; */
+      width: 100vw;
+    }
+
+.map-container{
+  border-top: 2px solid #545454;
+  border-bottom: 2px solid #545454;
   padding: 0px;
+  margin: 0px;
+  border: none;
+  width: 100vw;
+  /* height: 30vh; */
+  margin-bottom: 8px;
 }
-
-  .map-container {
-    margin-left: 16px;
-    width: 48vw;
-    height: 75vh;
-    border: 3px solid #545454;
-    border-radius: 5px;
 }
-
-  .App img[src*="blue-dot.png"] {
-    width: 40px;
-    height: 40px;
-  }
-  
-  @media (max-width: 480px) {
-    .App {
-        /* height: 100vh; */
-        width: 100vw;
-      }
-
-  .map-container{
-    border-top: 2px solid #545454;
-    border-bottom: 2px solid #545454;
-    padding: 0px;
-    margin: 0px;
-    border: none;
-    width: 100vw;
-    /* height: 30vh; */
-    margin-bottom: 8px;
-}
-  }
