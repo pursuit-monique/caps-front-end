@@ -1,7 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../custom.css';
 
-export default function EventCard({currEvents, mapCenter}) {
+export default function EventCard({currEvents, mapCenter, id}) {
 
   function parseTitle(title){
 
@@ -37,7 +37,9 @@ export default function EventCard({currEvents, mapCenter}) {
     return (
     <>
       <container className="container d-flex flex-column overflow-auto">
-    {currEvents.map(event =>  (
+    {currEvents
+    .filter(event => !!id ? event.id === id : true)
+    .map(event =>  (
       <div className="cardSize">
               <div className="rowimg">
                 <div className="col-1 imgContainer">

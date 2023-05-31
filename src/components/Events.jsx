@@ -13,6 +13,7 @@ import Reset from "./Reset";
 import '../custom.css';
 
 const API = process.env.REACT_APP_EVENTS_URL;
+
 export default function Events() {
     const [mapCenter, setMapCenter] = useState({ lat: 0, lng: 0 });
 
@@ -20,8 +21,13 @@ export default function Events() {
     const [category, setCategory] = useState('');
 
 
-    //State for Map and Card Data
+    //State for Map and Card Data-- pulled from API data
     const [currEvents, setCurrEvents] = useState([]);
+
+    //Current selected event ID
+    const [id, setId] = useState();
+
+
 
 
     function success(pos) {
@@ -78,7 +84,7 @@ export default function Events() {
         <Menu /> 
 
         {/* Category selection bar */}
-        <Categories setCategory={setCategory} />
+        <Categories setCategory={setCategory} setId={setId} />
         <CategoriesCounter currEvents={currEvents} category={category} />
         {/* <Reset setCategory={setCategory} category={category} /> */}
 
@@ -88,7 +94,7 @@ export default function Events() {
 
                 {/* Event card display */}
                 <div className="flex-column heightmenu overflow-auto order-2">
-                    <EventCard currEvents={currEvents.filter( event => !!category.id ? event.cause_id === Number(category.id) : true)} mapCenter={mapCenter} />
+                    <EventCard currEvents={currEvents.filter( event => !!category.id ? event.cause_id === Number(category.id) : true)} mapCenter={mapCenter} id={id} />
                 </div>
 
                 {/* Legend:  Is display: hidden on mediaScreen width < 480px */}
@@ -96,7 +102,7 @@ export default function Events() {
 
                 {/* Map display.   */}
                 <div className="order-1 justify-content-center">  
-                    <Map currEvents={currEvents.filter( event => !!category.id ? event.cause_id === Number(category.id) : true)} category={category} mapCenter={mapCenter} />
+                    <Map currEvents={currEvents.filter( event => !!category.id ? event.cause_id === Number(category.id) : true)} category={category} mapCenter={mapCenter} setId={setId}/>
                 </div>
 
         </article>

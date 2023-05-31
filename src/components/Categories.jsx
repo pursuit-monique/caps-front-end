@@ -1,6 +1,6 @@
 
 
-export default function Categories({setCategory}) {
+export default function Categories({setCategory, setId}) {
     
 
 
@@ -12,6 +12,7 @@ export default function Categories({setCategory}) {
       const handleReset = event => {
         // Category Selection Handler.
         setCategory('');
+        setId();
       };
 
       
