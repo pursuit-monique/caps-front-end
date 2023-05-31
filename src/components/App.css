@@ -7,6 +7,26 @@
   margin-top: 3px;
 }
 
+.button{
+  border-radius: 100px;
+  color:#fdfdfd;
+  font-size: small;
+  background-color: #545454;
+  border: 0px solid #545454;
+  padding: 8px;
+  position: absolute;
+  top: 86.5%;
+  left: 24.5%;
+  z-index: 7;
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
+
 .categories-bar{
 position: absolute;
 top: 80%;
