@@ -1,7 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../custom.css';
 
-import { calculateDistance } from './functions.js/functions';
+import { calculateDistance } from './helpers/functions';
 import {useEffect, useRef} from "react";
 
 export default function EventCard({currEvents, mapCenter, id, userAgent}) {

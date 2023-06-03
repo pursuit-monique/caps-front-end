@@ -20,7 +20,7 @@ export function degreesToRadians(degrees) {
   return degrees * (Math.PI / 180);
 }
 
-export function checkin(mi) {
+export function checkin(mi = 0) {
   if (mi > 10) {
     return "You're quite far, do you plan on attending?";
   } else if (mi > 5) {
