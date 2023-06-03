@@ -7,6 +7,9 @@
   margin-top: 3px;
 }
 
+.rightalign{
+  padding-left: 50%;
+}
 .button{
   border-radius: 100px;
   color:#fdfdfd;
@@ -16,7 +19,7 @@
   padding: 8px;
   position: absolute;
   top: 86.5%;
-  left: 24.5%;
+  right: 24.5%;
   z-index: 7;
   -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Safari */
@@ -28,26 +31,26 @@
 }
 
 .categories-bar{
-position: absolute;
-top: 80%;
-left: 17%;
-z-index: 7;
-padding-top: 2px;
-padding-left: 8px;
-background-color: #fdfdfd;
-width: 240px;
-height: 35px;
-border-radius: 20px;
-border: 1px solid #545454;
-margin: 8px;
-box-shadow: 5px 2px 5px rgb(204, 210, 219);
+  position: absolute;
+  top: 80%;
+  right: 17%;
+  z-index: 7;
+  padding-top: 2px;
+  padding-left: 8px;
+  background-color: #fdfdfd;
+  width: 240px;
+  height: 35px;
+  border-radius: 20px;
+  border: 1px solid #545454;
+  margin: 8px;
+  box-shadow: 5px 2px 5px rgb(204, 210, 219);
 }
 
 .counter{
   position: absolute;
   z-index: 7;
   top: 83%;
-  left: 18.5%;
+  right: 17.5%;
   pointer-events: none;
 }
 
@@ -74,6 +77,26 @@ box-shadow: 5px 2px 5px rgb(204, 210, 219);
                                   supported by Chrome, Edge, Opera and Firefox */
 }
 
+
+.mainArticle{
+  margin-left: 20px;
+  padding: 20px;
+}
+
+.offCanvasImg{
+  display: fixed;
+  padding: 0px;
+  left: 40%;
+  width: 100%;
+  height: 240px;
+  margin-bottom: 8px;
+}
+
+.offCanvasHeader{
+  background-color: #545454;
+  color: #fdfdfd;
+}
+
 .icon-space{
 margin-top: 2px;
 padding: 4px;
@@ -82,6 +105,10 @@ padding: 4px;
 
 #Disability{
 fill: #f96570;
+}
+
+.Disability{
+  background-color: #f96570
 }
 
 .Disability-txt{
@@ -93,13 +120,20 @@ color: #f96570;
 fill: #7446e5;
 }
 
+.Veteran{
+  background-color: #7446e5;
+}
+
 .Veteran-txt{
 color: #7446e5;
 }
 
 
-.Mental{
+#Mental{
 fill:#FFBD59;
+}
+.Mental{
+  background-color: #FFBD59;
 }
 
 .Mental-txt{
@@ -110,6 +144,9 @@ color: #FFBD59;
 fill: #4db594;
 }
 
+.Environmental{
+  background-color: #4db594;
+}
 .Environmental-txt{
 color: #4db594;
 }
@@ -117,6 +154,11 @@ color: #4db594;
 #Animal{
 fill: #de478e;
 }
+
+.Animal{
+  background-color: #de478e;
+}
+
 
 .Animal-txt{
 color: #de478e;
@@ -126,6 +168,10 @@ color: #de478e;
  fill: #5665f3;
 }
 
+.Education{
+  background-color: #5665f3;
+}
+
 .Education-txt{
 color: #5665f3;
 }
@@ -133,6 +179,10 @@ color: #5665f3;
 
 #Justice{
 fill: #4ca5e4;
+}
+
+.Justice{
+  background-color: #4ca5e4;
 }
 
 .Justice-txt{
@@ -194,7 +244,7 @@ padding: 0px;
 .map-container {
   margin-left: 16px;
   margin-right: 30px;
-  width: 50vw;
+  width: 55vw;
   height: 85vh;
   border: 3px solid #545454;
   border-radius: 5px;
@@ -202,19 +252,42 @@ padding: 0px;
 
 
 @media (max-width: 480px) {
+
   .App {
       /* height: 100vh; */
       width: 100vw;
     }
 
-.map-container{
-  border-top: 2px solid #545454;
-  border-bottom: 2px solid #545454;
-  padding: 0px;
-  margin: 0px;
-  border: none;
-  width: 100vw;
-  /* height: 30vh; */
-  margin-bottom: 8px;
-}
+    h5{
+      font-size: medium;
+    }
+    
+    .offcanvas{
+      font-size: xx-small;
+      --bs-offcanvas-height: 70vh;
+    }
+
+  .button{
+    top: 80%;
+    right: 45%;
+  }
+
+  .categories-bar{
+    top: 72%;
+  }
+
+  .counter{
+    top: 75%;
+  }
+
+  .map-container{
+    border-top: 2px solid #545454;
+    border-bottom: 2px solid #545454;
+    padding: 0px;
+    margin: 0px;
+    border: none;
+    width: 100vw;
+    /* height: 30vh; */
+    margin-bottom: 8px;
+  }
 }

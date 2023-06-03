@@ -1,15 +1,25 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../custom.css';
+import {useEffect, useRef} from "react";
 
-export default function EventCard({currEvents, mapCenter, id}) {
-
+export default function EventCard({currEvents, mapCenter, id, userAgent}) {
+const currCards = useRef(currEvents);
   function parseTitle(title){
-
+  if (userAgent === "desktop"){
     if (title.length > 45){
       return `${title.slice(0, 45).trim()}...`
     }
     return title;
+   } else {
+    if (title.length > 25){
+      return `${title.slice(0, 25).trim()}...`
+    }
+    return title;
    }
+  }
+
+
+   console.log(currEvents);
 
    
     const calculateDistance = (lat1, lon1, lat2, lon2) => {
@@ -33,12 +43,17 @@ export default function EventCard({currEvents, mapCenter, id}) {
     };
   
 
+useEffect(() => { 
+  currCards.current =  currEvents.filter(event => !!id ? event.id === id : true) ;
+  console.log(currCards.current);
+}, [id, currEvents]);
 
     return (
     <>
       <container className="container d-flex flex-column overflow-auto">
-    {currEvents
-    .filter(event => !!id ? event.id === id : true)
+    {/* {currEvents
+    .filter(event => !!id ? event.id === id : true) */}
+    {currCards.current
     .map(event =>  (
       <div className="cardSize">
               <div className="rowimg">

@@ -41,7 +41,7 @@
 
 .heightmenu{
     height:625px;
-    margin-left: 80px;
+
 }
 
  .mainColor{
@@ -168,7 +168,8 @@
 .legend{
     position: absolute;
     top: 20%;
-    left: 38%;
+    right: 4%;
+    /* left: 38%; */
     z-index: 7;
     width: 10vw;
     height: 25%;
