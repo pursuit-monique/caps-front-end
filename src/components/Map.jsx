@@ -1,6 +1,7 @@
 import { GoogleMap, Marker, useLoadScript, OverlayView} from "@react-google-maps/api";
 import { Offcanvas } from 'bootstrap'
 import { useState, useRef } from "react";
+import { calculateDistance, checkin } from './functions.js/functions';
 
 import "./App.css";
 
@@ -53,14 +54,22 @@ return { event: eventDate, todayDate: today}
       const cause = {1: ["Environmental", "#4db594"], 2: ["Education", "#5665f3"], 3: ["Animal", "#de478e"], 4: ["Justice", "#4ca5e4"], 5: ["Disability", "#f96570"], 6: ["Veteran", "#7446e5"], 7: ["Mental", "#FFBD59"]};
 
       const userAgentChk = () => {
-        if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+        if(userAgent.current === "mobile"){
           return "offcanvas offcanvas-bottom";
         }else {
           return "offcanvas offcanvas-start";
         }
       }
     
+// useEffect (()=> {
 
+//     if(userAgent.current === "mobile"){
+//       return "offcanvas offcanvas-bottom";
+//     }else {
+//       return "offcanvas offcanvas-start";
+//     }
+  
+// }, [userAgent])
       
   const color = { Music: 'red',
   Art: 'orange',
@@ -70,7 +79,7 @@ return { event: eventDate, todayDate: today}
    }
 
   const handleMarkerHover = (markerPosition, category, img, title, id, desc, userAgent) => {
-    userAgent === "desktop" ? setIsHovering(true) :  setIsHovering(false);
+    userAgent.current === "desktop" ? setIsHovering(true) :  setIsHovering(false);
 
     console.log(isHovering)
     setMarkerPosition({position: markerPosition.position, "category": `${category}`, "color": color[category], img: img, "title": title, "id": id, "desc": desc});
@@ -171,9 +180,9 @@ return { event: eventDate, todayDate: today}
               handleMarkerHover({ position: {lat: marker.latitude, lng: marker.longitude }}, marker.category, marker.img_link, marker.title, marker.cause_id, marker.description, userAgent)
               setBounceToggle({on: !bounceToggle.on, title: marker.title});
               setId(marker.id);
-              openOffcanvas()
+              openOffcanvas();
             }}
-          onMouseOver={() => handleMarkerHover({ position: {lat: marker.latitude, lng: marker.longitude }}, marker.category, marker.img_link, marker.title, marker.cause_id, marker.description)}
+          onMouseOver={() => handleMarkerHover({ position: {lat: marker.latitude, lng: marker.longitude }}, marker.category, marker.img_link, marker.title, marker.cause_id, marker.description, userAgent)}
         onMouseOut={handleMarkerMouseOut}
         >
           
@@ -193,8 +202,14 @@ return { event: eventDate, todayDate: today}
             y: (height + 20),
           })}
         >
-          <div className="event-preview align-items-center" style={{backgroundImage: `url(${markerPosition.img})`, backgroundSize: 'cover',
-            backgroundPosition: 'center'}}>
+          <div className={`event-preview align-items-center ${
+              isHovering ? 'active' : ''
+            }`}
+            style={{
+              backgroundImage: `url(${markerPosition.img})`, 
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+          }} >
             {/* <span>{markerPosition.title}</span> */}
             {/* <img src={markerPosition.img} alt="Overlay" /> */}
             <h6><span class="badge text-bg-info nopadding">{markerPosition.category}</span></h6>
@@ -210,9 +225,11 @@ return { event: eventDate, todayDate: today}
           <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div className="offcanvas-body nopadding">
-          <img src={markerPosition.img}  className="offCanvasImg" alt="..." />
+          <img src={markerPosition.img}  className="offCanvasImg" 
+          alt="..." />
           <div className="rightalign">  <span className="badge" style={{backgroundColor:  cause ? cause[markerPosition.id][1] : "black"}}>{ cause ? cause[markerPosition.id][0] : "nothing"}</span> <span className="badge text-bg-secondary">{markerPosition.category}</span></div>
           <article className="mainArticle" style={{borderLeft:  cause ? `2px solid ${cause[markerPosition.id][1]}` : "1px solid black"}} >{markerPosition.desc}</article>
+          {checkin(calculateDistance(markerPosition.position.lat, markerPosition.position.lng, mapCenter.lat, mapCenter.lng))}
         </div>
       </div>
 

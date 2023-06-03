@@ -1,5 +1,5 @@
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 import axios from "axios";
 import EventCard from './EventCard';
@@ -27,16 +27,17 @@ export default function Events() {
     //Current selected event ID
     const [id, setId] = useState();
 
-    const [userAgent, setUserAgent] = useState("desktop");
+    const userAgent = useRef("desktop");
 
     useEffect(() => {
       const interval = setInterval(() => {
         if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-          console.log("mobile");
-          setUserAgent("mobile");
+          console.log(userAgent.current);
+          userAgent.current = "mobile";
         } else {
           console.log("desktop");
-          setUserAgent("desktop");
+          userAgent.current = "desktop";
+          console.log(userAgent.current);
         }
       }, 500);
     
@@ -45,8 +46,8 @@ export default function Events() {
     
   
 
-   const mapType = userAgent === "mobile" ? "order-1 justify-content-center" : "order-2 justify-content-center";
-   const eventCardType = userAgent === "mobile" ? "flex-column heightmenu overflow-auto order-2" : "flex-column heightmenu overflow-auto order-1";
+   const mapType = userAgent.current === "mobile" ? "order-1 justify-content-center" : "order-2 justify-content-center";
+   const eventCardType = userAgent.current === "mobile" ? "flex-column heightmenu overflow-auto order-2" : "flex-column heightmenu overflow-auto order-1";
 
     
     function success(pos) {
@@ -112,7 +113,6 @@ export default function Events() {
             <div className="flex-column justify-content-end "></div>
 
                 {/* Event card display */}
-                {/* <div className="flex-column heightmenu overflow-auto order-2"> */}
                 <div className={eventCardType}>
                     <EventCard currEvents={currEvents.filter( event => !!category.id ? event.cause_id === Number(category.id) : true)} mapCenter={mapCenter} id={id} userAgent={userAgent} />
                 </div>
@@ -121,7 +121,6 @@ export default function Events() {
                 <Legend category={category}  />
 
                 {/* Map display.   */}
-                {/* <div className="order-1 justify-content-center">   */}
                 <div className={mapType}>
                     <Map currEvents={currEvents.filter( event => !!category.id ? event.cause_id === Number(category.id) : true)} category={category} mapCenter={mapCenter} setId={setId} userAgent={userAgent} />
                 </div>

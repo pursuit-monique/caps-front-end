@@ -1,5 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../custom.css';
+
+import { calculateDistance } from './functions.js/functions';
 import {useEffect, useRef} from "react";
 
 export default function EventCard({currEvents, mapCenter, id, userAgent}) {
@@ -22,25 +24,7 @@ const currCards = useRef(currEvents);
    console.log(currEvents);
 
    
-    const calculateDistance = (lat1, lon1, lat2, lon2) => {
-      const lat1Rad = degreesToRadians(lat1);
-      const lon1Rad = degreesToRadians(lon1);
-      const lat2Rad = degreesToRadians(lat2);
-      const lon2Rad = degreesToRadians(lon2);
 
-      const dlon = lon2Rad - lon1Rad;
-      const dlat = lat2Rad - lat1Rad;
-      const a = Math.sin(dlat / 2) ** 2 + Math.cos(lat1Rad) * Math.cos(lat2Rad) * Math.sin(dlon / 2) ** 2;
-      const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-      const radius = 3956;
-      const distance = radius * c;
-  
-      return distance.toFixed(2);
-    };
-  
-    const degreesToRadians = (degrees) => {
-      return degrees * (Math.PI / 180);
-    };
   
 
 useEffect(() => { 
