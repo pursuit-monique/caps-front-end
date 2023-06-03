@@ -25,7 +25,7 @@ export default function Events() {
     const [currEvents, setCurrEvents] = useState([]);
 
     //Current selected event ID
-    const [id, setId] = useState();
+    const [markerId, setMarkerId] = useState();
 
     const userAgent = useRef("desktop");
 
@@ -104,7 +104,7 @@ export default function Events() {
         <Menu /> 
 
         {/* Category selection bar */}
-        <Categories setCategory={setCategory} setId={setId} />
+        <Categories setCategory={setCategory} setMarkerId={setMarkerId} />
         <CategoriesCounter currEvents={currEvents} category={category} />
         {/* <Reset setCategory={setCategory} category={category} /> */}
 
@@ -114,7 +114,7 @@ export default function Events() {
 
                 {/* Event card display */}
                 <div className={eventCardType}>
-                    <EventCard currEvents={currEvents.filter( event => !!category.id ? event.cause_id === Number(category.id) : true)} mapCenter={mapCenter} id={id} userAgent={userAgent} />
+                    <EventCard currEvents={currEvents.filter( event => !!category.id ? event.cause_id === Number(category.id) : true)} mapCenter={mapCenter} markerId={markerId} userAgent={userAgent} />
                 </div>
 
                 {/* Legend:  Is display: hidden on mediaScreen width < 480px */}
@@ -122,7 +122,7 @@ export default function Events() {
 
                 {/* Map display.   */}
                 <div className={mapType}>
-                    <Map currEvents={currEvents.filter( event => !!category.id ? event.cause_id === Number(category.id) : true)} category={category} mapCenter={mapCenter} setId={setId} userAgent={userAgent} />
+                    <Map currEvents={currEvents.filter( event => !!category.id ? event.cause_id === Number(category.id) : true)} category={category} mapCenter={mapCenter} setMarkerId={setMarkerId} userAgent={userAgent} />
                 </div>
 
         </article>

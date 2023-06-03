@@ -7,7 +7,7 @@ import { cause, iconList } from "./helpers/objects";
 import "./App.css";
 
 
-export default function Map({category, currEvents, mapCenter, setId, userAgent}) {
+export default function Map({category, currEvents, mapCenter, setMarkerId, userAgent}) {
     const mapRef = useRef(null);
     const offcanvasRef = useRef();
     // const [mapCenter, setMapCenter] = useState({ lat: 0, lng: 0 });
@@ -37,7 +37,7 @@ const month = currDate.getMonth() + 1;
 const date = currDate.getDate();
 const year = currDate.getFullYear();
 const eventDate = new Date(`${month}-${date}-${year}`);
-return { event: eventDate, todayDate: today}
+return { event: eventDate, todayDate: today, isRecent: eventDate - today < 604800000}
       })
 
       
@@ -167,7 +167,7 @@ return { event: eventDate, todayDate: today}
               onClick={(event) =>{ 
               handleMarkerHover({ position: {lat: marker.latitude, lng: marker.longitude }}, marker.category, marker.img_link, marker.title, marker.cause_id, marker.description, userAgent)
               setBounceToggle({on: !bounceToggle.on, title: marker.title});
-              setId(marker.id);
+              setMarkerId(marker.id);
               openOffcanvas();
             }}
           onMouseOver={() => handleMarkerHover({ position: {lat: marker.latitude, lng: marker.longitude }}, marker.category, marker.img_link, marker.title, marker.cause_id, marker.description, userAgent)}
