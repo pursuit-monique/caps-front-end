@@ -71,7 +71,7 @@
 
 
 .imgContainer{
-    height: 18vh;
+    height: 21vh;
     padding: 0px;
     overflow: hidden; 
     margin-right: 8px;
@@ -79,7 +79,7 @@
 
 
 .title{
-    margin-top: 8px;
+
     margin-bottom: 0px;
     color: #545454;
     font-size: large;
@@ -117,7 +117,7 @@
 }
 
 .cardSize{
-    height: 18vh;
+    height: 20vh;
     width: 40vw;
     background: #FFFFFFFF; 
     border-radius: 8px; 
@@ -141,13 +141,13 @@
     text-overflow: ellipsis;
     overflow: hidden; 
     font-size: smaller;
-    margin-bottom: 8px;
+    margin-left: 40px;
 
 }
 
 .infoText{
     font-size: x-small;
-    margin-left: 8px;
+    /* margin-left: 8px; */
 }
 .orgText{
     color:#bbbbbb;
@@ -219,7 +219,7 @@
     .imgContainer{
     
         width: 30%;
-        height: 18vh;
+        height: 21vh;
         padding: 0px;
         object-position: 50% 50%;
     }

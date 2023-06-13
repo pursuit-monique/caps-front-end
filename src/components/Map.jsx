@@ -2,12 +2,13 @@ import { GoogleMap, Marker, useLoadScript, OverlayView} from "@react-google-maps
 import { Offcanvas } from 'bootstrap'
 import { useState, useRef } from "react";
 import { calculateDistance, checkin } from './helpers/functions';
-import { cause, iconList } from "./helpers/objects";
+import { cause } from "./helpers/objects";
 
 import "./App.css";
 
 
 export default function Map({category, currEvents, mapCenter, setMarkerId, userAgent}) {
+
     const mapRef = useRef(null);
     const offcanvasRef = useRef();
     // const [mapCenter, setMapCenter] = useState({ lat: 0, lng: 0 });
@@ -140,28 +141,39 @@ return { event: eventDate, todayDate: today, isRecent: eventDate - today < 60480
   // console.log(marker, "current")
   return(
             <Marker
+              id={"portrait"}
               key={index}
               position={{ lat: marker.latitude, lng: marker.longitude }}
               title={marker.title}
-              
+              className={`person-marker-icon`}
+              // shape={"MarkerShapeCircle"}
               // label={{
               //   text: marker.category,
               //   className: marker.category,
               // }}
-              optimized={true}
+              optimized={false}
               animation={marker.title === bounceToggle.title ? window.google.maps.Animation.BOUNCE : null}
               
               // onDblClick={openOffcanvas}
-              icon={{
-                // path: window.google.maps.SymbolPath.CIRCLE,
-                // fillColor: '#FFFF00',
-                url: `${iconList[marker.cause_id]}`,
-                fillOpacity: 0,
+              // icon={{
+              //   // path: window.google.maps.SymbolPath.CIRCLE,
+              //   // fillColor: '#FFFF00',
+              //   url: `${iconList[marker.cause_id]}`,
+              //   fillOpacity: 0,
 
-                // strokeColor: 'black', // Stroke color (optional)
+              //   // strokeColor: 'black', // Stroke color (optional)
+              //   // strokeOpacity: 1, // Stroke opacity (optional)
+              //   // strokeWeight: 3, // Stroke width (optional)
+              //   scale: ((marker.checked_in_users - 1) / (1000 - 1) * 900) / 30,
+              // }}
+
+              icon={{
+                url: marker.user_profile_link,
+                scaledSize: new window.google.maps.Size(40, 40),
+                // strokeColor: 'black', 
                 // strokeOpacity: 1, // Stroke opacity (optional)
-                // strokeWeight: 3, // Stroke width (optional)
-                scale: ((marker.checked_in_users - 1) / (1000 - 1) * 900) / 30,
+                // strokeWeight: 30, // Stroke width (optional)
+
               }}
               
               onClick={(event) =>{ 
@@ -173,7 +185,7 @@ return { event: eventDate, todayDate: today, isRecent: eventDate - today < 60480
           onMouseOver={() => handleMarkerHover({ position: {lat: marker.latitude, lng: marker.longitude }}, marker.category, marker.img_link, marker.title, marker.cause_id, marker.description, userAgent)}
         onMouseOut={handleMarkerMouseOut}
         >
-          
+          <div className="colorbs"> hushsgusgsgugsu</div>
   
 
         </Marker>

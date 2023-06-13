@@ -8,7 +8,6 @@ import Map from "./Map"
 import Legend from "./Legend"
 import Categories from "./Categories"
 import CategoriesCounter from "./CategoriesCounter";
-import Reset from "./Reset";
 
 import '../custom.css';
 
@@ -114,7 +113,7 @@ export default function Events() {
 
                 {/* Event card display */}
                 <div className={eventCardType}>
-                    <EventCard currEvents={currEvents.filter( event => !!category.id ? event.cause_id === Number(category.id) : true)} mapCenter={mapCenter} markerId={markerId} userAgent={userAgent} />
+                    <EventCard currEvents={currEvents.filter( event => !!category.id ? event.cause_id === Number(category.id) : true)} mapCenter={mapCenter} markerId={markerId} userAgent={userAgent.current} />
                 </div>
 
                 {/* Legend:  Is display: hidden on mediaScreen width < 480px */}

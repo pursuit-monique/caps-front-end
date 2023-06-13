@@ -16,6 +16,29 @@
   padding-right: 8px;
 }
 
+.person-marker-icon {
+  border: 12px solid #545454;
+}
+
+
+.gm-style div div div div img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  /* border: 8px solid red; */
+}
+
+
+.colorbs{
+  width: 100%;
+  height: 100px;
+  background-color: red;
+
+  color: red;
+  z-index: 2147483647;
+}
+
+
 
 .rightalign{
   padding-left: 50%;

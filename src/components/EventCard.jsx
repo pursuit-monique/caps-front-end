@@ -2,16 +2,16 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '../custom.css';
 
 
-import { calculateDistance, dateHandler, svgHandler } from './helpers/functions';
+import { calculateDistance, dateHandler } from './helpers/functions';
 import { cause, iconList } from './helpers/objects';
 import {useEffect, useRef} from "react";
 
 export default function EventCard({currEvents, mapCenter, markerId, userAgent}) {
 const currCards = useRef(currEvents);
-  function parseTitle(title){
+  function parseTitle(title, userAgent){
   if (userAgent === "desktop"){
-    if (title.length > 45){
-      return `${title.slice(0, 45).trim()}...`
+    if (title.length > 3){
+      return `${title.slice(0, 30).trim()}...`
     }
     return title;
    } else {
@@ -41,15 +41,15 @@ useEffect(() => {
     .filter(event => !!id ? event.id === id : true) */}
     {currCards.current
     .map(event =>{  
-      const divStyle = {
-        backgroundImage: `url(${iconList[event.cause_id]})`,
-        backgroundRepeat: 'no-repeat',
-        backgroundSize: '20px',
-      backgroundPosition: 'bottom right',
-        fill: `${cause[event.cause_id][1]}`
-      };
+      // const divStyle = {
+      //   backgroundImage: `url(${iconList[event.cause_id]})`,
+      //   backgroundRepeat: 'no-repeat',
+      //   backgroundSize: '20px',
+      //   backgroundPosition: 'bottom right',
+      //   fill: `${cause[event.cause_id][1]}`
+      // };
       return (
-      <div className="cardSize"  style={divStyle}>
+      <div className="cardSize">
               <div className="rowimg">
                 <div className="col-1 imgContainer">
             <div
@@ -61,7 +61,7 @@ useEffect(() => {
                 }}></div>
             </div>
       <div className="col constraint">
-          <div className="row-1"><h1 className="title">{parseTitle(event.title)} {}</h1></div>
+          <div className="row-1"><h1 className="title"><img className="margin" src={iconList[event.cause_id]} alt="..." />{parseTitle(event.title, userAgent)} {}</h1></div>
           <div className="dateInfo" style={{
   background: `linear-gradient(to right, white, ${cause[event.cause_id][1]})`,
   backgroundSize: 'cover',
