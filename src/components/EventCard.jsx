@@ -71,7 +71,7 @@ useEffect(() => {
     {event.description}
           </div>
           <div className="row align-items-center">
-          <span className="indicator"></span><img src={event.user_profile_link} alt="name" className="userIcon margin"></img>
+          <span className="indicator"></span><img src={event.user_profile_link || "https://t3.ftcdn.net/jpg/03/53/11/00/360_F_353110097_nbpmfn9iHlxef4EDIhXB1tdTD0lcWhG9.jpg"} alt="name" className="userIcon margin"></img>
             <div className="col">
                 <div className="row infoText">{event.f_name} {event.l_name}</div>
                 <div className="row orgText infoText">Pursuit</div>

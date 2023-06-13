@@ -16,17 +16,27 @@
   padding-right: 8px;
 }
 
-.person-marker-icon {
+#portrait{
   border: 12px solid #545454;
 }
 
+/* .person-marker-icon {
+  border: 12px solid red; 
+} */
 
-.gm-style div div div div img {
+.gm-style div div div img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 8px solid red;
+}
+
+
+/* .gm-style div div div div{
   width: 40px;
   height: 40px;
   border-radius: 50%;
   /* border: 8px solid red; */
-}
 
 
 .colorbs{
@@ -137,6 +147,18 @@ margin-top: 2px;
 padding: 4px;
 }
 
+div[aria-label="Map"] img{
+  border-radius: 100%;
+  border: solid 2px #f96570
+
+}
+
+
+div[title="Disability"]{
+  border-radius: 100%;
+  border: solid 2px #f96570;
+  z-index: -255;
+}
 
 #Disability{
 fill: #f96570;
@@ -151,6 +173,12 @@ color: #f96570;
 }
 
 
+div[title="Veteran"]{
+  border-radius: 100%;
+  border: solid 2px #7446e5;
+  z-index: -255;
+}
+
 #Veteran{
 fill: #7446e5;
 }
@@ -164,6 +192,12 @@ color: #7446e5;
 }
 
 
+div[title="Mental"]{
+  border-radius: 100%;
+  border: solid 2px #FFBD59;
+  z-index: -255;
+}
+
 #Mental{
 fill:#FFBD59;
 }
@@ -175,6 +209,14 @@ fill:#FFBD59;
 color: #FFBD59;
 }
 
+
+
+div[title="Environmental"]{
+  border-radius: 100%;
+  border: solid 2px #4db594;
+  z-index: -255;
+}
+
 #Environmental{
 fill: #4db594;
 }
@@ -184,6 +226,13 @@ fill: #4db594;
 }
 .Environmental-txt{
 color: #4db594;
+}
+
+
+div[title="Animal"]{
+  border-radius: 100%;
+  border: solid 2px #de478e;
+  z-index: -250;
 }
 
 #Animal{
@@ -199,6 +248,13 @@ fill: #de478e;
 color: #de478e;
 }
 
+div[title="Education"]{
+  border-radius: 100%;
+  border: solid 2px #5665f3;
+  z-index: -255;
+}
+
+
 #Education{
  fill: #5665f3;
 }
@@ -209,6 +265,14 @@ color: #de478e;
 
 .Education-txt{
 color: #5665f3;
+}
+
+
+
+div[title="Justice"]{
+  border-radius: 100%;
+  border: solid 2px #4ca5e4;
+  z-index: -255;
 }
 
 
