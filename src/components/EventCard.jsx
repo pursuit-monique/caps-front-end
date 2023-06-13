@@ -10,13 +10,13 @@ export default function EventCard({currEvents, mapCenter, markerId, userAgent}) 
 const currCards = useRef(currEvents);
   function parseTitle(title, userAgent){
   if (userAgent === "desktop"){
-    if (title.length > 3){
+    if (title.length > 30){
       return `${title.slice(0, 30).trim()}...`
     }
     return title;
    } else {
-    if (title.length > 25){
-      return `${title.slice(0, 25).trim()}...`
+    if (title.length > 15){
+      return `${title.slice(0, 15).trim()}...`
     }
     return title;
    }
@@ -61,7 +61,7 @@ useEffect(() => {
                 }}></div>
             </div>
       <div className="col constraint">
-          <div className="row-1"><h1 className="title"><img className="margin" src={iconList[event.cause_id]} alt="..." />{parseTitle(event.title, userAgent)} {}</h1></div>
+          <div className="row-1"><h1 className="title"><img className="margin" src={iconList[event.cause_id][1]} alt="..." />{parseTitle(event.title, userAgent)} {}</h1></div>
           <div className="dateInfo" style={{
   background: `linear-gradient(to right, white, ${cause[event.cause_id][1]})`,
   backgroundSize: 'cover',

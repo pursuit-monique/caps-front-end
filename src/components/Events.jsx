@@ -28,23 +28,23 @@ export default function Events() {
     //Current selected event ID
     const [markerId, setMarkerId] = useState();
 
-    const userAgent = useRef("desktop");
+    const [userAgent, setUserAgent] = useState("desktop");
 
     useEffect(() => {
       const interval = setInterval(() => {
         if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-          console.log(userAgent.current);
-          userAgent.current = "mobile";
+          // console.log(userAgent.current);
+          setUserAgent("mobile");
         } else {
           console.log("desktop");
-          userAgent.current = "desktop";
-          console.log(userAgent.current);
+          setUserAgent( "desktop");
+          // console.log(userAgent.current);
         }
       }, 500);
     
       return () => clearInterval(interval);
     }, []);
-    
+   
   
 
    const mapType = userAgent.current === "mobile" ? "order-1 justify-content-center" : "order-2 justify-content-center";
@@ -112,7 +112,7 @@ export default function Events() {
         <Menu /> 
 
         {/* Category selection bar */}
-        {isLoaded ? <Categories setCategory={setCategory} setMarkerId={setMarkerId} /> : '' }
+        {isLoaded ? <Categories category={category} setCategory={setCategory} setMarkerId={setMarkerId} /> : '' }
         {isLoaded ? <CategoriesCounter currEvents={currEvents} category={category} /> : '' } 
         {/* <Reset setCategory={setCategory} category={category} /> */}
 
