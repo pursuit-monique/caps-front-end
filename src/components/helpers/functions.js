@@ -28,7 +28,7 @@ export function checkin(mi = 0) {
     return "You're quite far, do you plan on attending?";
   } else if (mi > 5) {
     return "You're nearby, thinking of stopping by?";
-  } else if (mi > 1) {
+  } else if (mi > 0.05) {
     return "You're almost there!";
   } else if (mi < 0.05) {
     return "Lets get the party started!  Ready to check in?";

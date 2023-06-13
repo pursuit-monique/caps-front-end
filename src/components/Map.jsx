@@ -7,7 +7,7 @@ import { cause } from "./helpers/objects";
 import "./App.css";
 
 
-export default function Map({category, currEvents, mapCenter, setMarkerId, userAgent}) {
+export default function Map({setIsLoaded, category, currEvents, mapCenter, setMarkerId, userAgent}) {
 
     const mapRef = useRef(null);
     const offcanvasRef = useRef();
@@ -168,7 +168,9 @@ return { event: eventDate, todayDate: today, isRecent: eventDate - today < 60480
               position={{ lat: marker.latitude, lng: marker.longitude }}
               title={cause[marker.cause_id][0]}
               className={"person-marker-icon"}
-              onLoad={(event) => console.log(event)}
+              onLoad={(event) => {
+                console.log(event)
+              }}
 
               optimized={false}
               // animation={marker.title === bounceToggle.title ? window.google.maps.Animation.BOUNCE : null}

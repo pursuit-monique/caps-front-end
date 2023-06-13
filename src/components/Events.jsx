@@ -14,6 +14,8 @@ import '../custom.css';
 const API = process.env.REACT_APP_EVENTS_URL;
 
 export default function Events() {
+    const [isLoaded, setIsLoaded] = useState(false);
+
     const [mapCenter, setMapCenter] = useState({ lat: 0, lng: 0 });
 
     //State for Category buttons
@@ -89,8 +91,15 @@ export default function Events() {
     useEffect(() => {
         axios
           .get(`${API}/events/`)
-          .then((response) => setCurrEvents(response.data))
-          .catch((c) => console.warn("catch", c));
+          .then((response) =>{ 
+            setCurrEvents(response.data);
+            setIsLoaded(true);
+          })
+
+          .catch((c) =>{ 
+            console.warn("catch", c);
+            setIsLoaded(false);
+          });
       }, []);
 
       console.log(currEvents)
@@ -103,8 +112,8 @@ export default function Events() {
         <Menu /> 
 
         {/* Category selection bar */}
-        <Categories setCategory={setCategory} setMarkerId={setMarkerId} />
-        <CategoriesCounter currEvents={currEvents} category={category} />
+        {isLoaded ? <Categories setCategory={setCategory} setMarkerId={setMarkerId} /> : '' }
+        {isLoaded ? <CategoriesCounter currEvents={currEvents} category={category} /> : '' } 
         {/* <Reset setCategory={setCategory} category={category} /> */}
 
         <article className="d-flex flex-wrap body">
@@ -117,7 +126,7 @@ export default function Events() {
                 </div>
 
                 {/* Legend:  Is display: hidden on mediaScreen width < 480px */}
-                <Legend category={category}  />
+                {isLoaded? <Legend category={category}  /> : ''}
 
                 {/* Map display.   */}
                 <div className={mapType}>
