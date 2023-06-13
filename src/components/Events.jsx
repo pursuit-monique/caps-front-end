@@ -47,8 +47,8 @@ export default function Events() {
    
   
 
-   const mapType = userAgent.current === "mobile" ? "order-1 justify-content-center" : "order-2 justify-content-center";
-   const eventCardType = userAgent.current === "mobile" ? "flex-column heightmenu overflow-auto order-2" : "flex-column heightmenu overflow-auto order-1";
+   const mapType = userAgent === "mobile" ? "order-1 justify-content-center" : "order-2 justify-content-center";
+   const eventCardType = userAgent === "mobile" ? "flex-column heightmenu overflow-auto order-2" : "flex-column heightmenu overflow-auto order-1";
 
     
     function success(pos) {
