@@ -48,6 +48,7 @@ useEffect(() => {
       //   backgroundPosition: 'bottom right',
       //   fill: `${cause[event.cause_id][1]}`
       // };
+      let {eventdate, eventtime} = dateHandler(event.date, event.time);
       return (
       <div className="cardSize">
               <div className="rowimg">
@@ -66,7 +67,7 @@ useEffect(() => {
   background: `linear-gradient(to right, white, ${cause[event.cause_id][1]})`,
   backgroundSize: 'cover',
   backgroundPosition: 'center',
-}}>{String(dateHandler(event.date, event.time).eventdate)}  {dateHandler(event.date, event.time).eventtime}</div>
+}}>{eventdate}  {eventtime}</div>
           <div className="row-2 cardInfo">
     {event.description}
           </div>

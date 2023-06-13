@@ -60,7 +60,9 @@
   font-size: small;
   background-color: #545454;
   border: 0px solid #545454;
-  padding: 8px;
+  padding: 4px;
+  padding-left:16px;
+  padding-right: 16px;
   position: absolute;
   top: 86.5%;
   right: 24.5%;

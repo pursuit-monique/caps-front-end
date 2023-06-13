@@ -7,7 +7,7 @@ import { cause } from "./helpers/objects";
 import "./App.css";
 
 
-export default function Map({setIsLoaded, category, currEvents, mapCenter, setMarkerId, userAgent}) {
+export default function Map({currEvents, mapCenter, setMarkerId, userAgent}) {
 
     const mapRef = useRef(null);
     const offcanvasRef = useRef();
@@ -41,11 +41,11 @@ const eventDate = new Date(`${month}-${date}-${year}`);
 return { event: eventDate, todayDate: today, isRecent: eventDate - today < 604800000}
       })
 
-      const handleMarkerLoad = (marker) => {
-        // Access the DOM element of the marker
-        console.log('access');
-        console.log('Marker DOM element:', marker);
-      };
+      // const handleMarkerLoad = (marker) => {
+      //   // Access the DOM element of the marker
+      //   console.log('access');
+      //   console.log('Marker DOM element:', marker);
+      // };
       
       const userAgentChk = () => {
         if(userAgent.current === "mobile"){
