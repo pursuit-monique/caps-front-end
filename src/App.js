@@ -8,6 +8,7 @@ import { AuthProvider } from "./context/AuthContext";
 import "./App.css";
 import Event2 from "./pages/Event2";
 import NewEvent from "./pages/NewEvent";
+import LiveStream from "./pages/LiveStream";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
@@ -26,12 +27,7 @@ function App() {
               <Route path="/event/:id" element={<Event />} />
               <Route path="/event2/:id" element={<Event2 />} />
               <Route path="/new/event" element={<NewEvent />} />
-
-              {/* <Route path="/new" element={<New />} />
-            <Route path="/cars/:id" element={<ShowCar />} />
-            <Route path="/cars/:id/edit" element={<EditCar />} />
-            <Route path="/collections/:id" element={<ShowCollection />} />
-            <Route path="/collections/:id/edit" element={<EditCollection />} /> */}
+              <Route path="/live/:roomCode" element={<LiveStream />} />
             </Route>
 
             <Route path="/login" element={<Login />} />
@@ -45,4 +41,3 @@ function App() {
 }
 
 export default App;
-
