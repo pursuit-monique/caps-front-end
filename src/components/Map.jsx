@@ -48,7 +48,7 @@ return { event: eventDate, todayDate: today, isRecent: eventDate - today < 60480
       // };
       
       const userAgentChk = () => {
-        if(userAgent.current === "mobile"){
+        if(userAgent === "mobile"){
           return "offcanvas offcanvas-bottom";
         }else {
           return "offcanvas offcanvas-start";
