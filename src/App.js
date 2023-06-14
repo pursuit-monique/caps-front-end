@@ -3,7 +3,6 @@ import Login from "./pages/Login";
 import Event from "./pages/Event";
 import Signup from "./pages/Signup";
 import Home from "./pages/Home";
-import About from "./pages/About";
 import PrivateRoutes from "./components/PrivateRoutes";
 import { AuthProvider } from "./context/AuthContext";
 import About from "./pages/About";
