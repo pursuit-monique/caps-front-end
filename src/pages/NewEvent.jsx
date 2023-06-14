@@ -6,12 +6,12 @@ import axios from "axios";
 import GooglePlacesAutocomplete, {
   geocodeByAddress,
   getLatLng,
+  geocodeByPlaceId,
 } from "react-google-places-autocomplete";
 import { AuthContext } from "../context/AuthContext";
 
 function NewEvent() {
   const { currentUser } = useContext(AuthContext);
-
   const [event, setEvent] = useState({
     cause_id: "",
     title: "",
@@ -27,6 +27,8 @@ function NewEvent() {
   async function getLatLongFromAddress(e) {
     try {
       const results = await geocodeByAddress(value.label);
+      const tmp = await geocodeByPlaceId(value.value.place_id);
+      console.log("tmp", tmp);
       const { lat, lng } = await getLatLng(results[0]);
       return { lat, lng };
     } catch (err) {
@@ -53,25 +55,32 @@ function NewEvent() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    const geo = await getLatLongFromAddress();
-    const imageURL = await uploadImage();
-    const newEvent = {
-      ...event,
-      organizer_user_id: currentUser.uid,
-      latitude: geo.lat,
-      longitude: geo.lng,
-      address: value.label,
-      img_link: imageURL,
-    };
-
-    console.log(newEvent);
     // const API = process.env.REACT_APP_BACKEND_URL;
     const API = process.env.REACT_APP_LOCAL_BACKEND;
+    // const API = "https://happn.onrender.com";
     console.log("API", API);
-    const res = await axios.post(`${API}/events`, newEvent);
-    console.log("response from backend after event submit", res);
-  }
+    try {
+      const geo = await getLatLongFromAddress();
+      const imageURL = await uploadImage();
+      const newEvent = {
+        ...event,
+        time: event.time + ":00",
+        organizer_user_id: currentUser.uid,
+        latitude: geo.lat,
+        longitude: geo.lng,
+        address: value.label,
+        img_link: imageURL,
+      };
 
+      console.log(newEvent);
+
+      const res = await axios.post(`${API}/events`, newEvent);
+      console.log("response from backend after event submit", res);
+    } catch (err) {
+      console.log(err);
+    }
+  }
+  console.log(value);
   return (
     <>
       <div className="container event-form-container my-4">

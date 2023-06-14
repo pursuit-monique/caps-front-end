@@ -9,6 +9,7 @@ import { AuthProvider } from "./context/AuthContext";
 import "./App.css";
 import Event2 from "./pages/Event2";
 import NewEvent from "./pages/NewEvent";
+import LiveStream from "./pages/LiveStream";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
@@ -25,6 +26,7 @@ function App() {
               <Route path="/event2/:id" element={<Event2 />} />
               <Route path="/new/event" element={<NewEvent />} />
               <Route path="/about" element={<About />} />
+              <Route path="/live/:roomCode" element={<LiveStream />} />
             </Route>
 
             <Route path="/login" element={<Login />} />
