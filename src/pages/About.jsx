@@ -1,10 +1,12 @@
 import './About.css';
 import monique from '../assets/monique.jpg'
 
+
 export default function About() {
 
     return(
         <>
+
 <div className="container-fluid  about-container-margin text-center">
   <div className="row d-flex">
     <div className="col about-team-title">

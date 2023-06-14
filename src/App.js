@@ -3,6 +3,7 @@ import Login from "./pages/Login";
 import Event from "./pages/Event";
 import Signup from "./pages/Signup";
 import Home from "./pages/Home";
+import About from "./pages/About";
 import PrivateRoutes from "./components/PrivateRoutes";
 import { AuthProvider } from "./context/AuthContext";
 import About from "./pages/About";
@@ -19,10 +20,7 @@ function App() {
     <AuthProvider>
       <div className="app ">
         <Router>
-          {/* <Navbar /> */}
           <Routes>
-            {/* <Route path="/" element={<Welcome />} /> */}
-
             <Route element={<PrivateRoutes />}>
               <Route path="/index" element={<Home />} exact />
               <Route path="/event/:id" element={<Event />} />
@@ -34,7 +32,6 @@ function App() {
 
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
-            {/* <Route path="*" element={<NotFound />} /> */}
           </Routes>
         </Router>
       </div>

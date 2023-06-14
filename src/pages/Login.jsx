@@ -2,14 +2,15 @@ import { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { signInWithGoogle, logInWithEmailAndPassword } from "../firebase/auth";
+import cityscape from "../assets/cityscape.jpeg"
 import "./Login.css";
 
 export default function SignupLogin() {
   const [user, setUser] = useState({ email: "", password: "" });
   const navigate = useNavigate();
-  // const API = process.env.REACT_APP_BACKEND_URL;
+  const API = process.env.REACT_APP_BACKEND_URL;
   // const API = "https://happn.onrender.com";
-  const API = process.env.REACT_APP_LOCAL_BACKEND;
+  // const API = process.env.REACT_APP_LOCAL_BACKEND;
   console.log("backend", API);
   async function googleLogin() {
     try {
@@ -54,20 +55,21 @@ export default function SignupLogin() {
     <section className="login-container forms">
       <div className="login-wrapper">
         <img
-          src="https://images.unsplash.com/photo-1558224752-394621ba6925?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1714&q=80"
+          src={cityscape}
           alt="houses"
-          className="signup-cover-img"
+          className="signup-cover-img displayimg"
         />
 
-        <div className="form login">
+        <div className="form login testing">
           <div className="form-content">
-            <header>Login</header>
+            <header className="align-left">Welcome</header>
+            <h6 className="subtitle">Create an account</h6>
             <form onSubmit={handleSubmit}>
               <div className="field input-field">
                 <input
                   type="email"
                   placeholder="Email"
-                  className="input"
+                  className="input emailbg"
                   value={user.email}
                   onChange={(e) => setUser({ ...user, email: e.target.value })}
                 />
@@ -76,7 +78,7 @@ export default function SignupLogin() {
                 <input
                   type="password"
                   placeholder="Password"
-                  className="password"
+                  className="password passwordbg"
                   value={user.password}
                   onChange={(e) =>
                     setUser({ ...user, password: e.target.value })

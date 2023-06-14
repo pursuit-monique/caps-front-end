@@ -6,28 +6,100 @@
 .margintop{
   margin-top: 3px;
 }
+.indextop{
+  z-index: 1000;
+}
+
+.dateInfo{
+  height: 15px;
+  width: 100%;
+  font-size: x-small;
+  color: #fdfdfd;
+  text-align: right;
+  padding-right: 16px;
+}
+
+#portrait{
+  border: 12px solid #545454;
+}
+
+/* .person-marker-icon {
+  border: 12px solid red; 
+} */
+
+/* .gm-style div div div img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 8px solid red;
+} */
+
+
+/* .gm-style div div div div{
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  /* border: 8px solid red; */
+
+
+.colorbs{
+  width: 100%;
+  height: 100px;
+  background-color: red;
+
+  color: red;
+  z-index: 2147483647;
+}
+
+
+
+.rightalign{
+  padding-left: 50%;
+}
+
+.button{
+  border-radius: 100px;
+  color:#fdfdfd;
+  font-size: small;
+  background-color: #545454;
+  border: 0px solid #545454;
+  padding: 4px;
+  padding-left:16px;
+  padding-right: 16px;
+  position: absolute;
+  top: 86.5%;
+  right: 24.5%;
+  z-index: 7;
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
 
 .categories-bar{
-position: absolute;
-top: 80%;
-left: 17%;
-z-index: 7;
-padding-top: 2px;
-padding-left: 8px;
-background-color: #fdfdfd;
-width: 240px;
-height: 35px;
-border-radius: 20px;
-border: 1px solid #545454;
-margin: 8px;
-box-shadow: 5px 2px 5px rgb(204, 210, 219);
+  position: absolute;
+  top: 80%;
+  right: 17%;
+  z-index: 7;
+  padding-top: 2px;
+  padding-left: 8px;
+  background-color: #fdfdfd;
+  width: 240px;
+  height: 35px;
+  border-radius: 20px;
+  border: 1px solid #545454;
+  margin: 8px;
+  box-shadow: 5px 2px 5px rgb(204, 210, 219);
 }
 
 .counter{
   position: absolute;
   z-index: 7;
   top: 83%;
-  left: 18.5%;
+  right: 17.5%;
   pointer-events: none;
 }
 
@@ -54,14 +126,52 @@ box-shadow: 5px 2px 5px rgb(204, 210, 219);
                                   supported by Chrome, Edge, Opera and Firefox */
 }
 
+
+.mainArticle{
+  margin-left: 20px;
+  padding: 20px;
+}
+
+.offCanvasImg{
+  display: fixed;
+  padding: 0px;
+  left: 40%;
+  max-height: 40%;
+  width: 100%;
+  margin-bottom: 8px;
+  
+}
+
+.offCanvasHeader{
+  background-color: #545454;
+  color: #fdfdfd;
+}
+
 .icon-space{
 margin-top: 2px;
 padding: 4px;
 }
 
+div[aria-label="Map"] img{
+  border-radius: 100%;
+  border: solid 2px #f96570
+
+}
+
+
+div[title="Disability"]{
+  box-sizing: border-box;
+  border-radius: 100%;
+  border: solid 2px #f96570;
+  z-index: -2550;
+}
 
 #Disability{
 fill: #f96570;
+}
+
+.Disability{
+  background-color: #f96570
 }
 
 .Disability-txt{
@@ -69,8 +179,19 @@ color: #f96570;
 }
 
 
+div[title="Veteran"]{
+  box-sizing: border-box;
+  border-radius: 100%;
+  border: solid 2px #7446e5;
+  z-index: -2550;
+}
+
 #Veteran{
 fill: #7446e5;
+}
+
+.Veteran{
+  background-color: #7446e5;
 }
 
 .Veteran-txt{
@@ -78,32 +199,79 @@ color: #7446e5;
 }
 
 
-.Mental{
+div[title="Mental"]{
+  box-sizing: border-box;
+  border-radius: 100%;
+  border: solid 2px #FFBD59;
+  z-index: -2550;
+}
+
+#Mental{
 fill:#FFBD59;
+}
+.Mental{
+  background-color: #FFBD59;
 }
 
 .Mental-txt{
 color: #FFBD59;
 }
 
+
+
+div[title="Environmental"]{
+  box-sizing: border-box;
+  border-radius: 100%;
+  border: solid 2px #4db594;
+  z-index: -2550;
+}
+
 #Environmental{
 fill: #4db594;
 }
 
+.Environmental{
+  background-color: #4db594;
+}
 .Environmental-txt{
 color: #4db594;
+}
+
+
+div[title="Animal"]{
+  box-sizing: border-box;
+  border-radius: 100%;
+  border: solid 2px #de478e;
+  z-index: -2500;
 }
 
 #Animal{
 fill: #de478e;
 }
 
+.Animal{
+  background-color: #de478e;
+}
+
+
 .Animal-txt{
 color: #de478e;
 }
 
+div[title="Education"]{
+  box-sizing: border-box;
+  border-radius: 100%;
+  border: solid 2px #5665f3;
+  z-index: -2550;
+}
+
+
 #Education{
  fill: #5665f3;
+}
+
+.Education{
+  background-color: #5665f3;
 }
 
 .Education-txt{
@@ -111,8 +279,21 @@ color: #5665f3;
 }
 
 
+
+div[title="Justice"]{
+  box-sizing: border-box;
+  border-radius: 100%;
+  border: solid 2px #4ca5e4;
+  z-index: -2550;
+}
+
+
 #Justice{
 fill: #4ca5e4;
+}
+
+.Justice{
+  background-color: #4ca5e4;
 }
 
 .Justice-txt{
@@ -136,7 +317,15 @@ border: 1px solid #545454;
 border-radius: 10px;
 box-shadow: 5px 2px 5px rgb(204, 210, 219);
 pointer-events: none;
+
 }
+
+
+/* .event-preview.active {
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+} */
+
 
 .event-preview span{
 color:#545454;
@@ -174,7 +363,7 @@ padding: 0px;
 .map-container {
   margin-left: 16px;
   margin-right: 30px;
-  width: 50vw;
+  width: 55vw;
   height: 85vh;
   border: 3px solid #545454;
   border-radius: 5px;
@@ -182,19 +371,42 @@ padding: 0px;
 
 
 @media (max-width: 480px) {
+
   .App {
       /* height: 100vh; */
       width: 100vw;
     }
 
-.map-container{
-  border-top: 2px solid #545454;
-  border-bottom: 2px solid #545454;
-  padding: 0px;
-  margin: 0px;
-  border: none;
-  width: 100vw;
-  /* height: 30vh; */
-  margin-bottom: 8px;
-}
+    h5{
+      font-size: medium;
+    }
+
+    .offcanvas{
+      font-size: xx-small;
+      --bs-offcanvas-height: 70vh;
+    }
+
+  .button{
+    top: 80%;
+    right: 45%;
+  }
+
+  .categories-bar{
+    top: 72%;
+  }
+
+  .counter{
+    top: 75%;
+  }
+
+  .map-container{
+    border-top: 2px solid #545454;
+    border-bottom: 2px solid #545454;
+    padding: 0px;
+    margin: 0px;
+    border: none;
+    width: 100vw;
+    /* height: 30vh; */
+    margin-bottom: 8px;
+  }
 }

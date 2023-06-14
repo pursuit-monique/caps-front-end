@@ -6,6 +6,7 @@ import axios from "axios";
 import GooglePlacesAutocomplete, {
   geocodeByAddress,
   getLatLng,
+  geocodeByPlaceId,
 } from "react-google-places-autocomplete";
 import { AuthContext } from "../context/AuthContext";
 
@@ -26,6 +27,8 @@ function NewEvent() {
   async function getLatLongFromAddress(e) {
     try {
       const results = await geocodeByAddress(value.label);
+      const tmp = await geocodeByPlaceId(value.value.place_id);
+      console.log("tmp", tmp);
       const { lat, lng } = await getLatLng(results[0]);
       return { lat, lng };
     } catch (err) {
@@ -52,8 +55,8 @@ function NewEvent() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    const API = process.env.REACT_APP_BACKEND_URL;
-    // const API = process.env.REACT_APP_LOCAL_BACKEND;
+    // const API = process.env.REACT_APP_BACKEND_URL;
+    const API = process.env.REACT_APP_LOCAL_BACKEND;
     // const API = "https://happn.onrender.com";
     console.log("API", API);
     try {
@@ -77,7 +80,7 @@ function NewEvent() {
       console.log(err);
     }
   }
-
+  console.log(value);
   return (
     <>
       <div className="container event-form-container my-4">
