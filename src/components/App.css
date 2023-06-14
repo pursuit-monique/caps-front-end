@@ -6,6 +6,9 @@
 .margintop{
   margin-top: 3px;
 }
+.indextop{
+  z-index: 1000;
+}
 
 .dateInfo{
   height: 15px;

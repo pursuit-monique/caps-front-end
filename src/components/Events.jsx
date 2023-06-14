@@ -122,7 +122,7 @@ export default function Events() {
 
                 {/* Event card display */}
                 <div className={eventCardType}>
-                    <EventCard currEvents={currEvents.filter( event => !!category.id ? event.cause_id === Number(category.id) : true)} mapCenter={mapCenter} markerId={markerId} userAgent={userAgent.current} />
+                    <EventCard currEvents={currEvents.filter( event => !!category.id ? event.cause_id === Number(category.id) : true)} mapCenter={mapCenter} markerId={markerId} userAgent={userAgent} />
                 </div>
 
                 {/* Legend:  Is display: hidden on mediaScreen width < 480px */}

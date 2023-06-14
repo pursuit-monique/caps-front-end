@@ -207,7 +207,7 @@ return { event: eventDate, todayDate: today, isRecent: eventDate - today < 60480
             y: (height + 20),
           })}
         >
-          <div className={`event-preview align-items-center ${
+          <div className={`event-preview align-items-center indextop ${
               isHovering ? 'active' : ''
             }`}
             style={{

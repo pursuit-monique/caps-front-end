@@ -10,8 +10,8 @@ export default function EventCard({currEvents, mapCenter, markerId, userAgent}) 
 const currCards = useRef(currEvents);
   function parseTitle(title, userAgent){
   if (userAgent === "desktop"){
-    if (title.length > 30){
-      return `${title.slice(0, 30).trim()}...`
+    if (title.length > 40){
+      return `${title.slice(0, 40).trim()}...`
     }
     return title;
    } else {
