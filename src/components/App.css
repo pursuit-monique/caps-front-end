@@ -160,9 +160,10 @@ div[aria-label="Map"] img{
 
 
 div[title="Disability"]{
+  box-sizing: border-box;
   border-radius: 100%;
   border: solid 2px #f96570;
-  z-index: -255;
+  z-index: -2550;
 }
 
 #Disability{
@@ -179,9 +180,10 @@ color: #f96570;
 
 
 div[title="Veteran"]{
+  box-sizing: border-box;
   border-radius: 100%;
   border: solid 2px #7446e5;
-  z-index: -255;
+  z-index: -2550;
 }
 
 #Veteran{
@@ -198,9 +200,10 @@ color: #7446e5;
 
 
 div[title="Mental"]{
+  box-sizing: border-box;
   border-radius: 100%;
   border: solid 2px #FFBD59;
-  z-index: -255;
+  z-index: -2550;
 }
 
 #Mental{
@@ -217,9 +220,10 @@ color: #FFBD59;
 
 
 div[title="Environmental"]{
+  box-sizing: border-box;
   border-radius: 100%;
   border: solid 2px #4db594;
-  z-index: -255;
+  z-index: -2550;
 }
 
 #Environmental{
@@ -235,9 +239,10 @@ color: #4db594;
 
 
 div[title="Animal"]{
+  box-sizing: border-box;
   border-radius: 100%;
   border: solid 2px #de478e;
-  z-index: -250;
+  z-index: -2500;
 }
 
 #Animal{
@@ -254,9 +259,10 @@ color: #de478e;
 }
 
 div[title="Education"]{
+  box-sizing: border-box;
   border-radius: 100%;
   border: solid 2px #5665f3;
-  z-index: -255;
+  z-index: -2550;
 }
 
 
@@ -275,9 +281,10 @@ color: #5665f3;
 
 
 div[title="Justice"]{
+  box-sizing: border-box;
   border-radius: 100%;
   border: solid 2px #4ca5e4;
-  z-index: -255;
+  z-index: -2550;
 }
 
 
