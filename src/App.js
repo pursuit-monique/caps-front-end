@@ -6,6 +6,7 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import PrivateRoutes from "./components/PrivateRoutes";
 import { AuthProvider } from "./context/AuthContext";
+import About from "./pages/About";
 import "./App.css";
 import Event2 from "./pages/Event2";
 import NewEvent from "./pages/NewEvent";
