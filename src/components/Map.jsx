@@ -91,7 +91,7 @@ return { event: eventDate, todayDate: today, isRecent: eventDate - today < 60480
   // });
 
   const handleMarkerHover = (markerPosition, category, img, title, id, desc, userAgent) => {
-    userAgent.current === "desktop" ? setIsHovering(true) :  setIsHovering(false);
+    userAgent === "desktop" ? setIsHovering(true) :  setIsHovering(false);
 
     console.log(isHovering)
     setMarkerPosition({position: markerPosition.position, "category": `${category}`, "color": color[category], img: img, "title": title, "id": id, "desc": desc});
