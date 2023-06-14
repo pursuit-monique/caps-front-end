@@ -5,6 +5,7 @@ import Signup from "./pages/Signup";
 import Home from "./pages/Home";
 import PrivateRoutes from "./components/PrivateRoutes";
 import { AuthProvider } from "./context/AuthContext";
+import About from "./pages/About";
 import "./App.css";
 import Event2 from "./pages/Event2";
 import NewEvent from "./pages/NewEvent";
@@ -26,7 +27,7 @@ function App() {
               <Route path="/event/:id" element={<Event />} />
               <Route path="/event2/:id" element={<Event2 />} />
               <Route path="/new/event" element={<NewEvent />} />
-
+              <Route path="/about" element={<About />} />
               {/* <Route path="/new" element={<New />} />
             <Route path="/cars/:id" element={<ShowCar />} />
             <Route path="/cars/:id/edit" element={<EditCar />} />
@@ -45,4 +46,3 @@ function App() {
 }
 
 export default App;
-
