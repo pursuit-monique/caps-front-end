@@ -41,7 +41,8 @@
 
 .heightmenu{
     height:625px;
-    margin-left: 80px;
+    min-width: 40vw;
+
 }
 
  .mainColor{
@@ -71,7 +72,7 @@
 
 
 .imgContainer{
-    height: 18vh;
+    height: 21vh;
     padding: 0px;
     overflow: hidden; 
     margin-right: 8px;
@@ -79,7 +80,8 @@
 
 
 .title{
-    margin-top: 8px;
+
+    margin-bottom: 0px;
     color: #545454;
     font-size: large;
 }
@@ -116,7 +118,7 @@
 }
 
 .cardSize{
-    height: 18vh;
+    height: 20vh;
     width: 40vw;
     background: #FFFFFFFF; 
     border-radius: 8px; 
@@ -140,13 +142,13 @@
     text-overflow: ellipsis;
     overflow: hidden; 
     font-size: smaller;
-    margin-bottom: 8px;
+    margin-left: 40px;
 
 }
 
 .infoText{
     font-size: x-small;
-    margin-left: 8px;
+    /* margin-left: 8px; */
 }
 .orgText{
     color:#bbbbbb;
@@ -166,9 +168,10 @@
 }
 
 .legend{
-    position: fixed;
+    position: absolute;
     top: 20%;
-    left: 38%;
+    right: 4%;
+    /* left: 38%; */
     z-index: 7;
     width: 10vw;
     height: 25%;
@@ -217,7 +220,7 @@
     .imgContainer{
     
         width: 30%;
-        height: 18vh;
+        height: 21vh;
         padding: 0px;
         object-position: 50% 50%;
     }

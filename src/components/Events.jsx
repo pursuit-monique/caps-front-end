@@ -1,5 +1,5 @@
 
-import { useState, useEffect } from "react";
+import { useState, useEffect} from "react";
 
 import axios from "axios";
 import EventCard from './EventCard';
@@ -8,20 +8,49 @@ import Map from "./Map"
 import Legend from "./Legend"
 import Categories from "./Categories"
 import CategoriesCounter from "./CategoriesCounter";
+
 import '../custom.css';
 
 const API = process.env.REACT_APP_EVENTS_URL;
+
 export default function Events() {
+    const [isLoaded, setIsLoaded] = useState(false);
+
     const [mapCenter, setMapCenter] = useState({ lat: 0, lng: 0 });
 
     //State for Category buttons
-    const [category, setCategory] = useState("");
+    const [category, setCategory] = useState('');
 
 
-    //State for Map and Card Data
+    //State for Map and Card Data-- pulled from API data
     const [currEvents, setCurrEvents] = useState([]);
 
+    //Current selected event ID
+    const [markerId, setMarkerId] = useState();
 
+    const [userAgent, setUserAgent] = useState("desktop");
+
+    useEffect(() => {
+      const interval = setInterval(() => {
+        if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+          // console.log(userAgent.current);
+          setUserAgent("mobile");
+        } else {
+          console.log("desktop");
+          setUserAgent( "desktop");
+          // console.log(userAgent.current);
+        }
+      }, 500);
+    
+      return () => clearInterval(interval);
+    }, []);
+   
+  
+
+   const mapType = userAgent === "mobile" ? "order-1 justify-content-center" : "order-2 justify-content-center";
+   const eventCardType = userAgent === "mobile" ? "flex-column heightmenu overflow-auto order-2" : "flex-column heightmenu overflow-auto order-1";
+
+    
     function success(pos) {
         const {latitude, longitude} = pos.coords;
         // console.log(longitude)
@@ -37,7 +66,7 @@ export default function Events() {
       
 
 
-    console.log(currEvents);
+    // console.log(currEvents);
 
 
     useEffect(() => {
@@ -62,8 +91,15 @@ export default function Events() {
     useEffect(() => {
         axios
           .get(`${API}/events/`)
-          .then((response) => setCurrEvents(response.data))
-          .catch((c) => console.warn("catch", c));
+          .then((response) =>{ 
+            setCurrEvents(response.data);
+            setIsLoaded(true);
+          })
+
+          .catch((c) =>{ 
+            console.warn("catch", c);
+            setIsLoaded(false);
+          });
       }, []);
 
       console.log(currEvents)
@@ -76,25 +112,26 @@ export default function Events() {
         <Menu /> 
 
         {/* Category selection bar */}
-        <Categories setCategory={setCategory} />
-        <CategoriesCounter currEvents={currEvents} category={category} />
+        {isLoaded ? <Categories category={category} setCategory={setCategory} setMarkerId={setMarkerId} /> : '' }
+        {isLoaded ? <CategoriesCounter currEvents={currEvents} category={category} /> : '' } 
+        {/* <Reset setCategory={setCategory} category={category} /> */}
 
         <article className="d-flex flex-wrap body">
 
             <div className="flex-column justify-content-end "></div>
 
-            {/* Event card display */}
-            <div className="flex-column heightmenu overflow-auto order-2">
-                <EventCard currEvents={currEvents.filter( event => !!category.id ? event.cause_id === Number(category.id) : true)} mapCenter={mapCenter} />
-            </div>
+                {/* Event card display */}
+                <div className={eventCardType}>
+                    <EventCard currEvents={currEvents.filter( event => !!category.id ? event.cause_id === Number(category.id) : true)} mapCenter={mapCenter} markerId={markerId} userAgent={userAgent} />
+                </div>
 
-            {/* Legend:  Is display: hidden on mediaScreen width < 480px */}
-            <Legend category={category}  />
+                {/* Legend:  Is display: hidden on mediaScreen width < 480px */}
+                {isLoaded? <Legend category={category}  /> : ''}
 
-            {/* Map display.   */}
-            <div className="order-1 justify-content-center">  
-                <Map currEvents={currEvents.filter( event => !!category.id ? event.cause_id === Number(category.id) : true)} category={category} mapCenter={mapCenter} />
-            </div>
+                {/* Map display.   */}
+                <div className={mapType}>
+                    <Map currEvents={currEvents.filter( event => !!category.id ? event.cause_id === Number(category.id) : true)} category={category} mapCenter={mapCenter} setMarkerId={setMarkerId} userAgent={userAgent} />
+                </div>
 
         </article>
     </>
