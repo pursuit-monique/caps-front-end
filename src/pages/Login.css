@@ -8,6 +8,56 @@
   justify-content: center;
   /* background-color: #4070f4; */
   column-gap: 30px;
+  overflow: hidden;
+}
+
+.displayimg{
+  visibility: hidden;
+}
+
+.login-container{
+  background-image: url("../assets/cityscape.jpeg");
+  background-size:contain;
+  background-repeat: no-repeat;
+  background-position: top;
+}
+
+.testing{
+  background-color: white;
+}
+.emailbg{
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMCAzdjE4aDI0di0xOGgtMjR6bTYuNjIzIDcuOTI5bC00LjYyMyA1LjcxMnYtOS40NThsNC42MjMgMy43NDZ6bS00LjE0MS01LjkyOWgxOS4wMzVsLTkuNTE3IDcuNzEzLTkuNTE4LTcuNzEzem01LjY5NCA3LjE4OGwzLjgyNCAzLjA5OSAzLjgzLTMuMTA0IDUuNjEyIDYuODE3aC0xOC43NzlsNS41MTMtNi44MTJ6bTkuMjA4LTEuMjY0bDQuNjE2LTMuNzQxdjkuMzQ4bC00LjYxNi01LjYwN3oiLz48L3N2Zz4=");
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-origin: content-box;
+  background-size: 6%;
+  padding-left: 80px; 
+  fill: #8b8b8b;
+  stroke: #8b8b8b;
+}
+
+.passwordbg{
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMTggMTB2LTRjMC0zLjMxMy0yLjY4Ny02LTYtNnMtNiAyLjY4Ny02IDZ2NGgtM3YxNGgxOHYtMTRoLTN6bS0xMC00YzAtMi4yMDYgMS43OTQtNCA0LTRzNCAxLjc5NCA0IDR2NGgtOHYtNHptMTEgMTZoLTE0di0xMGgxNHYxMHoiLz48L3N2Zz4=");
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-origin: content-box;
+  padding-left: 100px; 
+  fill: #8b8b8b;
+  stroke: #8b8b8b;
+  stroke-width: 1px;
+}
+
+
+input::placeholder {
+  padding: 32px; /* Adjust the padding value as desired */
+}
+
+.align-left{
+  text-align: left;
+}
+
+.subtitle {
+  color: #8b8b8b;
 }
 
 .login-wrapper {
@@ -20,9 +70,9 @@
 }
 
 .signup-cover-img {
-  display: block;
-  width: 100%;
-  /* height: 100%; */
+  width: 120vw;
+  height: 30vh;
+  z-index: -5;
 }
 
 .login.form,
@@ -32,7 +82,7 @@
   width: 100%;
   padding: 30px;
   border-radius: 6px;
-  background: #fff;
+  /* background: #fff; */
   /* border-top-left-radius: 8%;
   border-top-right-radius: 8%; */
 }
@@ -176,10 +226,18 @@ a.google span {
     height: 100%;
     position: absolute;
   }
+  .login-container{
+    background-image: url("../assets/cityscape.jpeg");
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
   .cover-img-wrapper {
     height: 20px;
   }
-
+.displayimg{
+  visibility: hidden;
+}
   .login-wrapper {
     flex-direction: row;
   }

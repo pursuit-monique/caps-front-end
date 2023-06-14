@@ -17,26 +17,16 @@ function App() {
     <AuthProvider>
       <div className="app ">
         <Router>
-          {/* <Navbar /> */}
           <Routes>
-            {/* <Route path="/" element={<Welcome />} /> */}
-
             <Route element={<PrivateRoutes />}>
               <Route path="/index" element={<Home />} exact />
               <Route path="/event/:id" element={<Event />} />
               <Route path="/event2/:id" element={<Event2 />} />
               <Route path="/new/event" element={<NewEvent />} />
-
-              {/* <Route path="/new" element={<New />} />
-            <Route path="/cars/:id" element={<ShowCar />} />
-            <Route path="/cars/:id/edit" element={<EditCar />} />
-            <Route path="/collections/:id" element={<ShowCollection />} />
-            <Route path="/collections/:id/edit" element={<EditCollection />} /> */}
             </Route>
 
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
-            {/* <Route path="*" element={<NotFound />} /> */}
           </Routes>
         </Router>
       </div>
@@ -45,4 +35,3 @@ function App() {
 }
 
 export default App;
-
