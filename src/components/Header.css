@@ -1,20 +1,39 @@
-
 .header {
   color: var(--text-color);
   font-weight: bold;
   font-family: "Hammersmith One", sans-serif;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 10px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  /* max-width: 1200px; */
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
-.header .logo {
-  height: 20px;
+.navbar-brand {
+  color: var(--text-color);
+  font-weight: bold;
+  font-family: "Hammersmith One", sans-serif;
+  font-size: 1.4rem;
 }
 
-.header .avatar {
+.header .logo,
+.logo {
+  height: auto;
+  padding: 3px;
+  border-radius: 50%;
+  width: 40px;
+  margin-bottom: 3px;
+}
+
+.header .avatar,
+.avatar {
   border-radius: 50%;
   height: 35px;
 }

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { registerWithEmailAndPassword } from "../firebase/auth";
 import "./Signup.css";
@@ -6,13 +7,15 @@ import "./Signup.css";
 function Signup() {
   const navigate = useNavigate();
   const [user, setUser] = useState({
-    name: "",
+    f_name: "",
+    l_name: "",
     email: "",
     password: "",
   });
 
   async function handleSubmit(e) {
     e.preventDefault();
+    const API = process.env.REACT_APP_BACKEND_URL;
     const firebaseUser = await registerWithEmailAndPassword(
       user.name,
       user.email,
@@ -20,6 +23,13 @@ function Signup() {
     );
     console.log(firebaseUser);
     localStorage.setItem("user", JSON.stringify(firebaseUser));
+    await axios.post(`${API}/users`, {
+      id: firebaseUser.uid,
+      email: user.email,
+      f_name: user.f_name,
+      l_name: user.l_name,
+      user_profile_link: "https://i.pravatar.cc/300",
+    });
     navigate("/index");
   }
 
@@ -37,10 +47,19 @@ function Signup() {
             <div className="field input-field">
               <input
                 type="text"
-                placeholder="Name"
+                placeholder="First Name"
                 className="input"
-                value={user.name}
-                onChange={(e) => setUser({ ...user, name: e.target.value })}
+                value={user.f_name}
+                onChange={(e) => setUser({ ...user, f_name: e.target.value })}
+              />
+            </div>
+            <div className="field input-field">
+              <input
+                type="text"
+                placeholder="Last Name"
+                className="input"
+                value={user.l_name}
+                onChange={(e) => setUser({ ...user, l_name: e.target.value })}
               />
             </div>
             <div className="field input-field">
