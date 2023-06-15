@@ -69,11 +69,24 @@ function Event2() {
   function joinLive(viewerCode) {
     navigate("/live/" + viewerCode);
   }
-
+const eventFormat = event.address.split(',');
+const formattedEventAddress = `${eventFormat[0]}, ${eventFormat[1]}, ${eventFormat[2]}, ${event.zip}`
   return (
+    <container 
+    style={{
+      width: '100vw',
+      height: '100vh',
+      backgroundImage:`url(${cityscape})`,
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'cover',
+    backgroundAttachment: 'fixed',
+}}>
     <div 
     className="container nomargin"
-    // style={{backgroundImage:`url(${cityscape})`}}
+    // style={{backgroundImage:`url(${cityscape})`,
+    // backgroundRepeat: 'no-repeat',
+    // backgroundSize: 'cover',
+    // backgroundAttachment: 'fixed'}}
     >
       {/* <Header /> */}
       <div className="row gx-4 gx-lg-5 my-5">
@@ -107,7 +120,8 @@ function Event2() {
             {/* <div className="event-title-wrapper" style={{backgroundColor: cause[event.cause_id][1]}}> */}
               <h3 className="event-title" style={{ marginLeft: '20px', marginTop: '2px'}}>{event.title}</h3>
             </div>
-            <div className="event-creator-container">
+            <p style={{textAlign: 'right', color: '#545454', fontSize: "small", marginTop: '8px'}}><em>{formattedEventAddress}</em></p>
+            <div className="event-creator-container" style={{paddingTop: '8px', marginTop: '8px'}}>
               <img
                 className="avatar organizer"
                 src={event.user_profile_link}
@@ -124,6 +138,7 @@ function Event2() {
                 </ul>
               </div>
             </div>
+
             <p className="event-description" style={{borderLeft: `2px solid ${event.cause_id === 'undefined' ? cause[event.cause_id][1] : '#03bdd6'} `, marginLeft: '16px'}}>{event.description}</p>
             <p className="event-date">
               {/* Date: {dateHandler(event.date, event.time).eventdate}  
@@ -236,7 +251,9 @@ function Event2() {
         </container>
       </div>
     </div>
+    </container>
   );
+
 }
 
 export default Event2;
