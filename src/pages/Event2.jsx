@@ -2,16 +2,18 @@ import { useState, useEffect, useContext } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import { AuthContext } from "../context/AuthContext";
-
+import Loader from "../components/Loader";
 function Event2() {
-  // const API = process.env.REACT_APP_BACKEND_URL;
+  const API = process.env.REACT_APP_BACKEND_URL;
   // const API = "https://happn.onrender.com";
-  const API = process.env.REACT_APP_LOCAL_BACKEND;
+  // const API = process.env.REACT_APP_LOCAL_BACKEND;
   const { currentUser } = useContext(AuthContext);
   const { id } = useParams();
   const navigate = useNavigate();
   const [event, setEvent] = useState("");
   const [livestreams, setLivestreams] = useState([]);
+  const [loading, setLoading] = useState(false);
+
   console.log("backend", API);
   // get event details
   useEffect(() => {
@@ -45,13 +47,13 @@ function Event2() {
   }
 
   async function handleLive() {
-    // const roomCodes = await axios.post(`${API}/live/create-room`);
+    setLoading(true);
     const res = await axios.post(`${API}/live/create-room`, {
       event_id: event.id,
       streamer_user_id: currentUser.uid,
     });
-    // add user info to backend here
-    // const broadcasterCode = await res.data.roomCodes.data[0].code;
+    setLoading(false);
+
     console.log("response", res);
     const broadcasterCode = await res.data.broadcaster_code;
     // console.log(broadcasterCode);
@@ -64,7 +66,7 @@ function Event2() {
 
   return (
     <div className="container">
-      {/* <Header /> */}
+      {loading && <Loader />}
       <div className="row gx-4 gx-lg-5 my-5">
         <div className="col-md-7">
           {/* <img
