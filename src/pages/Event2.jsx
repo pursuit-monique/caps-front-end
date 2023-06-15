@@ -4,8 +4,8 @@ import ShareThis from "../components/helpers/ShareThis"
 import axios from "axios"; 
 import { AuthContext } from "../context/AuthContext";
 
-import {cause, iconList, tempData} from "../components/helpers/objects"
-import {checkin, dateHandler} from "../components/helpers/functions"
+import {cause, tempData} from "../components/helpers/objects"
+// import {checkin, dateHandler} from "../components/helpers/functions"
 import './Event.css';
 import '../custom.css';
 import cityscape from "../assets/cityscape.jpeg"
@@ -74,6 +74,7 @@ const formattedEventAddress =  eventFormat ? `${eventFormat[0]}, ${eventFormat[1
   return (
     <container 
     style={{
+      display: 'fixed',
       width: '100vw',
       height: '100vh',
       backgroundImage:`url(${cityscape})`,
@@ -124,7 +125,7 @@ const formattedEventAddress =  eventFormat ? `${eventFormat[0]}, ${eventFormat[1
             <div className="event-creator-container" style={{paddingTop: '8px', marginTop: '8px'}}>
               <img
                 className="avatar organizer"
-                src={event.user_profile_link}
+                src={event.user_profile_link || "https://t3.ftcdn.net/jpg/03/53/11/00/360_F_353110097_nbpmfn9iHlxef4EDIhXB1tdTD0lcWhG9.jpg"}
                 alt="Avatar"
               />
               <p>
@@ -132,8 +133,10 @@ const formattedEventAddress =  eventFormat ? `${eventFormat[0]}, ${eventFormat[1
               </p>
 
               <div className="event-categories">
-                <ul>
-                  <li style={{backgroundColor: `${event.cause_id === 'undefined' ? cause[event.cause_id][1] : '#03bdd6'}`}}>{ event ? cause[event.cause_id][0] : 'blah'}</li>
+                <ul 
+                // style={{ marginLeft: '88px'}}
+                >
+                  <li style={{backgroundColor: `${event.cause_id === 'undefined' ? cause[event.cause_id][1] : '#03bdd6'}`, marginBottom: '8px'}}>{ event ? cause[event.cause_id][0] : 'blah'}</li>
                   <li>{event.category}</li>
                 </ul>
               </div>
