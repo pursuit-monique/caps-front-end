@@ -120,7 +120,7 @@ const formattedEventAddress =  eventFormat ? `${eventFormat[0]}, ${eventFormat[1
             {/* <div className="event-title-wrapper" style={{backgroundColor: cause[event.cause_id][1]}}> */}
               <h3 className="event-title" style={{ marginLeft: '20px', marginTop: '2px'}}>{event.title}</h3>
             </div>
-            <p style={{textAlign: 'right', color: '#545454', fontSize: "small", marginTop: '8px'}}><em>{formattedEventAddress}</em></p>
+            <p style={{textAlign: 'right', color: '#545454', fontSize: "small", marginTop: '8px', marginRight: '8px'}}><em>{formattedEventAddress}</em></p>
             <div className="event-creator-container" style={{paddingTop: '8px', marginTop: '8px'}}>
               <img
                 className="avatar organizer"
