@@ -176,7 +176,7 @@ const formattedEventAddress = `${eventFormat[0]}, ${eventFormat[1]}, ${eventForm
             </div>
           </div>
         </div>
-        <h4 style={{marginTop: '30px', marginBottom: '30px'}}>Live Streams : {livestreams.length} </h4>
+        <h4 style={{marginTop: '30px', marginBottom: '30px'}}><span class="bordered-text">Live Streams : {livestreams.length} </span></h4>
         <container className="container d-flex flex-column overflow-auto">
         {livestreams.map((live, index) => {
 
