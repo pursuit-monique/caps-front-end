@@ -9,6 +9,8 @@ import Legend from "./Legend"
 import Categories from "./Categories"
 import CategoriesCounter from "./CategoriesCounter";
 
+import { tempData } from "./helpers/objects";
+
 import '../custom.css';
 
 const API = process.env.REACT_APP_BACKEND_URL;
@@ -100,11 +102,11 @@ export default function Events() {
             console.warn("catch", c);
             setIsLoaded(false);
           });
-      }, []);
+      }, [category]);
 
       console.log(currEvents)
 
-
+      // if (currEvents.length < 2) setCurrEvents(tempData);
     return (
     <> 
     {/* random add to test env variables and force new deploy AGAIN */}

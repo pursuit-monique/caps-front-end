@@ -3,6 +3,19 @@
   width: 100%;
 }
 
+.organizer{
+  border: 2px solid #545454;
+}
+
+.nomargin{
+  margin: 0px;
+  padding: 0px;
+}
+
+.event-details-container{
+ background-color: #eee;
+}
+
 .event-img-wrapper {
   width: 100%;
   min-height: 250px;

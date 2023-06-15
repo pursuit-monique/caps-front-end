@@ -1,12 +1,19 @@
 import { useState, useEffect, useContext } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
-import axios from "axios";
+import ShareThis from "../components/helpers/ShareThis"
+import axios from "axios"; 
 import { AuthContext } from "../context/AuthContext";
+
+import {cause, iconList, tempData} from "../components/helpers/objects"
+import {checkin, dateHandler} from "../components/helpers/functions"
+import './Event.css';
+import '../custom.css';
+import cityscape from "../assets/cityscape.jpeg"
 
 function Event2() {
   // const API = process.env.REACT_APP_BACKEND_URL;
   // const API = "https://happn.onrender.com";
-  const API = process.env.REACT_APP_LOCAL_BACKEND;
+  const API = process.env.REACT_APP_BACKEND_URL;
   const { currentUser } = useContext(AuthContext);
   const { id } = useParams();
   const navigate = useNavigate();
@@ -21,7 +28,8 @@ function Event2() {
         console.log(res.data);
         setEvent(res.data);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => { setEvent(tempData[id -1])
+        console.log(event)});
 
     // get live streams by event id
     axios
@@ -63,7 +71,10 @@ function Event2() {
   }
 
   return (
-    <div className="container">
+    <div 
+    className="container nomargin"
+    // style={{backgroundImage:`url(${cityscape})`}}
+    >
       {/* <Header /> */}
       <div className="row gx-4 gx-lg-5 my-5">
         <div className="col-md-7">
@@ -76,6 +87,7 @@ function Event2() {
             className="img-fluid rounded mb-4 mb-lg-0"
             // src="https://picsum.photos/400/300"
             src={event.img_link}
+            style={{backgroundColor: "white", borderRadius: '10px', border: '1px solid rgb(204, 210, 219)', boxShadow: '0 0 5px 2px rgba(0, 0, 0, 0.2)'}}
             alt="event cover"
           />
         </div>
@@ -90,14 +102,15 @@ function Event2() {
           <a className="btn btn-primary" href="#!">
             Call to Action!
           </a> */}
-          <div className="event-details-container">
-            <div className="event-title-wrapper">
-              <h3 className="event-title">{event.title}</h3>
+          <div className="event-details-container"   style={{backgroundColor: "white", borderRadius: '10px', border: '1px solid rgb(204, 210, 219)', boxShadow: '0 0 5px 2px rgba(0, 0, 0, 0.2)'}}>
+            <div className="event-title-wrapper" style={{backgroundColor: `${event.cause_id === 'undefined' ? cause[event.cause_id][1] : '#03bdd6'}}`, borderRadius: '10px 10px 0px 0px'}}>
+            {/* <div className="event-title-wrapper" style={{backgroundColor: cause[event.cause_id][1]}}> */}
+              <h3 className="event-title" style={{ marginLeft: '20px', marginTop: '2px'}}>{event.title}</h3>
             </div>
             <div className="event-creator-container">
               <img
-                className="avatar"
-                src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp"
+                className="avatar organizer"
+                src={event.user_profile_link}
                 alt="Avatar"
               />
               <p>
@@ -106,18 +119,19 @@ function Event2() {
 
               <div className="event-categories">
                 <ul>
+                  <li style={{backgroundColor: `${event.cause_id === 'undefined' ? cause[event.cause_id][1] : '#03bdd6'}`}}>{ event ? cause[event.cause_id][0] : 'blah'}</li>
                   <li>{event.category}</li>
                 </ul>
               </div>
             </div>
-            <p className="event-description">{event.description}</p>
+            <p className="event-description" style={{borderLeft: `2px solid ${event.cause_id === 'undefined' ? cause[event.cause_id][1] : '#03bdd6'} `, marginLeft: '16px'}}>{event.description}</p>
             <p className="event-date">
-              Date: {event.date?.split("T")[0]} {"  "} Time:{" "}
-              {event.time?.split(":").slice(0, 2).join(":")}
+              {/* Date: {dateHandler(event.date, event.time).eventdate}  
+              {dateHandler(event.date, event.time).eventtime} */}
             </p>
-
             {/* <p className="event-time">Time: {event.time}</p> */}
-            <p>Users Checked In: {event.checked_in_users}</p>
+            <p style={{ marginLeft: '20px', fontSize: "12px"}}>Users Checked In: {event.checked_in_users}</p>
+            <ShareThis description={event.description} title={event.title} image={event.img_link} /> 
             <div className="live-btn-container">
               <div>
                 <div className="live-btn-wrapper">
@@ -148,39 +162,78 @@ function Event2() {
           </div>
         </div>
         <h4>Live Streams : {livestreams.length} </h4>
+        <container className="container d-flex flex-column overflow-auto">
+        {livestreams.map((live, index) => {
 
-        {livestreams.map((live) => {
           return (
-            <div class="card mb-3" style={{ maxWidth: "540px" }}>
-              <div class="row g-3">
-                <div class="col-4 d-flex align-content-center">
-                  <img
-                    src="https://picsum.photos/600/400"
-                    class="img-fluid rounded-start"
-                    alt="..."
-                  />
-                </div>
-                <div class="col-8">
-                  <div class="card-body">
-                    <h5 class="card-title">User Name</h5>
-                    {/* <p class="card-text">
-                      This is a wider card with supporting text
-                    </p> */}
-
-                    <p class="card-text">
-                      <button
-                        class="btn btn-primary"
-                        onClick={() => joinLive(live.viewer_code)}
-                      >
-                        Join Live
-                      </button>
-                    </p>
-                  </div>
-                </div>
-              </div>
+            <div className="cardSize"
+            // style={{marginLeft: '25%'}}
+            >
+              <div className="rowimg">
+                <div className="col-1 imgContainer">
+            <div
+              className="imageContain"
+              style={{
+                backgroundImage: `linear-gradient(to right, transparent 85%, white), url("https://picsum.photos/600/400")`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                }}></div>
             </div>
+      <div className="col constraint">
+          <div className="row-1"><h1 className="title" style={{marginTop: '8px'}}>Stream #{index}</h1></div>
+          <div className="dateInfo" ></div>
+          <div className="row-2 cardInfo">
+         <button
+            className="btn btn-primary"
+            style={{marginLeft: '120px'}}
+            onClick={() => joinLive(live.viewer_code)}
+            >
+            Join Live
+            </button>
+          </div>
+          <div className="row align-items-center">
+          <span className="indicator"></span><img src="https://t3.ftcdn.net/jpg/03/53/11/00/360_F_353110097_nbpmfn9iHlxef4EDIhXB1tdTD0lcWhG9.jpg" alt="name" className="userIcon margin"></img>
+            <div className="col">
+                <div className="row infoText">Username</div>
+                <div className="row orgText infoText"></div>
+            </div>
+            <div className='col-1'></div>
+            <div className="col"></div>
+            </div>
+      </div>
+    </div>
+    </div>
+            // <div class="card mb-3" style={{ maxWidth: "540px" }}>
+            //   <div class="row g-3">
+            //     <div class="col-4 d-flex align-content-center">
+            //       <img
+            //         src="https://picsum.photos/600/400"
+            //         class="img-fluid rounded-start"
+            //         alt="..."
+            //       />
+            //     </div>
+            //     <div class="col-8">
+            //       <div class="card-body">
+            //         <h5 class="card-title">User Name</h5>
+            //         {/* <p class="card-text">
+            //           This is a wider card with supporting text
+            //         </p> */}
+
+            //         <p class="card-text">
+            //           <button
+            //             class="btn btn-primary"
+            //             onClick={() => joinLive(live.viewer_code)}
+            //           >
+            //             Join Live
+            //           </button>
+            //         </p>
+            //       </div>
+            //     </div>
+            //   </div>
+            // </div>
           );
         })}
+        </container>
       </div>
     </div>
   );
