@@ -69,8 +69,8 @@ function Event2() {
   function joinLive(viewerCode) {
     navigate("/live/" + viewerCode);
   }
-const eventFormat = event.address.split(',');
-const formattedEventAddress = `${eventFormat[0]}, ${eventFormat[1]}, ${eventFormat[2]}, ${event.zip}`
+const eventFormat = event ? event.address.split(',') : '';
+const formattedEventAddress =  eventFormat ? `${eventFormat[0]}, ${eventFormat[1]}, ${eventFormat[2]}, ${event.zip}` : ''
   return (
     <container 
     style={{
@@ -90,7 +90,7 @@ const formattedEventAddress = `${eventFormat[0]}, ${eventFormat[1]}, ${eventForm
     >
       {/* <Header /> */}
       <div className="row gx-4 gx-lg-5 my-5">
-        <div className="col-md-7">
+        <div className="col-md-7 align-middle">
           {/* <img
             className="img-fluid rounded mb-4 mb-lg-0"
             src="https://dummyimage.com/900x400/dee2e6/6c757d.jpg"
