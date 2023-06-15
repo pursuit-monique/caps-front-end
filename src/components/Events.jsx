@@ -11,7 +11,7 @@ import CategoriesCounter from "./CategoriesCounter";
 
 import '../custom.css';
 
-const API = process.env.REACT_APP_EVENTS_URL;
+const API = process.env.REACT_APP_BACKEND_URL;
 
 export default function Events() {
     const [isLoaded, setIsLoaded] = useState(false);
