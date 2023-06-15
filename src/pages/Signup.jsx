@@ -2,6 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { registerWithEmailAndPassword } from "../firebase/auth";
+import cityscape from "../assets/cityscape.jpeg"
 import "./Signup.css";
 
 function Signup() {
@@ -34,13 +35,13 @@ function Signup() {
   }
 
   return (
-    <section className="signup-container forms">
+    <section className="login-container forms">
       <img
-        src="../assets/cityscape.jpeg"
+        src={cityscape}
         alt="houses"
-        className="signup-cover-img"
+        className="signup-cover-img displayimg"
       />
-      <div className="form signup">
+      <div className="form signup testing">
         <div className="form-content">
           <header>Signup</header>
           <form onSubmit={handleSubmit}>
