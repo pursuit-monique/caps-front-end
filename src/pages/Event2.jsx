@@ -161,7 +161,7 @@ function Event2() {
             </div>
           </div>
         </div>
-        <h4>Live Streams : {livestreams.length} </h4>
+        <h4 style={{marginTop: '30px', marginBottom: '30px'}}>Live Streams : {livestreams.length} </h4>
         <container className="container d-flex flex-column overflow-auto">
         {livestreams.map((live, index) => {
 
@@ -185,7 +185,7 @@ function Event2() {
           <div className="row-2 cardInfo">
          <button
             className="btn btn-primary"
-            style={{marginLeft: '120px'}}
+            style={{marginLeft: '30%'}}
             onClick={() => joinLive(live.viewer_code)}
             >
             Join Live
