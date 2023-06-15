@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from "react";
-import { useParams, useNavigate, Link } from "react-router-dom";
+import { useParams, useNavigate} from "react-router-dom";
 import ShareThis from "../components/helpers/ShareThis"
 import axios from "axios"; 
 import { AuthContext } from "../context/AuthContext";
@@ -29,7 +29,8 @@ function Event2() {
         setEvent(res.data);
       })
       .catch((err) => { setEvent(tempData[id -1])
-        console.log(event)});
+        // console.log(event)
+      });
 
     // get live streams by event id
     axios

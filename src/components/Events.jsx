@@ -9,7 +9,7 @@ import Legend from "./Legend"
 import Categories from "./Categories"
 import CategoriesCounter from "./CategoriesCounter";
 
-import { tempData } from "./helpers/objects";
+// import { tempData } from "./helpers/objects";
 
 import '../custom.css';
 
