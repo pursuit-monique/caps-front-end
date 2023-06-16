@@ -2,13 +2,11 @@ import { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { signInWithGoogle, logInWithEmailAndPassword } from "../firebase/auth";
-import cityscape from "../assets/cityscape.jpeg";
+import cityscape from "../assets/cityscape.jpeg"
 import "./Login.css";
-import Loader from "../components/Loader";
 
 export default function SignupLogin() {
   const [user, setUser] = useState({ email: "", password: "" });
-  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const API = process.env.REACT_APP_BACKEND_URL;
   // const API = "https://happn.onrender.com";
@@ -16,7 +14,6 @@ export default function SignupLogin() {
   console.log("backend", API);
   async function googleLogin() {
     try {
-      setLoading(true);
       const firebaseUser = await signInWithGoogle();
       localStorage.setItem("user", JSON.stringify(firebaseUser));
       console.log("firebaseUser in login", firebaseUser);
@@ -27,27 +24,23 @@ export default function SignupLogin() {
         l_name: firebaseUser.displayName.split(" ")[1],
         user_profile_link: "",
       });
-      setLoading(false);
       navigate("/index");
     } catch (error) {
-      setLoading(false);
       console.log(error.message);
       alert(error.message);
     }
   }
 
   async function emailLogin() {
-    setLoading(true);
     try {
       const firebaseUser = await logInWithEmailAndPassword(
         user.email,
         user.password
       );
       localStorage.setItem("user", JSON.stringify(firebaseUser));
-      setLoading(false);
+
       navigate("/index");
     } catch (error) {
-      setLoading(false);
       console.log(error.message);
       alert(error.message);
     }
@@ -60,7 +53,6 @@ export default function SignupLogin() {
 
   return (
     <section className="login-container forms">
-      {loading && <Loader />}
       <div className="login-wrapper">
         <img
           src={cityscape}

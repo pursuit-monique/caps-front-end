@@ -9,7 +9,6 @@ import GooglePlacesAutocomplete, {
   geocodeByPlaceId,
 } from "react-google-places-autocomplete";
 import { AuthContext } from "../context/AuthContext";
-import Loader from "../components/Loader";
 
 function NewEvent() {
   const { currentUser } = useContext(AuthContext);
@@ -21,7 +20,6 @@ function NewEvent() {
     time: "",
     category: "",
   });
-  const [loading, setLoading] = useState(false);
 
   const [value, setValue] = useState(null);
   const [image, setImage] = useState(null);
@@ -61,7 +59,6 @@ function NewEvent() {
     const API = process.env.REACT_APP_LOCAL_BACKEND;
     // const API = "https://happn.onrender.com";
     console.log("API", API);
-    setLoading(true);
     try {
       const geo = await getLatLongFromAddress();
       const imageURL = await uploadImage();
@@ -79,9 +76,7 @@ function NewEvent() {
 
       const res = await axios.post(`${API}/events`, newEvent);
       console.log("response from backend after event submit", res);
-      setLoading(false);
     } catch (err) {
-      setLoading(false);
       console.log(err);
     }
   }
@@ -89,7 +84,6 @@ function NewEvent() {
   return (
     <>
       <div className="container event-form-container my-4">
-        {loading && <Loader />}
         <form className="row g-3" onSubmit={handleSubmit}>
           <h3>Create a New Event</h3>
 

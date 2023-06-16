@@ -2,13 +2,11 @@ import { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { registerWithEmailAndPassword } from "../firebase/auth";
-import cityscape from "../assets/cityscape.jpeg";
+import cityscape from "../assets/cityscape.jpeg"
 import "./Signup.css";
-import Loader from "../components/Loader";
 
 function Signup() {
   const navigate = useNavigate();
-  const [loading, setLoading] = useState(false);
   const [user, setUser] = useState({
     f_name: "",
     l_name: "",
@@ -18,7 +16,6 @@ function Signup() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    setLoading(true);
     const API = process.env.REACT_APP_BACKEND_URL;
     const firebaseUser = await registerWithEmailAndPassword(
       user.name,
@@ -34,13 +31,11 @@ function Signup() {
       l_name: user.l_name,
       user_profile_link: "https://i.pravatar.cc/300",
     });
-    setLoading(false);
     navigate("/index");
   }
 
   return (
     <section className="login-container forms">
-      {loading && <Loader />}
       <img
         src={cityscape}
         alt="houses"
