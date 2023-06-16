@@ -90,6 +90,7 @@ const formattedEventAddress =  eventFormat ? `${eventFormat[0]}, ${eventFormat[1
     // backgroundSize: 'cover',
     // backgroundAttachment: 'fixed'}}
     >
+      
       {/* <Header /> */}
       <div className="row gx-4 gx-lg-5 my-5">
         <div className="col-md-7 align-middle">

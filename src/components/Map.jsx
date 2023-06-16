@@ -24,7 +24,7 @@ export default function Map({currEvents, mapCenter, setMarkerId, userAgent}) {
 
 
     const { isLoaded } = useLoadScript({
-        googleMapsApiKey: process.env.REACT_APP_GOOGLE_API_KEY,
+        googleMapsApiKey: process.env.REACT_APP_GOOGLEMAP_API_KEY,
       });
 
  
