@@ -50,7 +50,9 @@
 .img-fluid {
   width: 100%;
 }
-
+.pointlessrule{
+  width: 9000%;
+}
 .logo {
   height: auto;
   padding: 3px;
