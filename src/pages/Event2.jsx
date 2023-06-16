@@ -9,9 +9,6 @@ import {cause, tempData} from "../components/helpers/objects"
 import './Event.css';
 import '../custom.css';
 import cityscape from "../assets/cityscape.jpeg"
-import DirectionService from "../components/DirectionService";
-
-
 
 function Event2() {
   // const API = process.env.REACT_APP_BACKEND_URL;
@@ -76,7 +73,9 @@ function Event2() {
 const eventFormat = event ? event.address.split(',') : '';
 const formattedEventAddress =  eventFormat ? `${eventFormat[0]}, ${eventFormat[1]}, ${eventFormat[2]}, ${event.zip}` : ''
   return (
+
     <>
+
     <container 
     style={{
       display: 'fixed',
@@ -260,11 +259,11 @@ const formattedEventAddress =  eventFormat ? `${eventFormat[0]}, ${eventFormat[1
         </container>
       </div>
     </div>
+
 <>
     <DirectionService address={event.address} />
     </>
     </container>
-    </>
   );
 
 }
