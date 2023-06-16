@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Login from "./pages/Login";
 // import Event from "./pages/Event";
-// import MyComponent from "./components/DirectionService";
+// import DirectionService from "./components/DirectionService";
 
 import Signup from "./pages/Signup";
 import Home from "./pages/Home";
@@ -25,7 +25,7 @@ function App() {
           <Routes>
             <Route element={<PrivateRoutes />}>
               <Route path="/" element={<Home />} exact />
-              {/* <Route path="/" element={<MyComponent />} exact /> */}
+              {/* <Route path="/" element={<DirectionService />} exact /> */}
               {/* <Route path="/event/:id" element={<Event />} /> */}
               <Route path="/event/:id" element={<Event2 />} />
               <Route path="/new/event" element={<NewEvent />} />
