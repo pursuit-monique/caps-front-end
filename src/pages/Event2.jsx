@@ -3,6 +3,8 @@ import { useParams, useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import { AuthContext } from "../context/AuthContext";
 import Loader from "../components/Loader";
+import Toast from "../components/Toast";
+
 function Event2() {
   const API = process.env.REACT_APP_BACKEND_URL;
   // const API = "https://happn.onrender.com";
@@ -41,6 +43,7 @@ function Event2() {
         `${API}/events/${event.id}/checkin/${currentUser.uid}`
       );
       console.log(res);
+      window.location.reload(false);
     } catch (err) {
       console.log(err);
     }
