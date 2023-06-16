@@ -24,8 +24,8 @@ function App() {
         <Router>
           <Routes>
             <Route element={<PrivateRoutes />}>
-              <Route path="/" element={<Home />} exact />
-              <Route path="/index" element={<Home />} exact />
+              <Route path="/" element={<Home />} />
+              <Route path="/index" element={<Home />} />
               {/* <Route path="/" element={<DirectionService />} exact /> */}
               {/* <Route path="/event/:id" element={<Event />} /> */}
               <Route path="/event/:id" element={<Event2 />} />
