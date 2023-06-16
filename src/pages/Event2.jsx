@@ -264,6 +264,7 @@ const formattedEventAddress =  eventFormat ? `${eventFormat[0]}, ${eventFormat[1
     <DirectionService address={event.address} />
     </>
     </container>
+    </>
   );
 
 }
