@@ -79,7 +79,19 @@ function Event2() {
 const eventFormat = event ? event.address.split(',') : '';
 const formattedEventAddress =  eventFormat ? `${eventFormat[0]}, ${eventFormat[1]}, ${eventFormat[2]}, ${event.zip}` : ''
   return (
-      
+
+    <>
+    <container 
+    style={{
+      display: 'fixed',
+      width: '100vw',
+      height: '100vh',
+      backgroundImage:`url(${cityscape})`,
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'cover',
+    backgroundAttachment: 'fixed',
+}}>
+
     <div 
     className="container nomargin"
     // style={{backgroundImage:`url(${cityscape})`,
@@ -228,8 +240,12 @@ const formattedEventAddress =  eventFormat ? `${eventFormat[0]}, ${eventFormat[1
       </div>
     </div>
 
-    <DirectionService address={event.address}/>
+<>
+    <DirectionService address={event.address} />
+    </>
+
     </container>
+    </>
   );
 
 }
