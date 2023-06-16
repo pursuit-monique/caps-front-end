@@ -73,6 +73,9 @@ function Event2() {
 const eventFormat = event ? event.address.split(',') : '';
 const formattedEventAddress =  eventFormat ? `${eventFormat[0]}, ${eventFormat[1]}, ${eventFormat[2]}, ${event.zip}` : ''
   return (
+
+    <>
+
     <container 
     style={{
       display: 'fixed',
@@ -256,6 +259,10 @@ const formattedEventAddress =  eventFormat ? `${eventFormat[0]}, ${eventFormat[1
         </container>
       </div>
     </div>
+
+<>
+    <DirectionService address={event.address} />
+    </>
     </container>
   );
 

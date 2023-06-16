@@ -8,7 +8,6 @@ import Home from "./pages/Home";
 import PrivateRoutes from "./components/PrivateRoutes";
 import { AuthProvider } from "./context/AuthContext";
 import About from "./pages/About";
-// import DirectionService from "./components/DirectionService";
 import "./App.css";
 import Event2 from "./pages/Event2";
 import NewEvent from "./pages/NewEvent";

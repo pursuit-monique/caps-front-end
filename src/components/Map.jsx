@@ -24,7 +24,7 @@ export default function Map({currEvents, mapCenter, setMarkerId, userAgent}) {
 
 
     const { isLoaded } = useLoadScript({
-        googleMapsApiKey: process.env.REACT_APP_GOOGLEMAP_API_KEY,
+        googleMapsApiKey: process.env.REACT_APP_GOOGLE_API_KEY,
       });
 
  
@@ -95,7 +95,6 @@ return { event: eventDate, todayDate: today, isRecent: eventDate - today < 60480
 
     console.log(isHovering)
     setMarkerPosition({position: markerPosition.position, "category": `${category}`, "color": color[category], img: img, "title": title, "id": id, "desc": desc});
-    console.log(markerPosition)
   };
 
   const handleMarkerMouseOut = () => {
@@ -234,7 +233,7 @@ return { event: eventDate, todayDate: today, isRecent: eventDate - today < 60480
           <img src={markerPosition.img}  className="offCanvasImg" 
           alt="..." />
           <div className="rightalign">  <span className="badge" style={{backgroundColor:  cause ? cause[markerPosition.id][1] : "black"}}>{ cause ? cause[markerPosition.id][0] : "nothing"}</span> <span className="badge text-bg-secondary">{markerPosition.category}</span></div>
-          <article className="mainArticle" style={{borderLeft:  cause ? `2px solid ${cause[markerPosition.id][1]}` : "1px solid black"}} >{!!markerPosition ? markerPosition?.desc : "stuff"}</article>
+          <article className="mainArticle" style={{borderLeft:  cause ? `2px solid ${cause[markerPosition.id][1]}` : "1px solid black"}} >{markerPosition.desc}</article>
           {checkin(calculateDistance(markerPosition.position?.lat, markerPosition.position?.lng, mapCenter.lat, mapCenter.lng))}
         </div>
       </div>
