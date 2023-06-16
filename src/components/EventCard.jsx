@@ -1,3 +1,5 @@
+
+import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../custom.css';
 
@@ -62,7 +64,7 @@ useEffect(() => {
                 }}></div>
             </div>
       <div className="col constraint">
-          <div className="row-1"><h1 className="title"><img className="margin" src={iconList[event.cause_id][1]} alt="..." />{parseTitle(event.title, userAgent)} {}</h1></div>
+          <div className="row-1"><h1 className="title"><img className="margin" src={iconList[event.cause_id][1]} alt="..." /><Link to={`/event/${event.id}`}>{parseTitle(event.title, userAgent)} </Link></h1></div>
           <div className="dateInfo" style={{
   background: `linear-gradient(to right, white, ${cause[event.cause_id][1]})`,
   backgroundSize: 'cover',
@@ -72,7 +74,7 @@ useEffect(() => {
     {event.description}
           </div>
           <div className="row align-items-center">
-          <span className="indicator"></span><img src={event.user_profile_link || "https://t3.ftcdn.net/jpg/03/53/11/00/360_F_353110097_nbpmfn9iHlxef4EDIhXB1tdTD0lcWhG9.jpg"} alt="name" className="userIcon margin"></img>
+          <span className="indicator"></span><img src={event.user_profile_link || "https://100k-faces.glitch.me/random-image"} alt="name" className="userIcon margin"></img>
             <div className="col">
                 <div className="row infoText">{event.f_name} {event.l_name}</div>
                 <div className="row orgText infoText">Pursuit</div>
