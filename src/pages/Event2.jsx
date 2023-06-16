@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from "react";
-import { useParams, useNavigate} from "react-router-dom";
+import { useParams, useNavigate, Link} from "react-router-dom";
 import ShareThis from "../components/helpers/ShareThis"
 import axios from "axios"; 
 import { AuthContext } from "../context/AuthContext";
@@ -14,14 +14,16 @@ import DirectionService from "../components/DirectionService";
 
 
 function Event2() {
-  // const API = process.env.REACT_APP_BACKEND_URL;
   // const API = "https://happn.onrender.com";
   const API = process.env.REACT_APP_BACKEND_URL;
+  // const API = process.env.REACT_APP_LOCAL_BACKEND;
   const { currentUser } = useContext(AuthContext);
   const { id } = useParams();
   const navigate = useNavigate();
   const [event, setEvent] = useState("");
   const [livestreams, setLivestreams] = useState([]);
+  const [loading, setLoading] = useState(false);
+
   console.log("backend", API);
   // get event details
   useEffect(() => {
@@ -51,19 +53,20 @@ function Event2() {
         `${API}/events/${event.id}/checkin/${currentUser.uid}`
       );
       console.log(res);
+      window.location.reload(false);
     } catch (err) {
       console.log(err);
     }
   }
 
   async function handleLive() {
-    // const roomCodes = await axios.post(`${API}/live/create-room`);
+    setLoading(true);
     const res = await axios.post(`${API}/live/create-room`, {
       event_id: event.id,
       streamer_user_id: currentUser.uid,
     });
-    // add user info to backend here
-    // const broadcasterCode = await res.data.roomCodes.data[0].code;
+    setLoading(false);
+
     console.log("response", res);
     const broadcasterCode = await res.data.broadcaster_code;
     // console.log(broadcasterCode);
@@ -76,6 +79,7 @@ function Event2() {
 const eventFormat = event ? event.address.split(',') : '';
 const formattedEventAddress =  eventFormat ? `${eventFormat[0]}, ${eventFormat[1]}, ${eventFormat[2]}, ${event.zip}` : ''
   return (
+
     <>
     <container 
     style={{
@@ -87,6 +91,7 @@ const formattedEventAddress =  eventFormat ? `${eventFormat[0]}, ${eventFormat[1
     backgroundSize: 'cover',
     backgroundAttachment: 'fixed',
 }}>
+
     <div 
     className="container nomargin"
     // style={{backgroundImage:`url(${cityscape})`,
@@ -96,6 +101,7 @@ const formattedEventAddress =  eventFormat ? `${eventFormat[0]}, ${eventFormat[1
     >
       
       {/* <Header /> */}
+      {loading && <Loader />}
       <div className="row gx-4 gx-lg-5 my-5">
         <div className="col-md-7 align-middle">
           {/* <img
@@ -227,42 +233,17 @@ const formattedEventAddress =  eventFormat ? `${eventFormat[0]}, ${eventFormat[1
       </div>
     </div>
     </div>
-            // <div class="card mb-3" style={{ maxWidth: "540px" }}>
-            //   <div class="row g-3">
-            //     <div class="col-4 d-flex align-content-center">
-            //       <img
-            //         src="https://picsum.photos/600/400"
-            //         class="img-fluid rounded-start"
-            //         alt="..."
-            //       />
-            //     </div>
-            //     <div class="col-8">
-            //       <div class="card-body">
-            //         <h5 class="card-title">User Name</h5>
-            //         {/* <p class="card-text">
-            //           This is a wider card with supporting text
-            //         </p> */}
-
-            //         <p class="card-text">
-            //           <button
-            //             class="btn btn-primary"
-            //             onClick={() => joinLive(live.viewer_code)}
-            //           >
-            //             Join Live
-            //           </button>
-            //         </p>
-            //       </div>
-            //     </div>
-            //   </div>
-            // </div>
+        
           );
         })}
         </container>
       </div>
     </div>
+
 <>
     <DirectionService address={event.address} />
     </>
+
     </container>
     </>
   );
