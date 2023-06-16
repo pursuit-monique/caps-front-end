@@ -1,14 +1,11 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Login from "./pages/Login";
-// import Event from "./pages/Event";
-// import MyComponent from "./components/DirectionService";
-
+import Event from "./pages/Event";
 import Signup from "./pages/Signup";
 import Home from "./pages/Home";
 import PrivateRoutes from "./components/PrivateRoutes";
 import { AuthProvider } from "./context/AuthContext";
 import About from "./pages/About";
-// import DirectionService from "./components/DirectionService";
 import "./App.css";
 import Event2 from "./pages/Event2";
 import NewEvent from "./pages/NewEvent";
@@ -24,8 +21,7 @@ function App() {
         <Router>
           <Routes>
             <Route element={<PrivateRoutes />}>
-              <Route path="/" element={<Home />} exact />
-              {/* <Route path="/" element={<MyComponent />} exact /> */}
+              <Route path="/index" element={<Home />} exact />
               {/* <Route path="/event/:id" element={<Event />} /> */}
               <Route path="/event/:id" element={<Event2 />} />
               <Route path="/new/event" element={<NewEvent />} />

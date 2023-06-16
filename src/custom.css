@@ -5,21 +5,6 @@
     margin-right: 20px;
 }
 
-.bordered-text {
-    display: inline-block;
-    padding-bottom: 4px;
-    position: relative;
-  }
-  
-  .bordered-text::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 120%;
-    height: 2px;
-    background-color: #03bdd6;
-  }
 
 .topnav {
     overflow: hidden;

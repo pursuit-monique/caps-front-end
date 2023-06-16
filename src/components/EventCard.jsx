@@ -1,5 +1,3 @@
-
-import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../custom.css';
 
@@ -64,7 +62,7 @@ useEffect(() => {
                 }}></div>
             </div>
       <div className="col constraint">
-          <div className="row-1"><h1 className="title"><img className="margin" src={iconList[event.cause_id][1]} alt="..." /><Link to={`/event/${event.id}`}>{parseTitle(event.title, userAgent)} </Link></h1></div>
+          <div className="row-1"><h1 className="title"><img className="margin" src={iconList[event.cause_id][1]} alt="..." />{parseTitle(event.title, userAgent)} {}</h1></div>
           <div className="dateInfo" style={{
   background: `linear-gradient(to right, white, ${cause[event.cause_id][1]})`,
   backgroundSize: 'cover',
