@@ -131,7 +131,7 @@ return { event: eventDate, todayDate: today, isRecent: eventDate - today < 60480
             mapContainerClassName="map-container"
             center={mapCenter}
             zoom={12}
-            options={{mapId: 'c3bdb902aa4cda31'}}
+            options={{mapId: 'c3bdb902aa4cda31', gestureHandling: 'none', zoomControl: false, disableDefaultUI: true}}
             gestureHandling="none"
           >
             
@@ -177,7 +177,7 @@ return { event: eventDate, todayDate: today, isRecent: eventDate - today < 60480
               // animation={marker.title === bounceToggle.title ? window.google.maps.Animation.BOUNCE : null}
               
               icon={{
-                url: marker.user_profile_link || "https://t3.ftcdn.net/jpg/03/53/11/00/360_F_353110097_nbpmfn9iHlxef4EDIhXB1tdTD0lcWhG9.jpg",
+                url: marker.user_profile_link || "https://100k-faces.glitch.me/random-image",
                 scaledSize: new window.google.maps.Size(40, 40),
 
 

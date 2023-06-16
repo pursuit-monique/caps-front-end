@@ -9,6 +9,9 @@ import {cause, tempData} from "../components/helpers/objects"
 import './Event.css';
 import '../custom.css';
 import cityscape from "../assets/cityscape.jpeg"
+import DirectionService from "../components/DirectionService";
+
+
 
 function Event2() {
   // const API = "https://happn.onrender.com";
@@ -225,6 +228,8 @@ const formattedEventAddress =  eventFormat ? `${eventFormat[0]}, ${eventFormat[1
       </div>
     </div>
 
+    <DirectionService address={event.address}/>
+    </container>
   );
 
 }
