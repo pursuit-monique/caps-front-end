@@ -8,9 +8,11 @@ import Legend from "./Legend";
 import Categories from "./Categories";
 import CategoriesCounter from "./CategoriesCounter";
 
-import "../custom.css";
+// import { tempData } from "./helpers/objects";
 
-const API = process.env.REACT_APP_EVENTS_URL;
+import '../custom.css';
+
+const API = process.env.REACT_APP_BACKEND_URL;
 
 export default function Events() {
   const [isLoaded, setIsLoaded] = useState(false);
