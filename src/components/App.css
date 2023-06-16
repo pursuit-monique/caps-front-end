@@ -3,6 +3,23 @@
   /* height: 75vh; */
 }
 
+a{
+  text-decoration: none;
+  color:#545454;
+}
+
+.gm-style div div div img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  /* border: 8px solid red; */
+}
+.directions{
+  width: 50vw;
+  height: 50vh;
+  overflow: hidden;
+}
+
 .margintop{
   margin-top: 3px;
 }
@@ -152,11 +169,11 @@ margin-top: 2px;
 padding: 4px;
 }
 
-div[aria-label="Map"] img{
+/* div[aria-label="Map"] img{
   border-radius: 100%;
   border: solid 2px #f96570
 
-}
+} */
 
 
 div[title="Disability"]{
