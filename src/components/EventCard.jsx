@@ -52,7 +52,7 @@ useEffect(() => {
       // };
       let {eventdate, eventtime} = dateHandler(event.date, event.time);
       return (
-      <div className="cardSize">
+      <div className="cardSize" key={event.id}>
               <div className="rowimg">
                 <div className="col-1 imgContainer">
             <div
