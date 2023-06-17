@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import location from "../assets/pin.png";
+import { logout } from "../firebase/auth";
 import "./Header.css";
 
 function Navbar2() {
@@ -31,7 +32,7 @@ function Navbar2() {
           /> */}
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul className="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4 ">
+          <ul className="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
             <li className="nav-item">
               <Link className="nav-link active" aria-current="page" to="/index">
                 Home
@@ -89,13 +90,16 @@ function Navbar2() {
               </span>
             </button>
           </form> */}
-          {/* <div className="d-flex">
-            <img
+          <div className="d-flex">
+            {/* <img
               className="avatar"
               src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp"
               alt="Avatar"
-            />
-          </div> */}
+            /> */}
+            <button className="btn btn-outline-secondary" onClick={logout}>
+              Logout
+            </button>
+          </div>
         </div>
       </div>
     </nav>
