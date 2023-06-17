@@ -392,16 +392,16 @@ padding: 0px;
     }
 
   .button{
-    top: 80%;
+    top: 73%;
     right: 45%;
   }
 
   .categories-bar{
-    top: 72%;
+    top: 66%;
   }
 
   .counter{
-    top: 75%;
+    top: 69%;
   }
 
   .map-container{
@@ -411,7 +411,7 @@ padding: 0px;
     margin: 0px;
     border: none;
     width: 100vw;
-    height: 30vh;
+    height: 65vh;
     margin-bottom: 8px;
   }
 }
