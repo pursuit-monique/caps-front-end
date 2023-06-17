@@ -29,17 +29,17 @@ export default function Map({currEvents, mapCenter, setMarkerId, userAgent}) {
 
  
 
-      currEvents.forEach(event => {
-        const currDate = new Date (event.date);
-        const today = new Date();
+//       currEvents.forEach(event => {
+//         const currDate = new Date (event.date);
+//         const today = new Date();
 
 
-const month = currDate.getMonth() + 1; 
-const date = currDate.getDate();
-const year = currDate.getFullYear();
-const eventDate = new Date(`${month}-${date}-${year}`);
-return { event: eventDate, todayDate: today, isRecent: eventDate - today < 604800000}
-      })
+// const month = currDate.getMonth() + 1; 
+// const date = currDate.getDate();
+// const year = currDate.getFullYear();
+// const eventDate = new Date(`${month}-${date}-${year}`);
+// return { event: eventDate, todayDate: today, isRecent: eventDate - today < 604800000}
+//       })
 
       // const handleMarkerLoad = (marker) => {
       //   // Access the DOM element of the marker
