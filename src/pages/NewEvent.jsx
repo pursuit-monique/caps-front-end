@@ -88,6 +88,7 @@ function NewEvent() {
     }
   }
   console.log(value);
+  
   return (
     <>
       {loading && <Loader />}
