@@ -12,6 +12,7 @@ import "./App.css";
 import Event2 from "./pages/Event2";
 import NewEvent from "./pages/NewEvent";
 import LiveStream from "./pages/LiveStream";
+import SignupLogin from "./pages/Login";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
@@ -23,6 +24,7 @@ function App() {
         <Router>
           <Routes>
             <Route element={<PrivateRoutes />}>
+              <Route path="/" element={<SignupLogin />} />
               <Route path="/index" element={<Home />} />
               {/* <Route path="/" element={<MyComponent />} exact /> */}
               {/* <Route path="/event/:id" element={<Event />} /> */}
