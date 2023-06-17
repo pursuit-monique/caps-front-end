@@ -5,7 +5,7 @@ function Home() {
   return (
     <div className="Home">
       <Events />
-      <button onClick={logout}>Logout</button>
+      {/* <button onClick={logout}>Logout</button> */}
     </div>
   );
 }
