@@ -62,11 +62,11 @@ export default function Events() {
         }
         else if (type === 'Date') {
           
-          return dateHandler(e.date, e.time).isPrevious;
+          return dateHandler(e.date, e.time).isPrevious && e.cause_id === Number(category.id);
           } 
           else if ( type === 'Current'){
-            return dateHandler(e.date, e.time).isRecent;
-            } 
+            return dateHandler(e.date, e.time).isRecent && e.cause_id === Number(category.id);
+            }
       }
           else if (type === 'Date') {
           
