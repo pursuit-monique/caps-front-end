@@ -14,7 +14,7 @@ import NewEvent from "./pages/NewEvent";
 import LiveStream from "./pages/LiveStream";
 
 import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap/dist/js/bootstrap.bundle.min.js";
+// import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
 function App() {
   return (
