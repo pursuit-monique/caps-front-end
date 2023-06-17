@@ -24,7 +24,7 @@ function App() {
         <Router>
           <Routes>
             <Route element={<PrivateRoutes />}>
-              <Route path="/" element={<SignupLogin />} />
+              <Route path="/" element={<Home />} />
               <Route path="/index" element={<Home />} />
               {/* <Route path="/" element={<MyComponent />} exact /> */}
               {/* <Route path="/event/:id" element={<Event />} /> */}
