@@ -268,7 +268,7 @@ function Event2() {
               </div>
             </div>
             <h4 style={{ marginTop: "30px", marginBottom: "30px" }}>
-              <span class="bordered-text">
+              <span className="bordered-text">
                 Live Streams : {livestreams.length}{" "}
               </span>
             </h4>
@@ -323,25 +323,25 @@ function Event2() {
                       </div>
                     </div>
                   </div>
-                  // <div class="card mb-3" style={{ maxWidth: "540px" }}>
-                  //   <div class="row g-3">
-                  //     <div class="col-4 d-flex align-content-center">
+                  // <div className="card mb-3" style={{ maxWidth: "540px" }}>
+                  //   <div className="row g-3">
+                  //     <div className="col-4 d-flex align-content-center">
                   //       <img
                   //         src="https://picsum.photos/600/400"
-                  //         class="img-fluid rounded-start"
+                  //         className="img-fluid rounded-start"
                   //         alt="..."
                   //       />
                   //     </div>
-                  //     <div class="col-8">
-                  //       <div class="card-body">
-                  //         <h5 class="card-title">User Name</h5>
-                  //         {/* <p class="card-text">
+                  //     <div className="col-8">
+                  //       <div className="card-body">
+                  //         <h5 className="card-title">User Name</h5>
+                  //         {/* <p className="card-text">
                   //           This is a wider card with supporting text
                   //         </p> */}
 
-                  //         <p class="card-text">
+                  //         <p className="card-text">
                   //           <button
-                  //             class="btn btn-primary"
+                  //             className="btn btn-primary"
                   //             onClick={() => joinLive(live.viewer_code)}
                   //           >
                   //             Join Live
