@@ -37,7 +37,7 @@ export function checkin(mi = 0) {
 
 //  dateHandler.   inputs expects a date,  outputs an object.
 
-export function dateHandler(eventDate, eventTime) {
+export function dateHandler(eventDate = "12/12/1212", eventTime = "00:00") {
   const currDate = new Date(eventDate);
   const today = new Date();
   const month = currDate.getMonth() + 1;
