@@ -38,7 +38,7 @@ useEffect(() => {
 
     return (
     <>
-      <container className="container d-flex flex-column overflow-auto">
+      <article className="container d-flex flex-column overflow-auto">
     {/* {currEvents
     .filter(event => !!id ? event.id === id : true) */}
     {currCards.current
@@ -52,7 +52,7 @@ useEffect(() => {
       // };
       let {eventdate, eventtime} = dateHandler(event.date, event.time);
       return (
-      <div className="cardSize">
+      <div className="cardSize" key={event.id}>
               <div className="rowimg">
                 <div className="col-1 imgContainer">
             <div
@@ -89,7 +89,7 @@ useEffect(() => {
     </div>
     )})}
 
-            </container> 
+            </article> 
     </>
     )
 }
