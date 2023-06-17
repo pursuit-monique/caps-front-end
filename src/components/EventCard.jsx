@@ -38,7 +38,7 @@ useEffect(() => {
 
     return (
     <>
-      <container className="container d-flex flex-column overflow-auto">
+      <article className="container d-flex flex-column overflow-auto">
     {/* {currEvents
     .filter(event => !!id ? event.id === id : true) */}
     {currCards.current
@@ -89,7 +89,7 @@ useEffect(() => {
     </div>
     )})}
 
-            </container> 
+            </article> 
     </>
     )
 }
