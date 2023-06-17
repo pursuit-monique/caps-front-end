@@ -35,6 +35,23 @@ export default function Events() {
 
     const [userAgent, setUserAgent] = useState("desktop");
 
+
+    useEffect(() => {
+      axios
+        .get(`${API}/events/`)
+        .then((response) =>{ 
+          setCurrEvents(response.data);
+          setIsLoaded(true);
+        })
+
+        .catch((c) =>{ 
+          console.warn("catch", c);
+          setIsLoaded(false);
+        });
+    }, []);
+
+    console.log(currEvents)
+
     useEffect(() => {
       const interval = setInterval(() => {
         if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
@@ -124,21 +141,6 @@ export default function Events() {
 
 
 
-    useEffect(() => {
-        axios
-          .get(`${API}/events/`)
-          .then((response) =>{ 
-            setCurrEvents(response.data);
-            setIsLoaded(true);
-          })
-
-          .catch((c) =>{ 
-            console.warn("catch", c);
-            setIsLoaded(false);
-          });
-      }, [category]);
-
-      console.log(currEvents)
 
       // if (currEvents.length < 2) setCurrEvents(tempData);
     return (
