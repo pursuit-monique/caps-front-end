@@ -7,7 +7,7 @@ import { AuthContext } from "../context/AuthContext";
 import Loader from "../components/Loader";
 
 import { cause, tempData } from "../components/helpers/objects";
-// import {checkin, dateHandler} from "../components/helpers/functions"
+import {dateHandler} from "../components/helpers/functions"
 import "./Event.css";
 import "../custom.css";
 import cityscape from "../assets/cityscape.jpeg";
@@ -79,6 +79,8 @@ function Event2() {
   function joinLive(viewerCode) {
     navigate("/live/" + viewerCode);
   }
+  const {eventdate, eventtime} = dateHandler(event.date, event.time);
+
   const eventFormat = event ? event.address.split(",") : "";
   const formattedEventAddress = eventFormat
     ? `${eventFormat[0]}, ${eventFormat[1]}, ${eventFormat[2]}, ${event.zip}`
@@ -173,7 +175,7 @@ function Event2() {
                     marginRight: "8px",
                   }}
                 >
-                  <em>{formattedEventAddress}</em>
+                  <em>{eventdate} { eventtime} @ {formattedEventAddress}</em>
                 </p>
                 <div
                   className="event-creator-container"
@@ -293,14 +295,14 @@ function Event2() {
                       <div className="col constraint">
                         <div className="row-1">
                           <h1 className="title" style={{ marginTop: "8px" }}>
-                            Stream #{index}
+                            Stream #{index + 1}
                           </h1>
                         </div>
-                        <div className="dateInfo"></div>
-                        <div className="row-2 cardInfo">
+                        {/* <div className="dateInfo"></div> */}
+                        <div className="row-2 livecardInfo" >
                           <button
                             className="btn btn-primary"
-                            style={{ marginLeft: "30%" }}
+                            style={{ marginLeft: "30%", marginTop: '16px'}}
                             onClick={() => joinLive(live.viewer_code)}
                           >
                             Join Live
