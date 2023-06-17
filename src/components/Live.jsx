@@ -8,28 +8,30 @@ export default function Live(live) {
   }
 
   return (
-    <div class="card mb-3" style={{ maxWidth: "540px" }}>
-      <div class="row g-0">
-        <div class="col-4">
+    <div className="card mb-3" style={{ maxWidth: "540px" }}>
+      <div className="row g-0">
+        <div className="col-4">
           <img
             src="https://picsum.photos/600/400"
-            class="img-fluid rounded-start"
+            className="img-fluid rounded-start"
             alt="..."
           />
         </div>
-        <div class="col-8">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">This is a wider card with supporting text</p>
+        <div className="col-8">
+          <div className="card-body">
+            <h5 className="card-title">Card title</h5>
+            <p className="card-text">
+              This is a wider card with supporting text
+            </p>
 
-            <p class="card-text">
+            <p className="card-text">
               <button
-                class="btn btn-primary"
+                className="btn btn-primary"
                 onClick={() => joinLive(live.viewer_code)}
               >
                 Join Live
               </button>
-              {/* <small class="text-muted">Last updated 3 mins ago</small> */}
+              {/* <small className="text-muted">Last updated 3 mins ago</small> */}
             </p>
           </div>
         </div>
