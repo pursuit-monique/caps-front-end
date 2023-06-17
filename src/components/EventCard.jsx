@@ -77,7 +77,7 @@ useEffect(() => {
           <span className="indicator"></span><img src={event.user_profile_link || "https://100k-faces.glitch.me/random-image"} alt="name" className="userIcon margin"></img>
             <div className="col">
                 <div className="row infoText">{event.f_name} {event.l_name}</div>
-                <div className="row orgText infoText">Pursuit</div>
+                <div className="row orgText infoText">Organizer</div>
             </div>
             <div className='col-1'></div>
             <div className="col"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-geo-alt-fill mainColor" viewBox="0 0 16 16">

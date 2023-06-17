@@ -9,6 +9,8 @@ import Legend from "./Legend"
 import Categories from "./Categories"
 import CategoriesCounter from "./CategoriesCounter";
 
+import { dateHandler } from "./helpers/functions";
+
 import '../custom.css';
 
 const API = process.env.REACT_APP_BACKEND_URL;
@@ -27,6 +29,9 @@ export default function Events() {
 
     //Current selected event ID
     const [markerId, setMarkerId] = useState();
+
+    //Set type for filter
+    const [type, setType] = useState('all');
 
     const [userAgent, setUserAgent] = useState("desktop");
 
@@ -50,7 +55,38 @@ export default function Events() {
    const mapType = userAgent === "mobile" ? "order-1 justify-content-center" : "order-2 justify-content-center";
    const eventCardType = userAgent === "mobile" ? "flex-column heightmenu overflow-auto order-2" : "flex-column heightmenu overflow-auto order-1";
 
+   function eventFilter(type, category, dateHandler, e){
+    if(category.id){
+        if (type === "all"){
+          return  e.cause_id === Number(category.id);
+        }
+        else if (type === 'Date') {
+          
+          return dateHandler(e.date, e.time).isPrevious && e.cause_id === Number(category.id);
+          } 
+          else if ( type === 'Current'){
+            return dateHandler(e.date, e.time).isRecent && e.cause_id === Number(category.id);
+            }
+      }
+          else if (type === 'Date') {
+          
+            return dateHandler(e.date, e.time).isPrevious;
+            } 
+
+          else if ( type === 'Current'){
+              return dateHandler(e.date, e.time).isRecent;
+              } 
+
+              else {
+                return true
+              }
+          } 
+        
+      
     
+  
+
+
     function success(pos) {
         const {latitude, longitude} = pos.coords;
         // console.log(longitude)
@@ -109,11 +145,11 @@ export default function Events() {
     <> 
     {/* random add to test env variables and force new deploy AGAIN */}
      {/* top navigation bar */}
-        <Menu /> 
+        <Menu setType={setType} type={type} /> 
 
         {/* Category selection bar */}
         {isLoaded ? <Categories category={category} setCategory={setCategory} setMarkerId={setMarkerId} /> : '' }
-        {isLoaded ? <CategoriesCounter currEvents={currEvents} category={category} /> : '' } 
+        {isLoaded ? <CategoriesCounter currEvents={currEvents.filter( event => eventFilter(type, category, dateHandler, event))} category={category} /> : '' } 
         {/* <Reset setCategory={setCategory} category={category} /> */}
 
         <article className="d-flex flex-wrap body">
@@ -122,7 +158,7 @@ export default function Events() {
 
                 {/* Event card display */}
                 <div className={eventCardType}>
-                    <EventCard currEvents={currEvents.filter( event => !!category.id ? event.cause_id === Number(category.id) : true)} mapCenter={mapCenter} markerId={markerId} userAgent={userAgent} />
+                    <EventCard currEvents={currEvents.filter( event => eventFilter(type, category, dateHandler, event))} mapCenter={mapCenter} markerId={markerId} userAgent={userAgent} />
                 </div>
 
                 {/* Legend:  Is display: hidden on mediaScreen width < 480px */}
@@ -130,7 +166,7 @@ export default function Events() {
 
                 {/* Map display.   */}
                 <div className={mapType}>
-                    <Map currEvents={currEvents.filter( event => !!category.id ? event.cause_id === Number(category.id) : true)} category={category} mapCenter={mapCenter} setMarkerId={setMarkerId} userAgent={userAgent} />
+                    <Map currEvents={currEvents.filter( event => eventFilter(type, category, dateHandler, event))} category={category} mapCenter={mapCenter} setMarkerId={setMarkerId} userAgent={userAgent} />
                 </div>
 
         </article>
