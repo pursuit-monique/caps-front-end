@@ -70,9 +70,9 @@ export default function Events() {
             } else if ( type === 'Current'){
 
               if (!category.id){
-                return dateHandler(e.date, e.time).isPrevious;
+                return dateHandler(e.date, e.time).isRecent;
                 } else {
-                    return dateHandler(e.date, e.time).isPrevious && e.cause_id === Number(category.id);
+                    return dateHandler(e.date, e.time).isRecent && e.cause_id === Number(category.id);
                 }
             } else{
               return true;
@@ -144,7 +144,7 @@ export default function Events() {
 
         {/* Category selection bar */}
         {isLoaded ? <Categories category={category} setCategory={setCategory} setMarkerId={setMarkerId} /> : '' }
-        {isLoaded ? <CategoriesCounter currEvents={currEvents} category={category} /> : '' } 
+        {isLoaded ? <CategoriesCounter currEvents={currEvents.filter( event => eventFilter(type, category, dateHandler, event))} category={category} /> : '' } 
         {/* <Reset setCategory={setCategory} category={category} /> */}
 
         <article className="d-flex flex-wrap body">

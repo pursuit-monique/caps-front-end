@@ -1,9 +1,9 @@
-import {useRef} from "react";
+// import {useRef} from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../custom.css";
 
 export default function Menu({ setType, type }) {
-const isActive = useRef({all: true, Date: false, Current: false});
+// const isActive = useRef({all: true, Date: false, Current: false});
 
   function handleURL(isActive, type, event) {
     if (type === event.target.id) {
@@ -21,7 +21,7 @@ const isActive = useRef({all: true, Date: false, Current: false});
       <div className="topnav">
         <a
           className={(event) => handleURL(type, event)}
-          
+          href="#All"
           id="all"
           onClick={(event) => {
             console.log("all");
@@ -32,7 +32,7 @@ const isActive = useRef({all: true, Date: false, Current: false});
         </a>
         <a
           className={(event) => handleURL(type, event)}
-          
+          href="#Previous"
           id="Date"
           onClick={(event) => {
             console.log("Date");
@@ -43,7 +43,7 @@ const isActive = useRef({all: true, Date: false, Current: false});
         </a>
         <a
           className={(event) => handleURL(type, event)}
-          
+          href="#Current"
           id="Current"
           onClick={(event) => {
             console.log(type === event.target.id);
