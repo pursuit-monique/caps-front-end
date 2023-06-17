@@ -84,6 +84,7 @@ function NewEvent() {
       navigate("/event/" + res.data.id);
     } catch (err) {
       console.log(err);
+      setLoading(false);
     }
   }
   console.log(value);

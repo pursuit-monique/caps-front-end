@@ -72,6 +72,7 @@ function Event2() {
       navigate(`/live/${broadcasterCode}`);
     } catch (error) {
       console.log(error);
+      setLoading(false);
     }
   }
 
