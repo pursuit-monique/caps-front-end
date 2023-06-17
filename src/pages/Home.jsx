@@ -1,5 +1,5 @@
 import Events from "../components/Events";
-import { logout } from "../firebase/auth";
+// import { logout } from "../firebase/auth";
 
 function Home() {
   return (

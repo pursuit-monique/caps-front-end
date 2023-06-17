@@ -5,7 +5,7 @@ import axios from "axios";
 import EventCard from './EventCard';
 import Menu from "./Menu";
 import Map from "./Map"
-import Legend from "./Legend"
+// import Legend from "./Legend"
 import Categories from "./Categories"
 import CategoriesCounter from "./CategoriesCounter";
 
@@ -164,7 +164,7 @@ export default function Events() {
                 </div>
 
                 {/* Legend:  Is display: hidden on mediaScreen width < 480px */}
-                {isLoaded? <Legend category={category}  /> : ''}
+                {/* {isLoaded? <Legend category={category}  /> : ''} */}
 
                 {/* Map display.   */}
                 <div className={mapType}>
