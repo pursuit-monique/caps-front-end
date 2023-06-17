@@ -1,11 +1,14 @@
+import {useRef} from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../custom.css";
 
 export default function Menu({ setType, type }) {
+const isActive = useRef({all: true, Date: false, Current: false});
 
-  function handleURL(type, event) {
+  function handleURL(isActive, type, event) {
     if (type === event.target.id) {
       console.log(type === event.target.id);
+      isActive.current[type] = true;
       return "active";
     } else {
       console.log(type === event.target.id);
