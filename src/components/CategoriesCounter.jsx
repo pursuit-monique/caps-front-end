@@ -13,6 +13,7 @@ export default function CategoriesCounter({ currEvents, category }) {
        }
     };
 
+    console.log(currEvents)
     return (
         <>
         

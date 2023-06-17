@@ -55,29 +55,34 @@ export default function Events() {
    const mapType = userAgent === "mobile" ? "order-1 justify-content-center" : "order-2 justify-content-center";
    const eventCardType = userAgent === "mobile" ? "flex-column heightmenu overflow-auto order-2" : "flex-column heightmenu overflow-auto order-1";
 
-    function eventFilter(type, category, dateHandler, e){
-      if(!!category.id){
-          if (type === "all"){
-            return  e.cause_id === Number(category.id);
-          }
-            else if (type === 'Date') {
-              if (!category.id){
-              return dateHandler(e.date, e.time).isPrevious;
-              } else {
-                  return dateHandler(e.date, e.time).isPrevious && e.cause_id === Number(category.id);
-              }
-            }
-            } else if ( type === 'Current'){
+   function eventFilter(type, category, dateHandler, e){
+    if(category.id){
+        if (type === "all"){
+          return  e.cause_id === Number(category.id);
+        }
+        else if (type === 'Date') {
+          
+          return dateHandler(e.date, e.time).isPrevious;
+          } 
+          else if ( type === 'Current'){
+            return dateHandler(e.date, e.time).isRecent;
+            } 
+      }
+          else if (type === 'Date') {
+          
+            return dateHandler(e.date, e.time).isPrevious;
+            } 
 
-              if (!category.id){
-                return dateHandler(e.date, e.time).isRecent;
-                } else {
-                    return dateHandler(e.date, e.time).isRecent && e.cause_id === Number(category.id);
-                }
-            } else{
-              return true;
-            }
-          }
+          else if ( type === 'Current'){
+              return dateHandler(e.date, e.time).isRecent;
+              } 
+
+              else {
+                return true
+              }
+          } 
+        
+      
     
   
 
