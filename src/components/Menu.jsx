@@ -1,14 +1,14 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../custom.css";
 
-export default function Menu({ type }) {
+export default function Menu({ setType, type }) {
 
   function handleURL(type, event) {
-    if (type.current === event.target.id) {
-      console.log(type.current === event.target.id);
-      return "";
+    if (type === event.target.id) {
+      console.log(type === event.target.id);
+      return "active";
     } else {
-      console.log(type.current === event.target.id);
+      console.log(type === event.target.id);
       return "";
     }
   }
@@ -18,33 +18,33 @@ export default function Menu({ type }) {
       <div className="topnav">
         <a
           className={(event) => handleURL(type, event)}
-          href="#"
+          
           id="all"
           onClick={(event) => {
             console.log("all");
-            type.current = "all";
+            setType("all");
           }}
         >
           All Events
         </a>
         <a
           className={(event) => handleURL(type, event)}
-          href="#"
+          
           id="Date"
           onClick={(event) => {
             console.log("Date");
-            type.current =  "Date";
+            setType("Date");
           }}
         >
           Previous Events
         </a>
         <a
           className={(event) => handleURL(type, event)}
-          href="#"
+          
           id="Current"
           onClick={(event) => {
             console.log(type === event.target.id);
-            type.current = "Current";
+            setType("Current");
           }}
         >
           Current Events

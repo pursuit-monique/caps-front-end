@@ -60,7 +60,7 @@ export function dateHandler(eventDate, eventTime) {
     eventdate: `${month}-${date}-${year}`,
     eventtime: `${hours12}:${minutes} ${amPm}`,
     todayDate: today,
-    isRecent: formattedDate - today < 604800000,
     isPrevious: formattedDate - today < 0,
+    isRecent: formattedDate - today > 0,
   };
 }

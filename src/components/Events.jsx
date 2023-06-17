@@ -1,5 +1,5 @@
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect} from "react";
 
 import axios from "axios";
 import EventCard from './EventCard';
@@ -31,7 +31,7 @@ export default function Events() {
     const [markerId, setMarkerId] = useState();
 
     //Set type for filter
-    const type = useRef('all');
+    const [type, setType] = useState('all');
 
     const [userAgent, setUserAgent] = useState("desktop");
 
@@ -56,13 +56,13 @@ export default function Events() {
    const eventCardType = userAgent === "mobile" ? "flex-column heightmenu overflow-auto order-2" : "flex-column heightmenu overflow-auto order-1";
 
     function eventFilter(type, category, dateHandler, e){
-          if (type.current === "all"){
+          if (type === "all"){
             return !!category.id ? e.cause_id === Number(category.id) : true;
           } else {
-            if (type.current === 'Date') {
-              console.log(dateHandler(e.date, e.time).isPrevious)
+            if (type === 'Date') {
               return dateHandler(e.date, e.time).isPrevious;
-            } else if ( type.current === 'Current'){
+            } else if ( type === 'Current'){
+
               return dateHandler(e.date, e.time).isRecent;
             }
           }
@@ -127,7 +127,7 @@ export default function Events() {
     <> 
     {/* random add to test env variables and force new deploy AGAIN */}
      {/* top navigation bar */}
-        <Menu type={type} /> 
+        <Menu setType={setType} type={type} /> 
 
         {/* Category selection bar */}
         {isLoaded ? <Categories category={category} setCategory={setCategory} setMarkerId={setMarkerId} /> : '' }
