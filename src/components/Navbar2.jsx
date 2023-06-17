@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import location from "../assets/pin.png";
+import { logout } from "../firebase/auth";
 import "./Header.css";
 
 function Navbar2() {
@@ -23,26 +24,31 @@ function Navbar2() {
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          {/* <span className="navbar-toggler-icon"></span> */}
-          <img
+          <span className="navbar-toggler-icon"></span>
+          {/* <img
             className="avatar navbar-toggler-icon"
             src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp"
             alt="Avatar"
-          />
+          /> */}
         </button>
-        <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul className="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4 invisible">
+        <div className="collapse navbar-collapse" id="navbarSupportedContent ">
+          <ul className="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
             <li className="nav-item">
-              <Link className="nav-link active" aria-current="page" to="#!">
+              <Link className="nav-link active" aria-current="page" to="/index">
                 Home
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" href="#!">
+              <Link className="nav-link" to="/new/event">
+                New Event
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/about">
                 About
               </Link>
             </li>
-            <li className="nav-item dropdown">
+            {/* <li className="nav-item dropdown">
               <Link
                 className="nav-link dropdown-toggle"
                 id="navbarDropdown"
@@ -73,21 +79,26 @@ function Navbar2() {
                   </Link>
                 </li>
               </ul>
-            </li>
+            </li> */}
           </ul>
           {/* <form className="d-flex">
             <button className="btn btn-outline-dark" type="submit">
               <i className="bi-cart-fill me-1"></i>
               Cart
-              <span className="badge bg-dark text-white ms-1 rounded-pill">0</span>
+              <span className="badge bg-dark text-white ms-1 rounded-pill">
+                0
+              </span>
             </button>
           </form> */}
-          <div className="d-flex">
-            <img
+          <div className="d-flex ">
+            {/* <img
               className="avatar"
               src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp"
               alt="Avatar"
-            />
+            /> */}
+            <button className="btn btn-outline-secondary" onClick={logout}>
+              Logout
+            </button>
           </div>
         </div>
       </div>

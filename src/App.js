@@ -12,10 +12,9 @@ import "./App.css";
 import Event2 from "./pages/Event2";
 import NewEvent from "./pages/NewEvent";
 import LiveStream from "./pages/LiveStream";
-// import SignupLogin from "./pages/Login";
 
 import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap/dist/js/bootstrap.bundle.min.js";
+// import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
 function App() {
   return (
