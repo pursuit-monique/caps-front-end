@@ -1,5 +1,5 @@
 
-import { useState, useEffect} from "react";
+import { useState, useEffect, useRef } from "react";
 
 import axios from "axios";
 import EventCard from './EventCard';
@@ -8,6 +8,8 @@ import Map from "./Map"
 import Legend from "./Legend"
 import Categories from "./Categories"
 import CategoriesCounter from "./CategoriesCounter";
+
+import { dateHandler } from "./helpers/functions";
 
 import '../custom.css';
 
@@ -27,6 +29,9 @@ export default function Events() {
 
     //Current selected event ID
     const [markerId, setMarkerId] = useState();
+
+    //Set type for filter
+    const type = useRef('all');
 
     const [userAgent, setUserAgent] = useState("desktop");
 
@@ -50,7 +55,20 @@ export default function Events() {
    const mapType = userAgent === "mobile" ? "order-1 justify-content-center" : "order-2 justify-content-center";
    const eventCardType = userAgent === "mobile" ? "flex-column heightmenu overflow-auto order-2" : "flex-column heightmenu overflow-auto order-1";
 
-    
+    function eventFilter(type, category, dateHandler, e){
+          if (type.current === "all"){
+            return !!category.id ? e.cause_id === Number(category.id) : true;
+          } else {
+            if (type.current === 'Date') {
+              console.log(dateHandler(e.date, e.time).isPrevious)
+              return dateHandler(e.date, e.time).isPrevious;
+            } else if ( type.current === 'Current'){
+              return dateHandler(e.date, e.time).isRecent;
+            }
+          }
+    }
+
+
     function success(pos) {
         const {latitude, longitude} = pos.coords;
         // console.log(longitude)
@@ -109,7 +127,7 @@ export default function Events() {
     <> 
     {/* random add to test env variables and force new deploy AGAIN */}
      {/* top navigation bar */}
-        <Menu /> 
+        <Menu type={type} /> 
 
         {/* Category selection bar */}
         {isLoaded ? <Categories category={category} setCategory={setCategory} setMarkerId={setMarkerId} /> : '' }
@@ -122,7 +140,7 @@ export default function Events() {
 
                 {/* Event card display */}
                 <div className={eventCardType}>
-                    <EventCard currEvents={currEvents.filter( event => !!category.id ? event.cause_id === Number(category.id) : true)} mapCenter={mapCenter} markerId={markerId} userAgent={userAgent} />
+                    <EventCard currEvents={currEvents.filter( event => eventFilter(type, category, dateHandler, event))} mapCenter={mapCenter} markerId={markerId} userAgent={userAgent} />
                 </div>
 
                 {/* Legend:  Is display: hidden on mediaScreen width < 480px */}
@@ -130,7 +148,7 @@ export default function Events() {
 
                 {/* Map display.   */}
                 <div className={mapType}>
-                    <Map currEvents={currEvents.filter( event => !!category.id ? event.cause_id === Number(category.id) : true)} category={category} mapCenter={mapCenter} setMarkerId={setMarkerId} userAgent={userAgent} />
+                    <Map currEvents={currEvents.filter( event => eventFilter(type, category, dateHandler, event))} category={category} mapCenter={mapCenter} setMarkerId={setMarkerId} userAgent={userAgent} />
                 </div>
 
         </article>

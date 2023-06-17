@@ -28,9 +28,9 @@ export function checkin(mi = 0) {
     return "You're quite far, do you plan on attending?";
   } else if (mi > 5) {
     return "You're nearby, thinking of stopping by?";
-  } else if (mi > 0.05) {
+  } else if (mi > 0.3) {
     return "You're almost there!";
-  } else if (mi < 0.05) {
+  } else if (mi < 0.3) {
     return "Lets get the party started!  Ready to check in?";
   }
 }
@@ -61,5 +61,6 @@ export function dateHandler(eventDate, eventTime) {
     eventtime: `${hours12}:${minutes} ${amPm}`,
     todayDate: today,
     isRecent: formattedDate - today < 604800000,
+    isPrevious: formattedDate - today < 0,
   };
 }
