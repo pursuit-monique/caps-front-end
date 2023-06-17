@@ -15,6 +15,16 @@ a{
   z-index: 1000;
 }
 
+.livecardInfo {
+  height: 53px;
+  margin-right: 8px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  font-size: smaller;
+  margin-left: 40px;
+  margin-bottom: 18px;
+}
+
 .dateInfo{
   height: 15px;
   width: 100%;
@@ -404,6 +414,10 @@ padding: 0px;
     top: 69%;
   }
 
+  .livecardInfo{
+    margin-bottom: 0px;
+  }
+  
   .map-container{
     border-top: 2px solid #545454;
     border-bottom: 2px solid #545454;

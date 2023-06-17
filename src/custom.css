@@ -133,17 +133,15 @@
 
 }
 
-.cardInfo{
-    /* display: grid;
-    grid-template-rows: 1fr 1fr 1fr; 
-    gap: 0px 0px;  */
+.cardInfo {
     height: 40px;
     margin-right: 8px;
     text-overflow: ellipsis;
-    overflow: hidden; 
+    overflow: hidden;
     font-size: smaller;
     margin-left: 40px;
-
+    margin-bottom: 4px;
+    margin-top: 4px;
 }
 
 .infoText{
@@ -230,6 +228,7 @@
     }
 
     .cardInfo{
+        visibility: hidden;
         font-size: xx-small;
         height: 25px;
         margin-right: 2px;
@@ -239,7 +238,6 @@
         margin-bottom: 2px;
     
     }
-
 
     .topnav a {
         padding: 7px 8px;
