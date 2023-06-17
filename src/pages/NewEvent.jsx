@@ -1,4 +1,5 @@
 import { useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { storage } from "../firebase/firebase";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { v4 } from "uuid";
@@ -9,8 +10,10 @@ import GooglePlacesAutocomplete, {
   geocodeByPlaceId,
 } from "react-google-places-autocomplete";
 import { AuthContext } from "../context/AuthContext";
+import Loader from "../components/Loader";
 
 function NewEvent() {
+  const navigate = useNavigate();
   const { currentUser } = useContext(AuthContext);
   const [event, setEvent] = useState({
     cause_id: "",
@@ -23,6 +26,7 @@ function NewEvent() {
 
   const [value, setValue] = useState(null);
   const [image, setImage] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   async function getLatLongFromAddress(e) {
     try {
@@ -55,11 +59,12 @@ function NewEvent() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    // const API = process.env.REACT_APP_BACKEND_URL;
-    const API = process.env.REACT_APP_LOCAL_BACKEND;
+    const API = process.env.REACT_APP_BACKEND_URL;
+    // const API = process.env.REACT_APP_LOCAL_BACKEND;
     // const API = "https://happn.onrender.com";
     console.log("API", API);
     try {
+      setLoading(true);
       const geo = await getLatLongFromAddress();
       const imageURL = await uploadImage();
       const newEvent = {
@@ -73,9 +78,10 @@ function NewEvent() {
       };
 
       console.log(newEvent);
-
       const res = await axios.post(`${API}/events`, newEvent);
+      setLoading(false);
       console.log("response from backend after event submit", res);
+      navigate("/event/" + res.data.id);
     } catch (err) {
       console.log(err);
     }
@@ -83,8 +89,9 @@ function NewEvent() {
   console.log(value);
   return (
     <>
-      <div className="container event-form-container my-4">
-        <form className="row g-3" onSubmit={handleSubmit}>
+      {loading && <Loader />}
+      <div className="container event-form-container mt-4">
+        <form className="row g-3 mb-5" onSubmit={handleSubmit}>
           <h3>Create a New Event</h3>
 
           <div className="col-md-6">
