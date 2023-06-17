@@ -31,7 +31,7 @@ function Navbar2() {
             alt="Avatar"
           /> */}
         </button>
-        <div className="collapse navbar-collapse" id="navbarSupportedContent">
+        <div className="collapse navbar-collapse" id="navbarSupportedContent ">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
             <li className="nav-item">
               <Link className="nav-link active" aria-current="page" to="/index">
@@ -90,7 +90,7 @@ function Navbar2() {
               </span>
             </button>
           </form> */}
-          <div className="d-flex">
+          <div className="d-flex ">
             {/* <img
               className="avatar"
               src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp"
