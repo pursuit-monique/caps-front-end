@@ -7,7 +7,7 @@ import { AuthContext } from "../context/AuthContext";
 import Loader from "../components/Loader";
 
 import { cause, tempData } from "../components/helpers/objects";
-import {dateHandler} from "../components/helpers/functions"
+import { dateHandler } from "../components/helpers/functions";
 import "./Event.css";
 import "../custom.css";
 import cityscape from "../assets/cityscape.jpeg";
@@ -79,7 +79,12 @@ function Event2() {
   function joinLive(viewerCode) {
     navigate("/live/" + viewerCode);
   }
-  const {eventdate, eventtime} = dateHandler(event.date, event.time);
+
+  const goBack = () => {
+    navigate(-1);
+  };
+
+  const { eventdate, eventtime } = dateHandler(event.date, event.time);
 
   const eventFormat = event ? event.address.split(",") : "";
   const formattedEventAddress = eventFormat
@@ -175,7 +180,9 @@ function Event2() {
                     marginRight: "8px",
                   }}
                 >
-                  <em>{eventdate} { eventtime} @ {formattedEventAddress}</em>
+                  <em>
+                    {eventdate} {eventtime} @ {formattedEventAddress}
+                  </em>
                 </p>
                 <div
                   className="event-creator-container"
@@ -299,10 +306,10 @@ function Event2() {
                           </h1>
                         </div>
                         {/* <div className="dateInfo"></div> */}
-                        <div className="row-2 livecardInfo" >
+                        <div className="row-2 livecardInfo">
                           <button
                             className="btn btn-primary"
-                            style={{ marginLeft: "30%", marginTop: '16px'}}
+                            style={{ marginLeft: "30%", marginTop: "16px" }}
                             onClick={() => joinLive(live.viewer_code)}
                           >
                             Join Live
