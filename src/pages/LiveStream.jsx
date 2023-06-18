@@ -20,10 +20,10 @@ export default function LiveStream() {
         className="iframe"
         //   style={{ height: "900px", width: "900px" }}
       ></iframe>
-      <div className="d-flex justify-content-center pb-2">
+      <div className="d-flex justify-content-center">
         <button
           type="button"
-          className="btn btn-sm btn-secondary goback"
+          className="btn btn-sm btn-secondary"
           onClick={goBack}
           onTouchStart={goBack}
         >

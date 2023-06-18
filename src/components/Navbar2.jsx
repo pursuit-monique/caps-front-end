@@ -39,7 +39,7 @@ function Navbar2() {
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/new/event">
+              <Link reloadDocument className="nav-link" to="/new/event">
                 New Event
               </Link>
             </li>
