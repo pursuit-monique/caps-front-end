@@ -314,7 +314,7 @@ function Event2() {
                         <div className="row align-items-center">
                           <span className="indicator"></span>
                           <img
-                            src="https://t3.ftcdn.net/jpg/03/53/11/00/360_F_353110097_nbpmfn9iHlxef4EDIhXB1tdTD0lcWhG9.jpg"
+                            src="https://100k-faces.glitch.me/random-image"
                             alt="name"
                             className="userIcon margin"
                           ></img>
