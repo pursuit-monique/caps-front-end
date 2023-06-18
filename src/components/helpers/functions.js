@@ -41,7 +41,7 @@ export function dateHandler(eventDate = "12/12/1212", eventTime = "00:00") {
   const currDate = new Date(eventDate);
   const today = new Date();
   const month = currDate.getMonth() + 1;
-  const date = currDate.getDate();
+  const date = currDate.getDate() + 1;
   const year = currDate.getFullYear();
   const formattedDate = new Date(`${month}-${date}-${year}`);
 
