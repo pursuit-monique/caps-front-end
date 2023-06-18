@@ -80,10 +80,6 @@ function Event2() {
     navigate("/live/" + viewerCode);
   }
 
-  const goBack = () => {
-    navigate(-1);
-  };
-
   const { eventdate, eventtime } = dateHandler(event.date, event.time);
 
   const eventFormat = event ? event.address.split(",") : "";

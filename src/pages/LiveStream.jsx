@@ -12,7 +12,7 @@ export default function LiveStream() {
   }
 
   return (
-    <div>
+    <div className="livestream-container">
       <iframe
         title="100ms-app"
         allow="camera *;microphone *;display-capture *"
