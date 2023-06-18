@@ -188,7 +188,7 @@ function Event2() {
                     className="avatar organizer"
                     src={
                       event.user_profile_link ||
-                      "https://t3.ftcdn.net/jpg/03/53/11/00/360_F_353110097_nbpmfn9iHlxef4EDIhXB1tdTD0lcWhG9.jpg"
+                      "https://100k-faces.glitch.me/random-image"
                     }
                     alt="Avatar"
                   />
