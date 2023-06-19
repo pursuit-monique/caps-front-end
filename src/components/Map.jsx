@@ -130,7 +130,7 @@ export default function Map({currEvents, mapCenter, setMarkerId, userAgent}) {
             mapContainerClassName="map-container"
             center={mapCenter}
             zoom={12}
-            options={{mapId: 'c3bdb902aa4cda31', disableDefaultUI: true, zoomControl: false, gestureHandling: 'none'}}
+            options={{mapId: 'c3bdb902aa4cda31', disableDefaultUI: true, zoomControl: false, gestureHandling: 'greedy'}}
             gestureHandling="none"
           >
             

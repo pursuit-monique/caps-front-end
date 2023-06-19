@@ -132,7 +132,7 @@ export default function Events() {
     
         const interval = setInterval(() => {
             navigator.geolocation.getCurrentPosition(success, error, options);
-        }, 5000);
+        }, 500000);
     
         return () => clearInterval(interval);
       }, []);
