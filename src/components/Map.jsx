@@ -1,6 +1,6 @@
 import { GoogleMap, Marker, useLoadScript, OverlayView} from "@react-google-maps/api";
 import { Offcanvas } from 'bootstrap'
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef} from "react";
 import { calculateDistance, checkin } from './helpers/functions';
 import { cause } from "./helpers/objects";
 
@@ -102,38 +102,6 @@ export default function Map({currEvents, mapCenter, setMarkerId, userAgent}) {
   };
 
 
-  useEffect(() => {
-    const map = mapRef.current;
-
-    if (map) {
-      const disableMapDragging = () => {
-        map.setOptions({ draggable: false });
-      };
-
-      const enableMapDragging = () => {
-        map.setOptions({ draggable: true });
-      };
-
-      const handleWheel = (event) => {
-        event.preventDefault();
-
-        if (event.deltaY > 0) {
-          map.panBy(0, 100); // Adjust the panning distance as needed
-        } else {
-          map.panBy(0, -100); // Adjust the panning distance as needed
-        }
-      };
-
-      disableMapDragging();
-
-      map.addListener('wheel', handleWheel);
-
-      return () => {
-        enableMapDragging();
-        map.removeListener('wheel', handleWheel);
-      };
-    }
-  }, []);
 
   const openOffcanvas = () => {
     let offcanvas = new Offcanvas(offcanvasRef.current, {
