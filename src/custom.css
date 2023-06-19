@@ -40,7 +40,7 @@
 }
 
 .heightmenu{
-    height:625px;
+    height: 85vh;
     min-width: 42vw;
 
 }
@@ -118,7 +118,7 @@
 }
 
 .cardSize{
-    height: 20vh;
+    height: 148px;
     width: 40vw;
     background: #FFFFFFFF; 
     border-radius: 8px; 
