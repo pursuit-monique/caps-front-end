@@ -42,6 +42,7 @@ export default function Events() {
         .then((response) =>{ 
           setCurrEvents(response.data);
           setIsLoaded(true);
+          console.log('calling API')
         })
 
         .catch((c) =>{ 
@@ -132,7 +133,7 @@ export default function Events() {
     
         const interval = setInterval(() => {
             navigator.geolocation.getCurrentPosition(success, error, options);
-        }, 5000);
+        }, 50000000);
     
         return () => clearInterval(interval);
       }, []);
