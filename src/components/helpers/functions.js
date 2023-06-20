@@ -24,16 +24,32 @@ export function degreesToRadians(degrees) {
 
 //Placeholder check in function.
 export function checkin(mi = 0) {
-  if (mi > 10) {
-    return "You're quite far, do you plan on attending?";
-  } else if (mi > 5) {
-    return "You're nearby, thinking of stopping by?";
-  } else if (mi > 0.3) {
-    return "You're almost there!";
+  if (mi > 0.3) {
+    return "More info";
   } else if (mi < 0.3) {
-    return "Lets get the party started!  Ready to check in?";
+    return "Check in!";
   }
 }
+
+export function isCheckin(mi = 0) {
+  if (mi > 0.3) {
+    return false;
+  } else if (mi < 0.3) {
+    return true;
+  }
+}
+
+// export function checkin(mi = 0) {
+//   if (mi > 10) {
+//     return "You're quite far, do you plan on attending?";
+//   } else if (mi > 5) {
+//     return "You're nearby, thinking of stopping by?";
+//   } else if (mi > 0.3) {
+//     return "You're almost there!";
+//   } else if (mi < 0.3) {
+//     return "Check in!";
+//   }
+// }
 
 //  dateHandler.   inputs expects a date,  outputs an object.
 
