@@ -242,7 +242,7 @@ export default function Map({currEvents, mapCenter, setMarkerId, userAgent}) {
           alt="..." />
           <div className="rightalign">  <span className="badge" style={{backgroundColor:  cause ? cause[markerPosition.id][1] : "black"}}>{ cause ? cause[markerPosition.id][0] : "nothing"}</span> <span className="badge text-bg-secondary">{markerPosition.category}</span></div>
           <article className="mainArticle" style={{borderLeft:  cause ? `2px solid ${cause[markerPosition.id][1]}` : "1px solid black"}} >{markerPosition.desc}</article>
-          <div class="d-grid gap-8" style={{marginTop: '32px'}}><button type="button" onClick={(event) => handleClick(markerPosition.eid) } class="btn btn-secondary">{checkin(calculateDistance(markerPosition.position?.lat, markerPosition.position?.lng, mapCenter.lat, mapCenter.lng))}</button>
+          <div class="d-grid gap-8" style={{marginTop: '32px'}}><button type="button" onClick={(event) => handleClick(markerPosition.eid) }  class="btn btn-secondary">{checkin(calculateDistance(markerPosition.position?.lat, markerPosition.position?.lng, mapCenter.lat, mapCenter.lng))}</button>
           </div>
         </div>
       </div>

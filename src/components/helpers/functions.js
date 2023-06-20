@@ -31,7 +31,7 @@ export function checkin(mi = 0) {
   }
 }
 
-export function isCheckin(mi = 0) {
+export function isCheckedIn(mi = 0) {
   if (mi > 0.3) {
     return false;
   } else if (mi < 0.3) {

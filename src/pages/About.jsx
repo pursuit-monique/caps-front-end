@@ -1,5 +1,7 @@
 import './About.css';
 import monique from '../assets/monique.jpg'
+import james from '../assets/james.jpeg'
+import bo from '../assets/bo.png'
 
 
 export default function About() {
@@ -24,6 +26,7 @@ Meet Team Happ'n!
         <div className="col creator1">
             <div style={{color: 'white', backgroundColor: 'pink', padding: '0px'}}>Something about the map</div>
             <div className='creator-img' style={{
+              height: '55vh',
                 backgroundImage: `url(${monique})`,
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
@@ -43,7 +46,8 @@ Meet Team Happ'n!
     <div className="col creator2">
             <div style={{color: 'white', backgroundColor: 'pink', padding: '0px'}}>Something about the map</div>
             <div className='creator-img' style={{
-                backgroundImage: `url(${monique})`,
+                            height: '55vh',
+                backgroundImage: `url(${bo})`,
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
                                     }}>
@@ -59,7 +63,8 @@ Meet Team Happ'n!
         <div className="col creator3">
             <div style={{color: 'white', backgroundColor: 'pink', padding: '0px'}}>Something about the map</div>
             <div className='creator-img' style={{
-                backgroundImage: `url(${monique})`,
+                            height: '55vh',
+                backgroundImage: `url(${james})`,
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
                                     }}>
