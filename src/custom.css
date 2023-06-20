@@ -118,7 +118,7 @@
 }
 
 .cardSize{
-    height: 148px;
+    height: 156px;
     width: 40vw;
     background: #FFFFFFFF; 
     border-radius: 8px; 
@@ -128,17 +128,17 @@
     /* box-shadow: 10px 5px 5px rgb(204, 210, 219); */
     padding: 0px;
     margin: 0px;
-    margin-bottom: 8px;
+    margin-bottom: 16px;
     overflow: hidden;
 
 }
 
 .cardInfo {
-    height: 40px;
+    height: 48px;
     margin-right: 8px;
     text-overflow: ellipsis;
     overflow: hidden;
-    font-size: small;
+    font-size: medium;
     margin-left: 40px;
     margin-bottom: 4px;
     margin-top: 4px;
