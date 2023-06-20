@@ -51,7 +51,8 @@ function Event2() {
         `${API}/events/${event.id}/checkin/${currentUser.uid}`
       );
       console.log(res);
-      setEvent(res.data.event);
+      // setEvent(res.data.event);
+      window.location.reload();
     } catch (err) {
       console.log(err);
     }

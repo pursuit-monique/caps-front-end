@@ -68,7 +68,7 @@ export default function About() {
                     monique-correa-
                   </a>
                 </div>
-                <div>Personal story</div>
+                {/* <div>Personal story</div> */}
               </div>
             </div>
           </div>
@@ -119,7 +119,7 @@ export default function About() {
                 bo-latt
               </a>
             </div>
-            <div>Personal story</div>
+            {/* <div>Personal story</div> */}
           </div>
           <div className="col creator3">
             <div
@@ -166,7 +166,7 @@ export default function About() {
               </svg>{" "}
               <a href="https://www.linkedin.com/in/jrscottii">jrscottii</a>
             </div>
-            <div>Personal story</div>
+            {/* <div>Personal story</div> */}
           </div>
         </div>
       </div>
