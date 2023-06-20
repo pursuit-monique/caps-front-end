@@ -1,5 +1,5 @@
 
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../custom.css';
 
@@ -28,7 +28,11 @@ const currCards = useRef(currEvents);
    console.log(currEvents);
 
    
+   const navigate = useNavigate();
 
+   const handleClick = (e) => {
+     navigate(`/event/${e}`); // Replace '/another-page' with the desired URL
+   };
   
 
 useEffect(() => { 
@@ -52,7 +56,7 @@ useEffect(() => {
       // };
       let {eventdate, eventtime} = dateHandler(event.date, event.time);
       return (
-      <div className="cardSize" key={event.id}>
+      <div onClick={(e) => handleClick(event.id)} className="cardSize" key={event.id}>
               <div className="rowimg">
                 <div className="col-1 imgContainer">
             <div

@@ -3,6 +3,7 @@ import { Offcanvas } from 'bootstrap'
 import { useState, useRef } from "react";
 import { calculateDistance, checkin } from './helpers/functions';
 import { cause } from "./helpers/objects";
+import { useNavigate } from "react-router-dom";
 
 import "./App.css";
 
@@ -90,17 +91,24 @@ export default function Map({currEvents, mapCenter, setMarkerId, userAgent}) {
   //   }
   // });
 
-  const handleMarkerHover = (markerPosition, category, img, title, id, desc, userAgent) => {
+  const handleMarkerHover = (markerPosition, category, img, title, id, desc, userAgent, eid) => {
     userAgent === "desktop" ? setIsHovering(true) :  setIsHovering(false);
 
     console.log(isHovering)
-    setMarkerPosition({position: markerPosition.position, "category": `${category}`, "color": color[category], img: img, "title": title, "id": id, "desc": desc});
+    setMarkerPosition({position: markerPosition.position, "category": `${category}`, "color": color[category], img: img, "title": title, "id": id, "desc": desc, 'eid': eid});
   };
 
   const handleMarkerMouseOut = () => {
     setIsHovering(false);
   };
 
+     
+  const navigate = useNavigate();
+
+  const handleClick = (e) => {
+    navigate(`/event/${e}`); // Replace '/another-page' with the desired URL
+  };
+ 
 
 
 
@@ -183,12 +191,12 @@ export default function Map({currEvents, mapCenter, setMarkerId, userAgent}) {
               }}
               
               onClick={(event) =>{ 
-              handleMarkerHover({ position: {lat: marker.latitude, lng: marker.longitude }}, marker.category, marker.img_link, marker.title, marker.cause_id, marker.description, userAgent)
+              handleMarkerHover({ position: {lat: marker.latitude, lng: marker.longitude }}, marker.category, marker.img_link, marker.title, marker.cause_id, marker.description, userAgent, marker.id)
               setBounceToggle({on: !bounceToggle.on, title: marker.title});
               setMarkerId(marker.id);
               openOffcanvas();
             }}
-          onMouseOver={() => handleMarkerHover({ position: {lat: marker.latitude, lng: marker.longitude }}, marker.category, marker.img_link, marker.title, marker.cause_id, marker.description, userAgent)}
+          onMouseOver={() => handleMarkerHover({ position: {lat: marker.latitude, lng: marker.longitude }}, marker.category, marker.img_link, marker.title, marker.cause_id, marker.description, userAgent, marker.id)}
         onMouseOut={handleMarkerMouseOut}
         >
   
@@ -234,7 +242,8 @@ export default function Map({currEvents, mapCenter, setMarkerId, userAgent}) {
           alt="..." />
           <div className="rightalign">  <span className="badge" style={{backgroundColor:  cause ? cause[markerPosition.id][1] : "black"}}>{ cause ? cause[markerPosition.id][0] : "nothing"}</span> <span className="badge text-bg-secondary">{markerPosition.category}</span></div>
           <article className="mainArticle" style={{borderLeft:  cause ? `2px solid ${cause[markerPosition.id][1]}` : "1px solid black"}} >{markerPosition.desc}</article>
-          {checkin(calculateDistance(markerPosition.position?.lat, markerPosition.position?.lng, mapCenter.lat, mapCenter.lng))}
+          <div class="d-grid gap-8" style={{marginTop: '32px'}}><button type="button" onClick={(event) => handleClick(markerPosition.eid) }  class="btn btn-secondary">{checkin(calculateDistance(markerPosition.position?.lat, markerPosition.position?.lng, mapCenter.lat, mapCenter.lng))}</button>
+          </div>
         </div>
       </div>
 
