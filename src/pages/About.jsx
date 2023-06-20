@@ -47,7 +47,7 @@ export default function About() {
                   <a
                     href="https://www.github.com/pursuit-monique"
                     target="_blank"
-                    rel="noreferrer"
+                    rel="noreferrer noopener"
                   >
                     pursuit-monique
                   </a>
@@ -65,7 +65,7 @@ export default function About() {
                     href="https://www.linkedin.com/in/monique-correa-
 "
                     target="_blank"
-                    rel="noreferrer"
+                    rel="noreferrer noopener"
                   >
                     monique-correa-
                   </a>
@@ -107,7 +107,7 @@ export default function About() {
               <a
                 href="https://www.github.com/bolattt"
                 target="_blank"
-                rel="noreferrer"
+                rel="noreferrer noopener"
               >
                 bolattt
               </a>
@@ -124,7 +124,7 @@ export default function About() {
               <a
                 href="https://www.linkedin.com/in/bo-latt"
                 target="_blank"
-                rel="noreferrer"
+                rel="noreferrer noopener"
               >
                 bo-latt
               </a>
@@ -164,7 +164,7 @@ export default function About() {
               <a
                 href="https://www.github.com/vvjs22"
                 target="_blank"
-                rel="noreferrer"
+                rel="noreferrer noopener"
               >
                 vvjs22
               </a>
@@ -181,7 +181,7 @@ export default function About() {
               <a
                 href="https://www.linkedin.com/in/jrscottii"
                 target="_blank"
-                rel="noreferrer"
+                rel="noreferrer noopener"
               >
                 jrscottii
               </a>
