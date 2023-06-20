@@ -48,7 +48,7 @@ export default function Events() {
           console.warn("catch", c);
           setIsLoaded(false);
         });
-    }, []);
+    }, [category, type]);
 
     console.log(currEvents)
 
