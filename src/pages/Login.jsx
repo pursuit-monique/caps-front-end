@@ -63,7 +63,7 @@ export default function SignupLogin() {
         <div className="form login testing">
           <div className="form-content">
             <header className="align-left">Welcome</header>
-            <h6 className="subtitle"></h6>
+            {/* <h6 className="subtitle"></h6> */}
             <form onSubmit={handleSubmit}>
               <div className="field input-field">
                 <input
