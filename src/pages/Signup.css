@@ -11,7 +11,6 @@
   /* pointer-events: none; */
 }
 
-
 .login-container,
 .signup-container {
   height: 100%;
@@ -25,48 +24,47 @@
   overflow: hidden;
 }
 
-.displayimg{
+/* .displayimg{
   visibility: hidden;
-}
+} */
 
-.login-container{
+.login-container {
   background-image: url("../assets/cityscape.jpeg");
-  background-size:contain;
+  background-size: contain;
   background-repeat: no-repeat;
   background-position: top;
 }
 
-.testing{
+.testing {
   background-color: white;
 }
-.emailbg{
+.emailbg {
   /* background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMCAzdjE4aDI0di0xOGgtMjR6bTYuNjIzIDcuOTI5bC00LjYyMyA1LjcxMnYtOS40NThsNC42MjMgMy43NDZ6bS00LjE0MS01LjkyOWgxOS4wMzVsLTkuNTE3IDcuNzEzLTkuNTE4LTcuNzEzem01LjY5NCA3LjE4OGwzLjgyNCAzLjA5OSAzLjgzLTMuMTA0IDUuNjEyIDYuODE3aC0xOC43NzlsNS41MTMtNi44MTJ6bTkuMjA4LTEuMjY0bDQuNjE2LTMuNzQxdjkuMzQ4bC00LjYxNi01LjYwN3oiLz48L3N2Zz4="); */
   background-repeat: no-repeat;
   background-position: left center;
   background-origin: content-box;
   background-size: 6%;
-  padding-left: 80px; 
+  padding-left: 80px;
   fill: #8b8b8b;
   stroke: #8b8b8b;
 }
 
-.passwordbg{
+.passwordbg {
   /* background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMTggMTB2LTRjMC0zLjMxMy0yLjY4Ny02LTYtNnMtNiAyLjY4Ny02IDZ2NGgtM3YxNGgxOHYtMTRoLTN6bS0xMC00YzAtMi4yMDYgMS43OTQtNCA0LTRzNCAxLjc5NCA0IDR2NGgtOHYtNHptMTEgMTZoLTE0di0xMGgxNHYxMHoiLz48L3N2Zz4="); */
   background-repeat: no-repeat;
   background-position: left center;
   background-origin: content-box;
-  padding-left: 100px; 
+  padding-left: 100px;
   fill: #8b8b8b;
   stroke: #8b8b8b;
   stroke-width: 1px;
 }
 
-
 input::placeholder {
   padding: 32px; /* Adjust the padding value as desired */
 }
 
-.align-left{
+.align-left {
   text-align: left;
 }
 
@@ -105,7 +103,7 @@ header {
   font-size: 28px;
   font-weight: 600;
   color: #232836;
-  text-align: center;
+  text-align: left;
 }
 form {
   margin-top: 30px;
@@ -240,7 +238,7 @@ a.google span {
     height: 100%;
     position: absolute;
   }
-  .login-container{
+  .login-container {
     background-image: url("../assets/cityscape.jpeg");
     background-size: cover;
     background-repeat: no-repeat;
@@ -249,16 +247,16 @@ a.google span {
   .cover-img-wrapper {
     height: 20px;
   }
-.displayimg{
+  /* .displayimg{
   visibility: hidden;
-}
+} */
   .login-wrapper {
     flex-direction: row;
   }
 
   .signup-cover-img {
-    width: 50%;
-    max-width: 650px;
+    /* width: 50%;
+    max-width: 650px; */
     /* height: 100%; */
   }
 }
