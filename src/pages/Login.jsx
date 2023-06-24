@@ -2,7 +2,8 @@ import { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { signInWithGoogle, logInWithEmailAndPassword } from "../firebase/auth";
-import cityscape from "../assets/cityscape.jpeg"
+import cityscape from "../assets/cityscape.jpeg";
+import logo from "../assets/logo-teal.png";
 import "./Login.css";
 
 export default function SignupLogin() {
@@ -53,12 +54,12 @@ export default function SignupLogin() {
 
   return (
     <section className="login-container forms">
-      <div className="login-wrapper">
-        <img
-          src={cityscape}
-          alt="houses"
-          className="signup-cover-img displayimg"
-        />
+      <div className="login-wrapper ">
+        <img src={cityscape} alt="houses" className="signup-cover-img " />
+        <div className="login-logo-container d-none  d-lg-block me-5">
+          <img src={logo} alt="logo" className="teal-logo rounded" />
+          <p className="tagline mb-0 rounded">In the Know, On the Go</p>
+        </div>
 
         <div className="form login testing">
           <div className="form-content">
