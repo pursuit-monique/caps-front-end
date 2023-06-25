@@ -3,82 +3,12 @@ import "./Userprofile.css";
 export default function Userprofile() {
   return (
     <section>
-      <div className="main-content">
-        {/* <!-- Top navbar --> */}
-        <nav
-          className="navbar navbar-top navbar-expand-md navbar-dark"
-          id="navbar-main"
-        >
-          <div className="container-fluid">
-            {/* <!-- Brand --> */}
-            <p className="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block">
-              User profile
-            </p>
-
-            {/* <!-- User --> */}
-            <ul className="navbar-nav align-items-center d-none d-md-flex">
-              <li className="nav-item dropdown">
-                <a
-                  className="nav-link pr-0"
-                  href="#"
-                  role="button"
-                  data-toggle="dropdown"
-                  aria-haspopup="true"
-                  aria-expanded="false"
-                >
-                  <div className="media align-items-center">
-                    <span className="avatar avatar-sm rounded-circle">
-                      <img
-                        alt="Image placeholder"
-                        src="https://demos.creative-tim.com/argon-dashboard/assets-old/img/theme/team-4.jpg"
-                      />
-                    </span>
-                    <div className="media-body ml-2 d-none d-lg-block">
-                      <span className="mb-0 text-sm  font-weight-bold">
-                        Jessica Jones
-                      </span>
-                    </div>
-                  </div>
-                </a>
-                <div className="dropdown-menu dropdown-menu-arrow dropdown-menu-right">
-                  <div className=" dropdown-header noti-title">
-                    <h6 className="text-overflow m-0">Welcome!</h6>
-                  </div>
-                  <a href="../examples/profile.html" className="dropdown-item">
-                    <i className="ni ni-single-02"></i>
-                    <span>My profile</span>
-                  </a>
-                  <a href="../examples/profile.html" className="dropdown-item">
-                    <i className="ni ni-settings-gear-65"></i>
-                    <span>Settings</span>
-                  </a>
-                  <a href="../examples/profile.html" className="dropdown-item">
-                    <i className="ni ni-calendar-grid-58"></i>
-                    <span>Activity</span>
-                  </a>
-                  <a href="../examples/profile.html" className="dropdown-item">
-                    <i className="ni ni-support-16"></i>
-                    <span>Support</span>
-                  </a>
-                  <div className="dropdown-divider"></div>
-                  <a href="#!" className="dropdown-item">
-                    <i className="ni ni-user-run"></i>
-                    <span>Logout</span>
-                  </a>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </nav>
+      <div className="main-content pb-3 mb-5">
         {/* <!-- Header --> */}
         <div
           className="header pb-8 pt-5 pt-lg-8 d-flex align-items-center"
           style={{
             minHeight: "600px",
-            // backgroundImage:
-            //   " url(https://raw.githubusercontent.com/creativetimofficial/argon-dashboard/gh-pages/assets-old/img/theme/profile-cover.jpg)",
-            // backgroundImage:
-            //   "url(https://images.unsplash.com/photo-1518235506717-e1ed3306a89b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80)",
             backgroundImage:
               "url(https://images.unsplash.com/Ys-DBJeX0nE.JPG?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80)",
             backgroundSize: "cover",
@@ -367,30 +297,19 @@ export default function Userprofile() {
                     </h6>
                     <div className="pl-lg-4">
                       <div className="form-group focused">
-                        {/* <label>About Me</label>
-                        <textarea
-                          rows="4"
-                          className="form-control form-control-alternative"
-                          placeholder="A few words about you ..."
-                        >
-                          A beautiful Dashboard for Bootstrap 4. It is Free and
-                          Open Source.
-                        </textarea> */}
                         <div class="mb-3">
-                          <label for="formFile" class="form-label">
+                          <label for="formFile" className="form-label">
                             Upload profile photo
                           </label>
                           <input
-                            class="form-control"
+                            className="form-control"
                             type="file"
                             id="formFile"
                           />
                         </div>
                       </div>
                     </div>
-                    <a href="#!" className="btn btn-info">
-                      Edit profile
-                    </a>
+                    <button className="btn btn-info">Update Profile</button>
                   </form>
                 </div>
               </div>

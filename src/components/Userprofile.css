@@ -1516,6 +1516,9 @@ a.text-white:focus {
 
 .main-content {
   position: relative;
+  max-width: 1500px;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .main-content .navbar-top {
