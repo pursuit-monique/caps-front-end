@@ -1,9 +1,12 @@
+import { useParams } from "react-router-dom";
 import "./Userprofile.css";
 
 export default function Userprofile() {
+  const { userID } = useParams();
+  console.log(userID);
   return (
     <section>
-      <div className="main-content pb-3 mb-5">
+      <div className="main-content pb-3 mb-5 user-profile">
         {/* <!-- Header --> */}
         <div
           className="header pb-8 pt-5 pt-lg-8 d-flex align-items-center"
@@ -16,7 +19,7 @@ export default function Userprofile() {
           }}
         >
           {/* <!-- Mask --> */}
-          <span className="mask bg-gradient-default opacity-8"></span>
+          <span className="mask bg-gradient-default opacity-25"></span>
           {/* <!-- Header container --> */}
           <div className="container-fluid d-flex align-items-center">
             <div className="row">
@@ -131,7 +134,7 @@ export default function Userprofile() {
                           <div className="form-group focused">
                             <label
                               className="form-control-label"
-                              for="input-username"
+                              htmlFor="input-username"
                             >
                               Username
                             </label>
@@ -148,7 +151,7 @@ export default function Userprofile() {
                           <div className="form-group">
                             <label
                               className="form-control-label"
-                              for="input-email"
+                              htmlFor="input-email"
                             >
                               Email address
                             </label>
@@ -166,7 +169,7 @@ export default function Userprofile() {
                           <div className="form-group focused">
                             <label
                               className="form-control-label"
-                              for="input-first-name"
+                              htmlFor="input-first-name"
                             >
                               First name
                             </label>
@@ -183,7 +186,7 @@ export default function Userprofile() {
                           <div className="form-group focused">
                             <label
                               className="form-control-label"
-                              for="input-last-name"
+                              htmlFor="input-last-name"
                             >
                               Last name
                             </label>
@@ -209,7 +212,7 @@ export default function Userprofile() {
                           <div className="form-group focused">
                             <label
                               className="form-control-label"
-                              for="input-address"
+                              htmlFor="input-address"
                             >
                               Address
                             </label>
@@ -228,7 +231,7 @@ export default function Userprofile() {
                           <div className="form-group focused">
                             <label
                               className="form-control-label"
-                              for="input-city"
+                              htmlFor="input-city"
                             >
                               City
                             </label>
@@ -245,7 +248,7 @@ export default function Userprofile() {
                           <div className="form-group focused">
                             <label
                               className="form-control-label"
-                              for="input-country"
+                              htmlFor="input-country"
                             >
                               Country
                             </label>
@@ -262,7 +265,7 @@ export default function Userprofile() {
                           <div className="form-group">
                             <label
                               className="form-control-label"
-                              for="input-country"
+                              htmlFor="input-country"
                             >
                               Postal code
                             </label>
@@ -297,8 +300,8 @@ export default function Userprofile() {
                     </h6>
                     <div className="pl-lg-4">
                       <div className="form-group focused">
-                        <div class="mb-3">
-                          <label for="formFile" className="form-label">
+                        <div className="mb-3">
+                          <label htmlFor="formFile" className="form-label">
                             Upload profile photo
                           </label>
                           <input

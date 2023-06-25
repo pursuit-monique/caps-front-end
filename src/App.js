@@ -31,7 +31,7 @@ function App() {
               <Route path="/new/event" element={<NewEvent />} />
               <Route path="/about" element={<About />} />
               <Route path="/live/:roomCode" element={<LiveStream />} />
-              <Route path="/userprofile" element={<Userprofile />} />
+              <Route path="/userprofile/:userID" element={<Userprofile />} />
             </Route>
 
             <Route path="/login" element={<Login />} />
