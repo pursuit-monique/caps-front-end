@@ -1,7 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Login from "./pages/Login";
 // import Event from "./pages/Event";
-// import MyComponent from "./components/DirectionService";
 
 import Signup from "./pages/Signup";
 import Home from "./pages/Home";
@@ -12,6 +11,7 @@ import "./App.css";
 import Event2 from "./pages/Event2";
 import NewEvent from "./pages/NewEvent";
 import LiveStream from "./pages/LiveStream";
+import Userprofile from "./components/Userprofile";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 // import "bootstrap/dist/js/bootstrap.bundle.min.js";
@@ -31,6 +31,7 @@ function App() {
               <Route path="/new/event" element={<NewEvent />} />
               <Route path="/about" element={<About />} />
               <Route path="/live/:roomCode" element={<LiveStream />} />
+              <Route path="/userprofile" element={<Userprofile />} />
             </Route>
 
             <Route path="/login" element={<Login />} />
