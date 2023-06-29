@@ -1,8 +1,8 @@
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { storage } from "../firebase/firebase";
-import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
-import { v4 } from "uuid";
+// import { storage } from "../firebase/firebase";
+// import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+// import { v4 } from "uuid";
 import uploadImage from "../helpers/helpers";
 import axios from "axios";
 import GooglePlacesAutocomplete, {

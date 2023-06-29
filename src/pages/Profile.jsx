@@ -1,9 +1,16 @@
+import { useState } from "react";
 import { useParams } from "react-router-dom";
+import uploadImage from "../helpers/helpers";
 import "./Userprofile.css";
 
 export default function Userprofile() {
+  const [image, setImage] = useState(null);
   const { userID } = useParams();
   console.log(userID);
+  async function handleSubmit(e) {
+    e.preventDefault();
+    const profilePicUrl = await uploadImage(image);
+  }
   return (
     <section>
       <div className="main-content pb-3 mb-5 user-profile">
@@ -123,7 +130,7 @@ export default function Userprofile() {
                   </div>
                 </div>
                 <div className="card-body">
-                  <form>
+                  <form onSubmit={handleSubmit}>
                     <h6 className="heading-small text-muted mb-4">
                       User information
                     </h6>
@@ -229,12 +236,16 @@ export default function Userprofile() {
                             className="form-control"
                             type="file"
                             id="formFile"
+                            onChange={(e) => setImage(e.target.files[0])}
                           />
                         </div>
                       </div>
                     </div>
                     <div className="text-right">
-                      <button className="btn btn-info col-lg-6 mt-3">
+                      <button
+                        className="btn btn-info col-lg-6 mt-3"
+                        type="submit"
+                      >
                         Update Profile
                       </button>
                     </div>
