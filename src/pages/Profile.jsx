@@ -29,9 +29,9 @@ export default function Userprofile() {
                   This is your profile page. You can see the progress you've
                   made with your work and manage your projects or assigned tasks
                 </p>
-                <a href="#!" className="btn btn-info">
+                {/* <a href="#!" className="btn btn-info">
                   Edit profile
-                </a>
+                </a> */}
               </div>
             </div>
           </div>
@@ -55,12 +55,12 @@ export default function Userprofile() {
                 </div>
                 <div className="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
                   <div className="d-flex justify-content-between">
-                    <a href="#" className="btn btn-sm btn-info mr-4">
+                    {/* <a href="#" className="btn btn-sm btn-info mr-4">
                       Connect
                     </a>
                     <a href="#" className="btn btn-sm btn-default float-right">
                       Message
-                    </a>
+                    </a> */}
                   </div>
                 </div>
                 <div className="card-body pt-0 pt-md-4">
@@ -104,7 +104,6 @@ export default function Userprofile() {
                       Nick Murphy — writes, performs and records all of his own
                       music.
                     </p>
-                    <a href="#">Show more</a>
                   </div>
                 </div>
               </div>
@@ -117,9 +116,9 @@ export default function Userprofile() {
                       <h3 className="mb-0">My account</h3>
                     </div>
                     <div className="col-4 text-right">
-                      <a href="#!" className="btn btn-sm btn-primary">
+                      {/* <a href="#!" className="btn btn-sm btn-primary">
                         Settings
-                      </a>
+                      </a> */}
                     </div>
                   </div>
                 </div>
@@ -130,7 +129,7 @@ export default function Userprofile() {
                     </h6>
                     <div className="pl-lg-4">
                       <div className="row">
-                        <div className="col-lg-6">
+                        {/* <div className="col-lg-6">
                           <div className="form-group focused">
                             <label
                               className="form-control-label"
@@ -146,7 +145,7 @@ export default function Userprofile() {
                               value="lucky.jesse"
                             />
                           </div>
-                        </div>
+                        </div> */}
                         <div className="col-lg-6">
                           <div className="form-group">
                             <label
@@ -202,84 +201,6 @@ export default function Userprofile() {
                       </div>
                     </div>
                     <hr className="my-4" />
-                    {/* <!-- Address --> */}
-                    <h6 className="heading-small text-muted mb-4">
-                      Contact information
-                    </h6>
-                    <div className="pl-lg-4">
-                      <div className="row">
-                        <div className="col-md-12">
-                          <div className="form-group focused">
-                            <label
-                              className="form-control-label"
-                              htmlFor="input-address"
-                            >
-                              Address
-                            </label>
-                            <input
-                              id="input-address"
-                              className="form-control form-control-alternative"
-                              placeholder="Home Address"
-                              value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09"
-                              type="text"
-                            />
-                          </div>
-                        </div>
-                      </div>
-                      <div className="row">
-                        <div className="col-lg-4">
-                          <div className="form-group focused">
-                            <label
-                              className="form-control-label"
-                              htmlFor="input-city"
-                            >
-                              City
-                            </label>
-                            <input
-                              type="text"
-                              id="input-city"
-                              className="form-control form-control-alternative"
-                              placeholder="City"
-                              value="New York"
-                            />
-                          </div>
-                        </div>
-                        <div className="col-lg-4">
-                          <div className="form-group focused">
-                            <label
-                              className="form-control-label"
-                              htmlFor="input-country"
-                            >
-                              Country
-                            </label>
-                            <input
-                              type="text"
-                              id="input-country"
-                              className="form-control form-control-alternative"
-                              placeholder="Country"
-                              value="United States"
-                            />
-                          </div>
-                        </div>
-                        <div className="col-lg-4">
-                          <div className="form-group">
-                            <label
-                              className="form-control-label"
-                              htmlFor="input-country"
-                            >
-                              Postal code
-                            </label>
-                            <input
-                              type="number"
-                              id="input-postal-code"
-                              className="form-control form-control-alternative"
-                              placeholder="Postal code"
-                            />
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <hr className="my-4" />
                     {/* <!-- Description --> */}
                     <h6 className="heading-small text-muted mb-4">About me</h6>
                     <div className="pl-lg-4">
@@ -312,7 +233,11 @@ export default function Userprofile() {
                         </div>
                       </div>
                     </div>
-                    <button className="btn btn-info">Update Profile</button>
+                    <div className="text-right">
+                      <button className="btn btn-info col-lg-6 mt-3">
+                        Update Profile
+                      </button>
+                    </div>
                   </form>
                 </div>
               </div>

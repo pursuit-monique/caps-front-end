@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { storage } from "../firebase/firebase";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { v4 } from "uuid";
+import uploadImage from "../helpers/helpers";
 import axios from "axios";
 import GooglePlacesAutocomplete, {
   geocodeByAddress,
@@ -40,22 +41,22 @@ function NewEvent() {
     }
   }
 
-  async function uploadImage() {
-    if (!image) {
-      alert("Please select an image");
-      return;
-    }
-    const storageRef = ref(storage, `images/${image.name + v4()}`);
+  // async function uploadImage() {
+  //   if (!image) {
+  //     alert("Please select an image");
+  //     return;
+  //   }
+  //   const storageRef = ref(storage, `images/${image.name + v4()}`);
 
-    try {
-      const snapshot = await uploadBytes(storageRef, image);
-      const downloadURL = await getDownloadURL(snapshot.ref);
-      console.log("File available at", downloadURL);
-      return downloadURL;
-    } catch (error) {
-      console.error("Error uploading file:", error);
-    }
-  }
+  //   try {
+  //     const snapshot = await uploadBytes(storageRef, image);
+  //     const downloadURL = await getDownloadURL(snapshot.ref);
+  //     console.log("File available at", downloadURL);
+  //     return downloadURL;
+  //   } catch (error) {
+  //     console.error("Error uploading file:", error);
+  //   }
+  // }
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -66,7 +67,7 @@ function NewEvent() {
     try {
       setLoading(true);
       const geo = await getLatLongFromAddress();
-      const imageURL = await uploadImage();
+      const imageURL = await uploadImage(image);
       const newEvent = {
         ...event,
         time: event.time + ":00",
@@ -88,7 +89,7 @@ function NewEvent() {
     }
   }
   console.log(value);
-  
+
   return (
     <>
       {loading && <Loader />}
@@ -184,7 +185,6 @@ function NewEvent() {
               openMenuOnClick: false,
             }}
           />
-
 
           <div className="col-6 col-md-6">
             <label htmlFor="date" className="form-label">

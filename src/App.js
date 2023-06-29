@@ -1,17 +1,17 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Login from "./pages/Login";
 // import Event from "./pages/Event";
-
-import Signup from "./pages/Signup";
-import Home from "./pages/Home";
 import PrivateRoutes from "./components/PrivateRoutes";
 import { AuthProvider } from "./context/AuthContext";
+
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
 import About from "./pages/About";
-import "./App.css";
 import Event2 from "./pages/Event2";
 import NewEvent from "./pages/NewEvent";
 import LiveStream from "./pages/LiveStream";
-import Userprofile from "./components/Userprofile";
+import UserProfile from "./pages/Profile";
+import "./App.css";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 // import "bootstrap/dist/js/bootstrap.bundle.min.js";
@@ -31,7 +31,7 @@ function App() {
               <Route path="/new/event" element={<NewEvent />} />
               <Route path="/about" element={<About />} />
               <Route path="/live/:roomCode" element={<LiveStream />} />
-              <Route path="/userprofile/:userID" element={<Userprofile />} />
+              <Route path="/userprofile/:userID" element={<UserProfile />} />
             </Route>
 
             <Route path="/login" element={<Login />} />

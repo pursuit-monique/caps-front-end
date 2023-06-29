@@ -425,7 +425,7 @@ a > code {
   }
 }
 
-.user-control .form-control {
+.form-control {
   font-size: 1rem;
   line-height: 1.5;
   display: block;
@@ -1768,7 +1768,8 @@ textarea[resize="horizontal"] {
 }
 
 .nav-link:hover {
-  color: #5e72e4;
+  /* color: #5e72e4; */
+  color: #0da5c0;
 }
 
 .nav-link i.ni {
