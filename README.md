@@ -1,10 +1,17 @@
-# Getting Started with Create React App
+# HAPPN Advocacy App.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is the front end of the HAPPN advocacy app, a project created by Bo Latt, Monique Correa, and James Scott.
+[Moniques GitHub](https://github.com/pursuit-monique/)
+[Bos GitHub](https://github.com/bolattt/)
+[James' GitHub](https://github.com/vvjs22/)
 
-## Available Scripts
 
-In the project directory, you can run:
+
+## Steps to Run this Project
+This project requires bootstrap and axios to run.
+
+### `npm install`
+First Run npm install to install the dependancies.
 
 ### `npm start`
 
