@@ -1,9 +1,9 @@
 # HAPPN Advocacy App.
 
-This project is the front end of the HAPPN advocacy app, a project created by Bo Latt, Monique Correa, and James Scott.
-[Moniques GitHub](https://github.com/pursuit-monique/)
-[Bos GitHub](https://github.com/bolattt/)
-[James' GitHub](https://github.com/vvjs22/)
+This project is the front end of the HAPPN advocacy app, a project created by Bo Latt, Monique Correa, and James Scott.\
+[Moniques GitHub](https://github.com/pursuit-monique/)\
+[Bos GitHub](https://github.com/bolattt/)\
+[James' GitHub](https://github.com/vvjs22/)\
 
 
 
